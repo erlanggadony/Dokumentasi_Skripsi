@@ -1,3 +1,4 @@
+%versi 2 (8-10-2016)
 \chapter{Dasar Teori}
 \label{chap:dasar_teori}
 Dasar teori membahas mengenai surat, sistem informasi dan \LaTeX.
@@ -113,7 +114,7 @@ Dalam sistem informasi, terdapat 3 aktivitas yang dapat menghasilkan informasi y
 \begin{enumerate}
 	\item \textit{Input} adalah kegiatan menangkap dan merekam semua data mentah ke dalam sistem informasi.
 	\item \textit{Processing} adalah kegiatan mengkonversi, memanipulasi dan menganalisis data mentah ke dalam bentuk yang dapat dimengerti oleh manusia.
-	\item \textit{Output} adalah kegiatan mengembalikan hasil data yang telah diproses sebagai informasi ke pengguna atau aktivitas lain dimana informasi itu akan digunakan. Selain itu, sistem informasi juga membutuhkan \textit{feedback} berupa \textit{output} yang dikembalikan kepada orang tertentu dalam organisasi untuk membantu mengevaluasi atau mengoreksi tahap input.
+	\item \textit{Output} adalah kegiatan mengembalikan hasil data yang telah diproses sebagai informasi ke pengguna atau aktivitas lain dimana informasi itu akan digunakan. Selain itu, sistem informasi juga membutuhkan \textit{feedback} berupa \textit{output} yang dikembalikan kepada orang tertentu dalam organisasi untuk membantu mengevaluasi atau mengoreksi tahap \textit{input}.
 \end{enumerate}
 
 CBIS (\textit{Computer-Based Information System}) atau sistem informasi berbasis komputer adalah sistem informasi yang bergantung pada kinerja dari \textit{hardware} dan \textit{software} pada komputer untuk memproses dan menyebarluaskan informasi \cite{Laudon:1996}. \
@@ -127,14 +128,14 @@ Ada 6 jenis sistem informasi yang digunakan dalam organisasi \cite{Laudon:1996},
 	\item \textit{Knowledge Work Systems} (KWS) \\
 	\textit{Knowledge Work Systems} berfungsi untuk membuat dan mengintegrasikan sebuah pengetahuan baru ke dalam sebuah organisasi.
 	\item \textit{Management Information Systems} (MIS) \\
-	\textit{Management Information Systems} berfungsi untuk mengolah input dari \textit{transaction processing systems} menjadi laporan-laporan yang sesuai dengan format yang diinginkan pengguna.
+	\textit{Management Information Systems} berfungsi untuk mengolah \textit{input} dari \textit{transaction processing systems} menjadi laporan-laporan yang sesuai dengan format yang diinginkan pengguna.
 	\item \textit{Decision-Support Systems} (DSS) \\
 	\textit{Decision-Support Systems} berfungsi untuk memberikan saran pada proses pengambilan keputusan.
 	\item \textit{Executive Support Systems} (ESS) \\
 	\textit{Executive Support Systems} berfungsi untuk merepresentasikan masalah agar dapat ditemukan solusi yang tepat untuk menangani masalah tersebut.
 \end{enumerate}
 
-	Pada penelitian ini, jenis sistem informasi yang akan digunakan yaitu \textit{Transaction Processing Systems} (TPS) dan \textit{Office Automation Systems} (OAS) karena TPS berfungsi untuk menerima input data dan OAS berfungsi untuk mengotomatisasi suatu proses.
+	Pada penelitian ini, jenis sistem informasi yang akan digunakan yaitu \textit{Transaction Processing Systems} (TPS) dan \textit{Office Automation Systems} (OAS) karena TPS berfungsi untuk menerima \textit{input} data dan OAS berfungsi untuk mengotomatisasi suatu proses.
 
 \subsection{\textit{Transaction Processing Systems} (TPS)}
 \label{sec:tps}
@@ -142,7 +143,7 @@ Ada 6 jenis sistem informasi yang digunakan dalam organisasi \cite{Laudon:1996},
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[scale=0.5]{F:/Skripsi/SIKSA/Gambar/Teori/tps.JPG}
+		\includegraphics[scale=0.5]{F:/Skripsi/Template/Gambar/Teori/tps.JPG}
 		{\caption{Alur informasi pada proses transaksi} \cite{Turban:2001}}
 	\label{fig:tps}
 \end{figure}
@@ -163,7 +164,7 @@ Berikut ini akan dijelaskan karakteristik dari TPS, antara lain \cite{Turban:200
 	\item Pemrosesan informasi dilakukan secara teratur. Misal harian, mingguan, dan sebagainya.
 	\item Dibutuhkan kapasitas penyimpan (basis data) yang besar.
 	\item Dibutuhkan kecepatan pemrosesan yang tinggi karena volume data yang diolah juga besar.
-	\item Umumnya sistem memantau dan mengumpulkan data yang telah diinput sebelumnya.
+	\item Umumnya sistem memantau dan mengumpulkan data yang telah di-\textit{input} sebelumnya.
 	\item Jenis data masukan dan keluaran sudah terstruktur. Karena data yang diproses cukup stabil, data diformat dalam suatu standar.
 	\item Level kerincian yang tinggi terutama pada masukan tetapi seringkali juga pada keluaran.
 	\item Komputasi tidak rumit (menggunakan operasi matematika sederhana atau operasi statistik).
@@ -253,4 +254,3 @@ Untuk menggunakan \textit{package mailmerge}, ada beberapa \textit{command} yang
     \mailentry{Sara,{Jean, Phillip and Maria},no}
     \mailentry{Edward,,yes}
  \end{verbatim}
-		
