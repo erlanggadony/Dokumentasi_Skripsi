@@ -6,11 +6,21 @@
 Berdasarkan fitur-fitur yang ada pada \textit{website} penyedia surat akademik, maka dirancang struktur modul yang menjelaskan mengenai modul-modul apa saja yang akan dirancang untuk membangun \textit{website} penyedia surat akademik. Garis besar dari struktur modul ini terbagi menjadi 3 bagian berdasarkan penggunanya, yaitu modul mahasiswa, modul TU dan modul pejabat.\
 Gambar \hyperlink{struktur_modul_garis_besar}{4.1} menjelaskan struktur modul secara garis besar.
 
-
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.65]{F:/Skripsi/Dokumentasi_Skripsi/Gambar/Struktur_Modul/modul_utama.png}
+	\caption{Struktur modul secara garis besar}
+	\label{fig:struktur_modul_garis_besar}
+\end{figure}
 
 Selanjutnya, modul-modul yang telah disebutkan sebelumnya memiliki struktur tersendiri yang lebih spesifik. Gambar \hyperlink{struktur_modul_mahasiswa}{4.2} menjelaskan struktur modul mahasiswa secara menyeluruh.
 
-
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.65]{F:/Skripsi/Dokumentasi_Skripsi/Gambar/Struktur_Modul/modul_mahasiswa.png}
+	\caption{Struktur modul mahasiswa}
+	\label{fig:struktur_modul_mahasiswa}
+\end{figure}
 
 Berdasarkan gambar di atas, berikut ini adalah penjelasan mengenai struktur modul mahasiswa dari \textit{\textit{website}} penyedia surat akademik :
 \begin{enumerate}
@@ -21,12 +31,12 @@ Berdasarkan gambar di atas, berikut ini adalah penjelasan mengenai struktur modu
 
 Gambar \hyperlink{struktur_modul_tu}{4.3} menjelaskan struktur modul TU secara menyeluruh.
 
-%\begin{figure}[H]
-%	\centering
-%		\includegraphics{}
-%		\caption{Struktur modul TU}
-%		\label{fig:struktur_modul_tu}
-%\end{figure}
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.65]{F:/Skripsi/Dokumentasi_Skripsi/Gambar/Struktur_Modul/modul_TU.png}
+	\caption{Struktur modul TU}
+	\label{fig:struktur_modul_TU}
+\end{figure}
 
 Berdasarkan gambar di atas, berikut ini adalah penjelasan mengenai struktur modul TU dari \textit{\textit{website}} penyedia surat akademik :
 \begin{enumerate}
@@ -38,12 +48,12 @@ Berdasarkan gambar di atas, berikut ini adalah penjelasan mengenai struktur modu
 
 Gambar \hyperlink{struktur_modul_pejabat}{4.4} menjelaskan struktur modul pejabat secara menyeluruh.
 
-%\begin{figure}[h]
-%	\centering
-%		\includegraphics{}
-%		\caption{Struktur modul pejabat}
-%		\label{fig:struktur_modul_pejabat}
-%\end{figure}
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.65]{F:/Skripsi/Dokumentasi_Skripsi/Gambar/Struktur_Modul/modul_pejabat.png}
+	\caption{Struktur modul pejabat}
+	\label{fig:struktur_modul_pejabat}
+\end{figure}
 
 Berdasarkan gambar di atas, berikut ini adalah penjelasan mengenai struktur modul pejabat dari \textit{\textit{website}} penyedia surat akademik :
 \begin{enumerate}
@@ -208,16 +218,42 @@ Id fakultas&int&11&FK&Not null&Fakultas\\ \hline
 \label{sec:perancangan_antar_muka}
 Berdasarkan struktur modul yang telah dijelaskan pada bagian sebelumnya, maka dirancang antar muka untuk memberikan tampilan pada setiap fitur yang terdapat pada \textit{website} penyedia surat akademik. Pada bagian sebelumnya telah disebutkan \textit{website} penyedia surat akademik memiliki 3 aktor utama yaitu mahasiswa, pejabat dan petugas TU. Masing-masing aktor ini memilik antar muka yang berbeda-beda sesuai dengan fitur yang dapat dijalankannya.
 
+Untuk dapat mengakses \textit{website} penyedia surat akademik ini setiap pengguna perlu melakukan \textit{login} dengan menggunakan \textit{username} dan \textit{password} yang dimiliki pada halaman \textit{login}. Gambar menunjukkan halaman login.
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.4]{F:/Skripsi/Dokumentasi_Skripsi/Gambar/Mock_Up/Login.png}
+		\caption{Halaman \textit{login}}
+		\label{fig:halaman_login}
+	\end{figure}
+
 \subsection{Antar Muka Untuk Mahasiswa}
 \label{sec:antar_muka_mahasiswa}
 Berdasarkan strutur modul, mahasiswa dapat menjalankan 2 fungsi yaitu membuat surat dan melihat surat yang sudah pernah dibuat yang akan dijelaskan sebagai berikut :
 
 \begin{enumerate}
+	\item Melihat surat yang sudah pernah dibuat\\
+	Halaman \textit{home mahasiswa} adalah halaman yang ditampilkan apabila mahasiswa berhasil melakukan \textit{login}. Surat-surat yang pernah dibuat oleh mahasiswa ybs. akan ditampilkan pada halaman ini. Gambar menunjukkan halaman \textit{home mahasiswa} yang menampilkan surat yang sudah pernah dibuat.
+
+	\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.4]{F:/Skripsi/Dokumentasi_Skripsi/Gambar/Mock_Up/Mahasiswa/home_mahasiswa.png}
+		\caption{Home mahasiswa yang pernah membuat surat}
+		\label{fig:home_mahasiswa_yang_pernah_membuat_surat}
+	\end{figure}
+	
+	Apabila mahasiswa ybs. belum pernah membuat surat sekalipun, maka tampilan untuk halaman \textit{home mahasiswa} akan menampilkan seperti pada gambar berikut.
+	\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.4]{F:/Skripsi/Dokumentasi_Skripsi/Gambar/Mock_Up/Mahasiswa/home_mahasiswa_kosong.png}
+		\caption{Home mahasiswa yang belum pernah membuat surat}
+		\label{fig:home_mahasiswa_yang_belum_pernah_membuat_surat}
+	\end{figure}
+	
 	\item Membuat surat\\
 	Untuk membuat surat mahasiswa perlu menekan menu "Buat Surat" pada \textit{navigation bar} untuk masuk ke halaman pemilihan kategori surat yang akan dibuat. Gambar menunjukkan halaman pilih kategori surat.
 	\begin{figure}[H]
 	\centering
-		\includegraphics[scale=0.4]{F:/Skripsi/Template/Gambar/Mock_Up/Mahasiswa/pilih_kategori_surat.png}
+		\includegraphics[scale=0.4]{F:/Skripsi/Dokumentasi_Skripsi/Gambar/Mock_Up/Mahasiswa/pilih_kategori_surat.png}
 		\caption{Pilih kategori surat}
 		\label{fig:pilih_kategori_surat}
 	\end{figure}
@@ -225,7 +261,7 @@ Berdasarkan strutur modul, mahasiswa dapat menjalankan 2 fungsi yaitu membuat su
 	Setelah memilih kategori surat mahasiswa akan diarahkan ke halaman selanjutnya untuk memilih jenis surat yang akan dibuat. Gambar menunjukkan halaman pilih jenis surat.
 	\begin{figure}[H]
 	\centering
-		\includegraphics[scale=0.4]{F:/Skripsi/Template/Gambar/Mock_Up/Mahasiswa/pilih_jenis_surat.png}
+		\includegraphics[scale=0.4]{F:/Skripsi/Dokumentasi_Skripsi/Gambar/Mock_Up/Mahasiswa/pilih_jenis_surat.png}
 		\caption{Pilih jenis surat}
 		\label{fig:pilih_jenis_surat}
 	\end{figure}
@@ -233,35 +269,17 @@ Berdasarkan strutur modul, mahasiswa dapat menjalankan 2 fungsi yaitu membuat su
 	Setelah memilih jenis surat mahasiswa akan diarahkan ke halaman selanjutnya yaitu halaman pengisian data surat. Gambar menunjukkan halaman pengisian data surat.
 	\begin{figure}[H]
 	\centering
-		\includegraphics[scale=0.4]{F:/Skripsi/Template/Gambar/Mock_Up/Mahasiswa/pengisian_data.png}
+		\includegraphics[scale=0.4]{F:/Skripsi/Dokumentasi_Skripsi/Gambar/Mock_Up/Mahasiswa/pengisian_data.png}
 		\caption{Contoh halaman pengisian data surat}
 		\label{fig:contoh_halaman_pengisian_data_surat}
 	\end{figure}
 	
-	Apabila semua data tela diisikan pada halaman pengisian data, mahasiswa akan diarahkan ke halaman selanjutnya untuk melihat apakah data isiannya sudah benar atau belum. Apabila data isian sudah benar mahasiswa dapat menekan tombol "Buat Surat", namun apabila ada data yang hendak diperbaiki mahasiswa dapat menekan tombol kembali. Gambar menunjukkan halaman \textit{preview} isi data surat.
+	Apabila semua data telah diisikan pada halaman pengisian data, mahasiswa akan diarahkan ke halaman selanjutnya untuk melihat apakah data isiannya sudah benar atau belum. Apabila data isian sudah benar mahasiswa dapat menekan tombol "Buat Surat", namun apabila ada data yang hendak diperbaiki mahasiswa dapat menekan tombol kembali. Gambar menunjukkan halaman \textit{preview} isi data surat.
 	\begin{figure}[H]
 	\centering
-		\includegraphics[scale=0.4]{F:/Skripsi/Template/Gambar/Mock_Up/Mahasiswa/preview_isian_data.png}
+		\includegraphics[scale=0.4]{F:/Skripsi/Dokumentasi_Skripsi/Gambar/Mock_Up/Mahasiswa/preview_isian_data.png}
 		\caption{Contoh halaman pengisian data surat}
 		\label{fig:contoh_halaman_pengisian_data_surat}
-	\end{figure}
-	
-	\item Melihat surat yang sudah pernah dibuat\\
-	Surat-surat yang pernah dibuat oleh mahasiswa ybs. akan ditampilkan pada halaman \textit{home mahasiswa}. Gambar menunjukkan halaman \textit{home mahasiswa} yang menampilkan surat yang sudah pernah dibuat.
-
-	\begin{figure}[H]
-	\centering
-		\includegraphics[scale=0.4]{F:/Skripsi/Template/Gambar/Mock_Up/Mahasiswa/home_mahasiswa.png}
-		\caption{Home mahasiswa yang pernah membuat surat}
-		\label{fig:home_mahasiswa_yang_pernah_membuat_surat}
-	\end{figure}
-	
-	Apabila mahasiswa ybs. belum pernah membuat surat sekalipun, maka tampilan untuk halaman \textit{home mahasiswa} akan menampilkan seperti pada gambar berikut. Gambar menunjukkan halaman \textit{home mahasiswa} apabila mahasiswa ybs. belum pernah membuat surat.
-	\begin{figure}[H]
-	\centering
-		\includegraphics[scale=0.4]{F:/Skripsi/Template/Gambar/Mock_Up/Mahasiswa/home_mahasiswa_kosong.png}
-		\caption{Home mahasiswa yang belum pernah membuat surat}
-		\label{fig:home_mahasiswa_yang_belum_pernah_membuat_surat}
 	\end{figure}
 \end{enumerate}
 
@@ -269,32 +287,78 @@ Berdasarkan strutur modul, mahasiswa dapat menjalankan 2 fungsi yaitu membuat su
 \label{sec:antar_muka_pejabat}
 Berdasarkan strutur modul, pejabat dapat menjalankan 3 fungsi yaitu melihat pesanan surat, menambahkan persetujuan dan catatan dan mengubah status penandatanganan surat yang sudah dibuat yang akan dijelaskan sebagai berikut :
 \begin{enumerate}
-	\item Melihat pesanan surat
+	\item Melihat pesanan surat\\
 	Surat-surat yang pernah dibuat oleh mahasiswa akan ditampilkan pada halaman \textit{home pejabat}. Gambar menunjukkan halaman \textit{home pejabat} yang menampilkan surat yang sudah pernah dibuat.
 	\begin{figure}[H]
 	\centering
-		\includegraphics[scale=0.4]{F:/Skripsi/Template/Gambar/Mock_Up/Pejabat/home_pejabat.png}
-		\caption{Home mahasiswa yang pernah membuat surat}
+		\includegraphics[scale=0.4]{F:/Skripsi/Dokumentasi_Skripsi/Gambar/Mock_Up/Pejabat/home_pejabat.png}
+		\caption{Home pejabat saat ada pesanan surat}
 		\label{fig:home_mahasiswa_yang_pernah_membuat_surat}
 	\end{figure}
 	
-	\item Menambahkan persetujuan dan catatan
-	Untuk menambahkan persetujuan dan catatan pejabat perlu masuk ke halaman \textit{home pejabat}. Pada pojok kanan tabel terdapat tombol "Tambah Catatan" yang apabila di tekan akan mengarahkan pejabat ke halaman pengisian persetujuan dan catatan.Gambar menunjukkan halaman \textit{home pejabat} yang menampilkan surat yang sudah pernah dibuat.
+	Apabila belum ada pesanan surat, maka tampilan untuk halaman \textit{home pejabat} akan menampilkan seperti pada gambar berikut. 
 	\begin{figure}[H]
 	\centering
-		\includegraphics[scale=0.4]{F:/Skripsi/Template/Gambar/Mock_Up/Pejabat/persetujuan_catatan.png}
-		\caption{Home mahasiswa yang pernah membuat surat}
-		\label{fig:home_mahasiswa_yang_pernah_membuat_surat}
+		\includegraphics[scale=0.4]{F:/Skripsi/Dokumentasi_Skripsi/Gambar/Mock_Up/Pejabat/home_pejabat_kosong.png}
+		\caption{Home pejabat saat belum ada pesanan surat}
+		\label{fig:home_mahasiswa_yang_belum_pernah_membuat_surat}
 	\end{figure}
 	
-	\item
+	\item Menambahkan persetujuan dan catatan\\
+	Untuk menambahkan persetujuan dan catatan pejabat perlu masuk ke halaman \textit{home pejabat} dengan menekan tombol "Home" pada \textit{navigation bar}. Pada pojok kanan tabel terdapat tombol "Tambah Catatan" yang apabila di tekan akan mengarahkan pejabat ke halaman pengisian persetujuan dan catatan. Gambar menunjukkan halaman \textit{home pejabat} yang menampilkan surat yang sudah pernah dibuat.
+	\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.4]{F:/Skripsi/Dokumentasi_Skripsi/Gambar/Mock_Up/Pejabat/persetujuan_catatan.png}
+		\caption{Halaman pengisian persetujuan dan catatan}
+		\label{fig:halaman_pengisian_persetujuan_dan_catatan}
+	\end{figure}
+	
+	Apabila persetujuan telah diisikan pada halaman pengisian persetujuan dan catatan, pejabat akan diarahkan ke halaman selanjutnya untuk melihat apakah data isiannya sudah benar atau belum. Apabila data isian sudah benar pejabat dapat menekan tombol "Kirim", namun apabila ada data yang hendak diperbaiki pejabat dapat menekan tombol kembali. Gambar menunjukkan halaman \textit{preview} persetujuan dan catatan.
+	\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.4]{F:/Skripsi/Dokumentasi_Skripsi/Gambar/Mock_Up/Pejabat/preview_persetujuan_catatan.png}
+		\caption{Contoh halaman preview persetujuan dan catatan}
+		\label{fig:halaman_preview_persetujuan_dan_catatan}
+	\end{figure}
+	
+	\item Mengubah status penandatanganan surat
 \end{enumerate}
 \subsection{Antar Muka Untuk Petugas TU}
 \label{sec:antar_muka_petugas_tu}
 Berdasarkan strutur modul, petugas TU dapat menjalankan 4 fungsi yaitu menambahkan nomor surat dan meng-\textit{generate} surat, menambahkan list data mahasiswa dan format surat baru dan mengubah status pengambilan surat yang sudah dibuat yang akan dijelaskan sebagai berikut :
 \begin{enumerate}
 	\item Menambahkan nomor surat dan meng-\textit{generate} surat
-	\item menambahkan list data mahasiswa
-	\item menambahkan format surat baru
+	\item Menambahkan \textit{list} data mahasiswa\\
+	Untuk menambahkan \textit{list} data mahasiswa petugas TU harus masuk terlebih dahulu ke halaman \textit{data mahasiswa} dengan menekan tombol "Data Mahasiswa" pada \textit{navigation bar} yang ditunjukkan pada gambar .
+	\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.4]{F:/Skripsi/Dokumentasi_Skripsi/Gambar/Mock_Up/TU/data_mahasiswa.png}
+		\caption{Halaman data mahasiswa}
+		\label{fig:halaman_data mahasiswa}
+	\end{figure}
+	Pada halaman \textit{data mahasiswa} terdapat tombol "Tambah data mahasiswa" yang apabila ditekan maka petugas TU akan diarahkan ke halaman untuk meng-\textit{upload} list data mahasiswa yang ditunjukkan pada gambar .
+	\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.4]{F:/Skripsi/Dokumentasi_Skripsi/Gambar/Mock_Up/TU/tambah_data_mahasiswa.png}
+		\caption{Halaman tambah data mahasiswa}
+		\label{fig:halaman_tambah_data mahasiswa}
+	\end{figure}
+	\item Menambahkan format surat baru
+	Untuk menambahkan format surat baru petugas TU harus masuk terlebih dahulu ke halaman \textit{format surat} dengan menekan tombol "Format Surat" pada \textit{navigation bar} yang ditunjukkan pada gambar .
+	\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.4]{F:/Skripsi/Dokumentasi_Skripsi/Gambar/Mock_Up/TU/format_surat.png}
+		\caption{Halaman format surat}
+		\label{fig:halaman_format_surat}
+	\end{figure}
+	
+	Pada halaman \textit{format surat} terdapat tombol "Tambah format surat" yang apabila ditekan maka petugas TU akan diarahkan ke halaman untuk mengisi id dari format surat, nama surat, keterangan dan meng-\textit{upload} format surat baru yang ditunjukkan pada gambar .
+	\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.4]{F:/Skripsi/Dokumentasi_Skripsi/Gambar/Mock_Up/TU/tambah_format_surat.png}
+		\caption{Halaman tambah format surat}
+		\label{fig:halaman_tambah_format_surat}
+	\end{figure}
+	
 	\item mengubah status pengambilan surat
 \end{enumerate}
