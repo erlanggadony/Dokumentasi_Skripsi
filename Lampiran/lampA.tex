@@ -1,5 +1,5 @@
 %versi 2 (8-10-2016)
-\chapter{Kode Program}
+\chapter{Kode Program \textit{View}}
 \label{lamp:A}
 
 %selalu gunakan single spacing untuk source code !!!!!
@@ -11,64 +11,1607 @@
 % terdapat beberapa pilihan : tiny, scriptsize, footnotesize, dll
 %
 % caption : nama yang akan ditampilkan di dokumen akhir, lihat contoh
-\begin{lstlisting}[language=Java,basicstyle=\tiny,caption=MyFurSet.java]
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet; 
+\begin{lstlisting}[language=php, basicstyle=\tiny, caption=\textit{Home} mahasiswa]
+	<!DOCTYPE html>
+  <head>
+      <title>Home - Mahasiswa</title>
+      <link href="{{ asset("/bootstrap-3.3.7-dist/css/bootstrap.css") }}" rel="stylesheet" type="text/css" />
+      <link href="{{ asset("/css/styles_list_surat.css") }}" rel="stylesheet" type="text/css">
 
-/**
- *
- * @author Lionov
- */
+  </head>
 
-//class for set of vertices close to furthest edge
-public class MyFurSet {
-    protected int id;                                  //id of the set
-    protected MyEdge FurthestEdge;                     //the furthest edge
-    protected HashSet<MyVertex> set;                   //set of vertices close to furthest edge
-    protected ArrayList<ArrayList<Integer>> ordered;   //list of all vertices in the set for each trajectory
-    protected ArrayList<Integer> closeID;              //store the ID of all vertices
-    protected ArrayList<Double> closeDist;             //store the distance of all vertices
-    protected int totaltrj;                            //total trajectories in the set
+  <body>
+    <div>
+        <img id=banner src="{{ asset("/images/banner ftis.png") }}" />
+    </div>
 
-    /**
-     * Constructor
-     * @param id : id of the set
-     * @param totaltrj : total number of trajectories in the set
-     * @param FurthestEdge : the furthest edge
-     */
-    public MyFurSet(int id,int totaltrj,MyEdge FurthestEdge) {
-        this.id = id;
-        this.totaltrj = totaltrj;
-        this.FurthestEdge = FurthestEdge;
-        set = new HashSet<MyVertex>();
-        ordered = new ArrayList<ArrayList<Integer>>();
-        for (int i=0;i<totaltrj;i++) ordered.add(new ArrayList<Integer>());
-        closeID = new ArrayList<Integer>(totaltrj);
-        closeDist = new ArrayList<Double>(totaltrj);
-        for (int i = 0;i <totaltrj;i++) {
-            closeID.add(-1);
-            closeDist.add(Double.MAX_VALUE);
-        }
-    }
+    <!-- Navigation here -->
+    @include('mahasiswa.menu')
 
-    /**
-     * set a vertex into the set
-     * @param v : vertex to be added to the set
-     */
-    public void add(MyVertex v) {
-        set.add(v);
-    }
+    <div class="container">
+      <div class="main">
+          <div class="row">
+            <div class="col-md-8 content">
+              <form class="form-inline" action= "{{ url('/data_mahasiswa') }}" method="get">
+                <div class="form-group">
+                  <label for="kategori_mahasiswa">Cari berdasarkan :</label><br>
+                  <select name="kategori" class="form-control">
+                    <option value="tanggalBuat">Cari semua surat</option>
+                    <option value="tanggalBuat">Tanggal pembuatan</option>
+                    <option value="perihal">Perihal</option>
+                    <option value="kepada">Kepada</option>
+                    <option value="jenis_surat">Jenis surat</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="searchBox">Kata kunci :</label><br>
+                  <input type="text" name="searchBox" class="form-control" size="80" />
+                  <button type="submit" name="findmail" class="btn btn-primary">Cari surat</button>
+                </div>
+              </form>
+              <br>
+              <table class="table table-striped">
+                @if($historysurats != null)
+                  @if(count($historysurats) == 0)
+                      <tr>
+                          <td colspan="5" align="center">Tidak ada history surat....</td>
+                      </tr>
+                  @else
+                      <tr>
+                        <th>TANGGAL PEMBUATAN</th>
+                        <th>PERIHAL</th>
+                        <th>KEPADA</th>
+                        <th>JENIS SURAT</th>
+                      </tr>
+                      @foreach($historysurats as $historysurat)
+                        <tr>
+                          <td class="ctr">{{ $historysurat->created_at }}</td>
+                          <td class="ctr">{{ $historysurat->perihal }}</td>
+                          <td class="ctr">{{ $historysurat->penerimaSurat }}</td>
+                          <td class="ctr">{{ $historysurat->formatsurat->jenis_surat }}</td>
+                        </tr>
+                      @endforeach
+                  @endif
+                @endif
+              </table>
+            </div>
+            @include('mahasiswa.profile_bar')
+          </div>
+      </div>
+    </div>
+    <div class="footer">
+    </div>
+  </body>
+</html>
 
-    /**
-     * check whether vertex v is a member of the set
-     * @param v : vertex to be checked
-     * @return true if v is a member of the set, false otherwise
-     */
-    public boolean contains(MyVertex v) {
-        return this.set.contains(v);
-    }
-}
 \end{lstlisting}
 
+
+\begin{lstlisting}[language=Java,basicstyle=\tiny,caption=Pilih kategori surat]
+	
+<!DOCTYPE html>
+  <head>
+      <title>Home</title>
+      <link href="{{ asset("/bootstrap-3.3.7-dist/css/bootstrap.css") }}" rel="stylesheet" type="text/css" />
+      <link href="{{ asset("/css/styles_list_surat.css") }}" rel="stylesheet" type="text/css">
+
+  </head>
+
+  <body>
+    <div>
+        <img id=banner src="{{ asset("/images/banner ftis.png") }}" />
+    </div>
+
+
+    <!-- Navigation Here -->
+    @include('mahasiswa.menu')
+
+    <div class="container">
+      <div class="main">
+        <div class="row">
+          <div class="col-md-8 content">
+            <h1>Pilih Kategori Surat</h1>
+            <br>
+            <form class="form-horizontal" action="{{ url('/pilih_jenis_surat') }}" method="post">
+              <div class="form-group">
+                <div class="col-sm-9">
+                    <div class="radio">
+                      <label>
+                        <input type="radio"  name="jenis_surat" value="surat_izin" required>
+                        Surat Izin
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input type="radio"  name="jenis_surat" value="surat_keterangan" required>
+                        Surat Keterangan
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input type="radio"  name="jenis_surat" value="surat_perwakilan" required>
+                        Surat Perwakilan
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input type="radio"  name="jenis_surat" value="surat_pengantar" required>
+                        Surat Pengantar
+                      </label>
+                    </div>
+                </div>
+              </div>
+              {!! csrf_field() !!}
+              <div class="form-group">
+                <div class="col-sm-6">
+                  <button type="submit" class="btn btn-primary">Lanjutkan</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          @include('mahasiswa.profile_bar')
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+    </div>
+  </body>
+</html>
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=Java,basicstyle=\tiny,caption=Pilih jenis surat keterangan]
+	<!DOCTYPE html>
+  <head>
+      <title>Pilih Jenis Surat</title>
+      <link href="{{ asset("/bootstrap-3.3.7-dist/css/bootstrap.css") }}" rel="stylesheet" type="text/css" />
+      <link href="{{ asset("/css/styles_list_surat.css") }}" rel="stylesheet" type="text/css">
+
+  </head>
+
+  <body>
+    <div>
+        <img id=banner src="{{ asset("/images/banner ftis.png") }}" />
+    </div>
+
+
+    <!-- Navigation Here -->
+    @include('mahasiswa.menu')
+
+    <div class="container">
+      <div class="main">
+        <div class="row">
+          <div class="col-md-8 content">
+            <h1>Pilih Jenis Surat</h1>
+            <br>
+            <form class="form-horizontal" action="{{ url('/isi_data_diri') }}" method="post">
+              <div class="form-group">
+                <div class="col-sm-9">
+                    @foreach($formatsurats as $formatsurat)
+                      @if(($formatsurat->id == 1) || ($formatsurat->id == 2))
+                        <div class="radio">
+                          <label>
+                            <input type="radio"  name="jenis_surat" value="{{ $formatsurat->id }}" required>
+                            {{ $formatsurat->jenis_surat }}
+                          </label>
+                        </div>
+                      @endif
+                    @endforeach
+                </div>
+              </div>
+              {!! csrf_field() !!}
+              <div class="form-group">
+                <div class="col-sm-6">
+                  <button type="submit" class="btn btn-primary">Lanjutkan</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          @include('mahasiswa.profile_bar')
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+    </div>
+  </body>
+</html>
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=Java,basicstyle=\tiny,caption=Pengisian data keterangan beasiswa.blade.php]
+	<!DOCTYPE html>
+  <head>
+      <title>Isi Data Diri</title>
+      <link href="{{ asset("/bootstrap-3.3.7-dist/css/bootstrap.css") }}" rel="stylesheet" type="text/css" />
+      <link href="{{ asset("/css/styles_list_surat.css") }}" rel="stylesheet" type="text/css">
+
+  </head>
+
+  <body>
+    <div>
+        <img id=banner src="{{ asset("/images/banner ftis.png") }}" />
+    </div>
+
+
+    <!-- Navigation here -->
+    @include('mahasiswa.menu')
+
+    <div class="container">
+      <div class="main">
+          <div class="row">
+            <div class="col-md-8 content">
+              <h1>Isi Data Diri Anda</h1>
+              <br>
+              <form action = "{{ url('/preview') }}" method="post" class="form-horizontal">
+                <div class="form-group">
+                  <label for="nama" class="col-sm-3">Nama</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="nama" name="nama" value="{{ $user->nama_mahasiswa }}" readonly style="border: none" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="prodi" class="col-sm-3">Program studi</label>
+                  <div class="col-sm-9">
+                    <span type="text" class="form-control" readonly style="border: none" >{{ $user->jurusan->nama_jurusan }}</span>
+                    <input type="hidden" name="prodi" value="{{ $user->jurusan_id }}"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="npm" class="col-sm-3">NPM</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="npm" name="npm" value="{{ $user->npm }}" readonly style="border: none">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="semester" class="col-sm-3">Semester</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" name="semester" value="{{ $user->semester }}" readonly style="border: none" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="thnAkademik" class="col-sm-3">Tahun akademik</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" name="thnAkademik" value="{{ $user->thnAkademik }}" readonly style="border: none" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="penyediabeasiswa" class="col-sm-3">Penyedia beasiswa</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="penyediabeasiswa" required name="penyediabeasiswa" >
+                  </div>
+                </div>
+                <input type="hidden" value="{{ $formatsurat_id }}" name="jenis_surat">
+                {!! csrf_field() !!}
+                <div class="form-group">
+                  <div class="col-sm-offset-3 col-sm-10">
+                    <button type="submit" class="btn btn-primary">Lanjutkan</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            @include('mahasiswa.profile_bar')
+          </div>
+      </div>
+    </div>
+    <div class="footer">
+    </div>
+  </body>
+</html>
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=Java,basicstyle=\tiny,caption=Preview isi data keterangan beasiswa]
+	<!DOCTYPE html>
+  <head>
+      <title>Preview</title>
+      <link href="{{ asset("/bootstrap-3.3.7-dist/css/bootstrap.css") }}" rel="stylesheet" type="text/css" />
+      <link href="{{ asset("/css/styles_list_surat.css") }}" rel="stylesheet" type="text/css">
+
+  </head>
+
+  <body>
+    <div>
+        <img id=banner src="{{ asset("/images/banner ftis.png") }}" />
+    </div>
+
+
+    <!-- Navigation here -->
+    @include('mahasiswa.menu')
+
+    <div class="container">
+      <div class="main">
+          <div class="row">
+            <div class="col-md-8 contentPreview form-horizontal">
+              <h4 style="font-weight:bold">SURAT PERNYATAAN</h4>
+              <br>
+
+                <form action = "{{ url('/kirimFormulir') }}" method="post">
+                  <div class="form-group">
+                    <label class="col-sm-3 prevLabel">Nama</label>
+                    <div class="col-sm-9" name="nama">
+                        {{ $nama }}
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 prevLabel">Program Studi</label>
+                    <div class="col-sm-9" name="prodi">
+                      <span>{{ $user->jurusan->nama_jurusan }}</span>
+                      <input type="hidden" name="prodi" value="{{ $prodi }}"/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 prevLabel">NPM</label>
+                    <div class="col-sm-9" name="npm">
+                        {{ $npm }}
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 prevLabel">Semester</label>
+                    <div class="col-sm-9" name="semester">
+                        {{ $semester }}
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 prevLabel">Tahun Akademik</label>
+                    <div class="col-sm-9" name="thnAkademik">
+                        {{ $thnAkademik }}
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 prevLabel">Penyedia Beasiswa</label>
+                    <div class="col-sm-9" name="penyediabeasiswa">
+                        {{ $penyediabeasiswa }}
+                    </div>
+                  </div>
+                  <input type="hidden" value="{{ $formatsurat_id }}" name="idFormat">
+                  <input type="hidden" value="{{ $dataSurat }}" name="dataSurat">
+                  <input type="hidden" value="{{ $penyediabeasiswa }}" name="provider">
+                  {!! csrf_field() !!}
+                  <br>
+                  <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-10">
+                      <button class="btn btn-default" onclick="goBack()">Kembali</button>
+                      <button type="submit" class="btn btn-success">Buat Surat</button>
+                    </div>
+                  </div>
+                </form>
+            </div>
+            @include('mahasiswa.profile_bar')
+          </div>
+      </div>
+    </div>
+    <div class="footer">
+    </div>
+    <script>
+      function goBack() {
+          window.history.back();
+      }
+    </script>
+  </body>
+</html>
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=Java,basicstyle=\tiny,caption=\textit{Navigation bar} untuk mahasiswa]
+	<div class="navigation">
+     <div class="navbar text-center">
+        <ul class="inline">
+           <a href="/home_mahasiswa"><li>Home</li></a>
+           <a href="/pilih_kategori_surat"><li>Buat Surat</li></a>
+           <a href="{{ url('/logout') }}"
+               onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();"><li>
+               Logout
+           <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+               {{ csrf_field() }}
+           </form>
+           </li></a>
+        </ul>
+     </div>
+</div>
+<br/>
+<!-- <div class="row">
+  <div class="col-md-offset-1 col-sm-offset-1 col-md-4 col-sm-5">
+    <div style="color:white">
+        Selamat Datang, {!! Auth::user()->name !!}
+    </div>
+  </div>
+</div> -->
+<div class="row">
+  <div class="col-md-offset-1 col-sm-offset-1 col-sm-4 col-md-4">
+
+  </div>
+</div>
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=Java,basicstyle=\tiny,caption=\textit{Sidebar} untuk mahasiswa]
+	<div class="col-md-4 profile">
+  <div class="card hovercard">
+      <div class="cardheader">
+
+      </div>
+      <div class="avatar">
+          <img alt="" src="{{ $user->foto_mahasiswa }}" />
+      </div>
+      <div class="info">
+          <div class="title">
+              {{ $user->nama_mahasiswa }}
+          </div>
+          <div class="desc">{{ $user->npm }}</div>
+          <div class="desc">{{ $user->jurusan->nama_jurusan }}</div>
+      </div>
+  </div>
+</div>
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=Java,basicstyle=\tiny,caption=\textit{Home} pejabat]
+	<!DOCTYPE html>
+  <head>
+      <title>Home - Pejabat</title>
+      <link href="{{ asset("/bootstrap-3.3.7-dist/css/bootstrap.css") }}" rel="stylesheet" type="text/css" />
+      <link href="{{ asset("/css/styles_list_surat.css") }}" rel="stylesheet" type="text/css">
+
+  </head>
+
+  <body>
+    <div>
+        <img id=banner src="{{ asset("/images/banner ftis.png") }}" />
+    </div>
+
+    <!-- Navigation Here -->
+    @include('pejabat.menu')
+
+    <div class="container">
+      <div class="main">
+          <div class="row">
+            <div class="col-md-8 content">
+              <form>
+                    <table>
+                      <tr>
+                        <td><label>Kata kunci :</label></td>
+                        <td><label>Cari berdasarkan :</label></td>
+                      </tr>
+
+                      <tr>
+                        <td class = "search">
+                          <select name="kategori" class="form-control">
+                            <option value="tanggalBuat">Cari semua surat</option>
+                            <option value="noSurat">Nomor surat</option>
+                            <option value="tanggalBuat">Tanggal pembuatan</option>
+                            <option value="perihal">Perihal</option>
+                            <option value="kepada]">Kepada</option>
+                            <option value="nama">Pembuat surat</option>
+                            <option value="idFormatSurat">Jenis surat</option>
+                          </select>
+                        </td>
+                        <td class = "search">
+                          <input type="text" name="searchBox" class="form-control" size="68" />
+                        </td>
+                        <td>
+                          <input type="submit" name="findmail" class="btn btn-primary" value="Cari surat" />
+                        </td>
+                      </tr>
+                    </table>
+              </form>
+              <br>
+              <table class="table table-striped">
+                <tr>
+                  @if(count($pesanansurats) == 0)
+                    <tr>
+                        <td colspan="5" align="center">Tidak ada pesanan surat ...</td>
+                    </tr>
+                @else
+                    <tr>
+                      <th>JENIS SURAT</th>
+                      <th>PERIHAL</th>
+                      <th>PEMOHON</th>
+                      <th>PENERIMA</th>
+                      <th>TANGGAL PEMBUATAN</th>
+                      <th>DATA SURAT</th>
+                      <th>KONTROL</th>
+                    </tr>
+                    @foreach($pesanansurats as $pesanansurat)
+                        <tr>
+                          <td class="ctr">{{ $pesanansurat->formatsurat->jenis_surat }}</td>
+                          <td class="ctr">{{ $pesanansurat->perihal }}</td>
+                          <td class="ctr">{{ $pesanansurat->mahasiswa->nama_mahasiswa }}</td>
+                          <td class="ctr">{{ $pesanansurat->penerimaSurat }}</td>
+                          <td class="ctr">{{ $pesanansurat->created_at }}</td>
+                          <td class="ctr"><textarea rows="5" cols="30" style="border: none" readonly>{{ $pesanansurat->dataSurat }}</textarea></td>
+                          <td class="ctr">
+                            @if($pesanansurat->formatsurat->id == 9 || $pesanansurat->formatsurat->id == 10)
+                            <form action="/persetujuan" method="post">
+                              <input type="hidden" value="{{ $pesanansurat->formatsurat_id }}" name="idFormatSurat">
+                              <input type="hidden" value="{{ $pesanansurat->dataSurat }}" name="dataSurat">
+                              <input type="hidden" value="{{ $pesanansurat->id }}" name="idPesananSurat">
+                              {!! csrf_field() !!}
+                              <button type="submit" class="btn btn-default">Tambah<br>Persetujuan</button>
+                            </form>
+                            @else
+                              <!-- <span class="btn btn-default"></span> -->
+                            @endif
+                          </td>
+                        </tr>
+                    @endforeach
+                  @endif
+              </table>
+            </div>
+              @include('pejabat.profile_bar')
+          </div>
+      </div>
+    </div>
+    <div class="footer">
+    </div>
+  </body>
+</html>
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=php,basicstyle=\tiny,caption=Tambah persetujuan dan catatan]
+	<!DOCTYPE html>
+  <head>
+      <title>Isi Catatan Dekan</title>
+      <link href="{{ asset("/bootstrap-3.3.7-dist/css/bootstrap.css") }}" rel="stylesheet" type="text/css" />
+      <link href="{{ asset("/css/styles_list_surat.css") }}" rel="stylesheet" type="text/css">
+
+  </head>
+
+  <body>
+    <div>
+        <img id=banner src="{{ asset("/images/banner ftis.png") }}" />
+    </div>
+
+
+    <!-- Navigation Here -->
+    @include('pejabat.menu')
+
+    <div class="container">
+      <div class="main">
+          <div class="row">
+            <div class="col-md-8 content">
+              <h1>Isi Persetujuan & Catatan</h1>
+              <br>
+              <form class="form-horizontal" method="post" action="/previewCatatan">
+                <div class="form-group">
+                  <label for="persetujuan" class="col-sm-3">Persetujuan</label>
+                  <div class="col-sm-9">
+                    <label class="radio-inline">
+                      <input type="radio" name="persetujuan" value="Setuju" checked required>Setuju
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="persetujuan" value="Tidak setuju">Tidak setuju
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="catatanDekan" class="col-sm-3">Catatan (Opsional)</label>
+                  <div class="col-sm-9">
+                    <textarea class="form-control" id="catatan" row="5" name="catatan"></textarea>
+                  </div>
+                </div>
+                {!! csrf_field() !!}
+                <input type="hidden" value="{{ $dataSurat }}" name="dataSurat">
+                <input type="hidden" value="{{ $formatsurat_id }}" name="formatsurat_id">
+                <input type="hidden" value="{{ $idPesananSurat }}" name="idPesananSurat">
+                <div class="form-group">
+                  <div class="col-sm-offset-3 col-sm-10">
+                    <button type="submit" class="btn btn-primary">Lanjutkan</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            @include('pejabat.profile_bar')
+          </div>
+      </div>
+    </div>
+    <div class="footer">
+    </div>
+  </body>
+</html>
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=php,basicstyle=\tiny,caption=\textit{Preview} isi persetujuan dan catatan]
+	<!DOCTYPE html>
+  <head>
+      <title>Isi data diri</title>
+      <link href="{{ asset("/bootstrap-3.3.7-dist/css/bootstrap.css") }}" rel="stylesheet" type="text/css" />
+      <link href="{{ asset("/css/styles_list_surat.css") }}" rel="stylesheet" type="text/css">
+
+  </head>
+
+  <body>
+    <div>
+        <img id=banner src="{{ asset("/images/banner ftis.png") }}" />
+    </div>
+
+
+    <!-- Navigation here -->
+    @include('mahasiswa.menu')
+
+    <div class="container">
+      <div class="main">
+          <div class="row">
+            <div class="col-md-8 contentPreview form-horizontal">
+              <h4 style="font-weight:bold">FORMULIR PERMOHONAN CUTI STUDI</h4>
+              <br>
+              <form action = "{{ url('/updateFormulir') }}" method="post">
+                <div class="form-group">
+                  <label for="nama" class="col-sm-3 prevLabel">Nama</label>
+                  <div class="col-sm-9" name="nama">
+                    {{ $nama }}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="npm" class="col-sm-3 prevLabel">NPM</label>
+                  <div class="col-sm-9" name="npm">
+                    {{ $npm }}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="prodi" class="col-sm-3 prevLabel">Program Studi</label>
+                  <div class="col-sm-9" name="prodi">
+                    {{ $prodi }}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="fakultas" class="col-sm-3 prevLabel">Fakultas</label>
+                  <div class="col-sm-9" name="fakultas">
+                    {{ $fakultas }}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="alamat" class="col-sm-3 prevLabel">Alamat</label>
+                  <div class="col-sm-9" name="alamat">
+                    {{ $alamat }}
+                  </div>
+                </div>
+                <div class="form-group prev">
+                  <label for="alasanCutiStudi" class="col-sm-3 prevLabel">Alasan cuti studi ke </label>
+                  <div class="col-sm-9" name="alasanCutiStudi">
+                    {{ $cutiStudiKe }}<br>
+                    {{ $alasanCutiStudi }}
+                  </div>
+                </div>
+                <div class="form-group prev">
+                  <label for="catatanDosenWali" class="col-sm-3 prevLabel">Catatan dosen wali </label>
+                  <div class="col-sm-9" name="catatanDosenWali">
+                    Nama : {{ $dosenWali }}<br>
+                    {{ $persetujuanDosenWali }}<br>
+                    {{ $catatanDosenWali }}
+                    <input type="hidden" name="dosenWali" value="{{ $persetujuanDosenWali }}|{{ $catatanDosenWali }}" />
+                  </div>
+                </div>
+                <div class="form-group prev">
+                  <label for="catatanKaprodi" class="col-sm-3 prevLabel">Catatan Kaprodi </label>
+                  <div class="col-sm-9" name="catatanKaprodi">
+                    {{ $persetujuanKaprodi }}<br>
+                    {{ $catatanKaprodi }}
+                    <input type="hidden" name="kaprodi" value="{{ $persetujuanKaprodi }}|{{ $catatanKaprodi }}" />
+                  </div>
+                </div>
+                <div class="form-group prev">
+                  <label for="catatanWDII" class="col-sm-3 prevLabel">Catatan WD II</label>
+                  <div class="col-sm-9" name="catatanWDII">
+                    {{ $persetujuanWDII }}<br>
+                    {{ $catatanWDII }}
+                    <input type="hidden" name="wd2" value="{{ $persetujuanWDII }}|{{ $catatanWDII }}" />
+                  </div>
+                </div>
+                <div class="form-group prev">
+                  <label for="catatanWDI" class="col-sm-3 prevLabel">Catatan WD I</label>
+                  <div class="col-sm-9" name="catatanWDI">
+                    {{ $persetujuanWDI }}<br>
+                    {{ $catatanWDI }}
+                    <input type="hidden" name="wd1" value="{{ $persetujuanWDI }}|{{ $catatanWDI }}" />
+                  </div>
+                </div>
+                <div class="form-group prev">
+                  <label for="persetujuanDekan" class="col-sm-3 prevLabel">Persetujuan Dekan</label>
+                  <div class="col-sm-9" name="persetujuanDekan" >
+                    {{ $persetujuanDekan }}
+                    <input type="hidden" name="dekan" value="{{ $persetujuanDekan }}" />
+                  </div>
+                </div>
+                <div class="form-group prev">
+                  <label for="semester" class="col-sm-3 prevLabel">Semester</label>
+                  <div class="col-sm-9" name="semester">
+                    {{ $semester }}
+                  </div>
+                </div>
+                <div class="form-group prev">
+                  <label for="thnAkademik" class="col-sm-3 prevLabel">Tahun Akademik</label>
+                  <div class="col-sm-9" name="thnAkademik">
+                    {{ $thnAkademik }}
+                  </div>
+                </div>
+                <input type="hidden" value="{{ $formatsurat_id }}" name="idFormat">
+                <input type="hidden" value="{{ $dataSurat }}" name="dataSurat">
+                <input type="hidden" name="idPesanansurat" value="{{$idPesanansurat}}">
+
+                {!! csrf_field() !!}
+                <br>
+                <div class="form-group">
+                  <div class="col-sm-offset-3 col-sm-10">
+                    <button class="btn btn-default" onclick="goBack()">Kembali</button>
+                    <button type="submit" class="btn btn-success">Buat Surat</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            @include('mahasiswa.profile_bar')
+          </div>
+      </div>
+    </div>
+    <div class="footer">
+    </div>
+    <script>
+      function goBack() {
+          window.history.back();
+      }
+    </script>
+  </body>
+</html>
+	
+\end{lstlisting}
+
+\begin{lstlisting}[language=php,basicstyle=\tiny,caption=\textit{History} pejabat]
+	<!DOCTYPE html>
+  <head>
+      <title>Data Mahasiswa</title>
+      <link href="{{ asset("/bootstrap-3.3.7-dist/css/bootstrap.css") }}" rel="stylesheet" type="text/css" />
+      <link href="{{ asset("/css/styles_list_surat.css") }}" rel="stylesheet" type="text/css">
+  </head>
+
+  <body>
+    <div>
+        <img id=banner src="{{ asset("/images/banner ftis.png") }}" />
+    </div>
+
+    <!-- Navigation Here -->
+    @include('pejabat.menu')
+
+    <div class="container">
+      <div class="main">
+          <div class="row">
+            <div class="col-md-8 content">
+              <form class="form-inline" action= "{{ url('/format_surat') }}" method="get">
+                <div class="form-group">
+                  <label for="kategori_format_surat">Cari berdasarkan :</label><br>
+                  <select name="kategori_mahasiswa" class="form-control">
+                    <option value="">Cari semua surat</option>
+                    <option value="noSurat">Nomor Surat</option>
+                    <option value="jenis_surat">Jenis Surat</option>
+                    <option value="perihal">Perihal</option>
+                    <option value="pemohon">Pemohon</option>
+                    <option value="penerima">Penerima</option>
+                    <option value="tanggalPembuatan">Tanggal Pembuatan</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="searchBox_format_surat">Kata kunci :</label><br>
+                  <input type="text" name="searchBox" class="form-control" size="68" />
+                  <button type="submit" name="findmail" class="btn btn-primary">Cari surat</button>
+                </div>
+              </form>
+              <br>
+              <table class="table table-striped table-hover">
+                @if($historysurats != null)
+                  @if(count($historysurats) == 0)
+                      <tr>
+                          <td colspan="5" align="center">Tidak ada history surat....</td>
+                      </tr>
+                  @else
+                      <tr>
+                        <th>NOMOR SURAT</th>
+                        <th>JENIS SURAT</th>
+                        <th>PERIHAL</th>
+                        <th>PEMOHON</th>
+                        <th>PENERIMA</th>
+                        <th>TANGGAL PEMBUATAN</th>
+                        <th>PENANDATANGANAN</th>
+                        <th>PENGAMBILAN</th>
+                      </tr>
+                      @foreach($historysurats as $historysurat)
+                        <tr>
+                          <td class="ctr">{{ $historysurat->no_surat }}</td>
+                          <td class="ctr">{{ $historysurat->formatsurat->jenis_surat }}</td>
+                          <td class="ctr">{{ $historysurat->perihal }}</td>
+                          <td class="ctr">{{ $historysurat->mahasiswa->nama_mahasiswa  }}</td>
+                          <td class="ctr">{{ $historysurat->penerimaSurat }}</td>
+                          <td class="ctr">{{ $historysurat->created_at }}</td>
+                          <td align="center">
+                            @if($historysurat->penandatanganan)
+                              <button type="submit" disabled class="btn btn-success" style="display:block">Sudah</button>
+                            @else
+                              <form action="{{url('/ubahStatusPenandatanganan')}}" method="post">
+                                <input type="hidden" value="{{ $historysurat->id }}" name="id">
+                                {!! csrf_field() !!}
+                                <button type="submit" class="btn btn-default " style="display:block">Belum</button>
+                              </form>
+                            @endif
+                          </td>
+                          <td class="ctr">
+                            @if($historysurat->pengambilan)
+                              <p>Sudah</p>
+                            @else
+                              <p>Belum</p>
+                            @endif
+                          </td>
+                        </tr>
+                      @endforeach
+                  @endif
+                @endif
+              </table>
+              <div style="text-align:center">{!! $historysurats->links() !!}</div>
+            </div>
+            @include('pejabat.profile_bar')
+          </div>
+      </div>
+    </div>
+    <div class="footer">
+    </div>
+  </body>
+</html>
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=php,basicstyle=\tiny,caption=\textit{Navigation bar} untuk pejabat]
+	<div class="navigation">
+     <div class="navbar text-center">
+        <ul class="inline">
+          <a href="/home_pejabat"><li>Home</li></a>
+          <a href="/history_pejabat"><li>History Surat</li></a>
+
+          <a href="{{ url('/logout') }}"
+              onclick="event.preventDefault();
+                       document.getElementById('logout-form').submit();"><li>
+              Logout
+          <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+              {{ csrf_field() }}
+          </form>
+          </li></a>
+        </ul>
+     </div>
+</div>
+<br>
+<!-- <div class="row">
+  <div class="col-md-offset-1 col-sm-offset-1 col-md-4 col-sm-5">
+    <div style="color:white">
+        Selamat Datang, {!! Auth::user()->name !!}
+    </div>
+  </div>
+</div> -->
+<div class="row">
+  <div class="col-md-offset-1 col-sm-offset-1 col-sm-4 col-md-4">
+
+  </div>
+</div>
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=php,basicstyle=\tiny,caption=\textit{Sidebar} untuk pejabat]
+	<div class="col-md-4 profile">
+  <div class="card hovercard">
+      <div class="cardheader">
+
+      </div>
+      <div class="avatar">
+          <img alt="" src="http://simpleicon.com/wp-content/uploads/user1.png">
+      </div>
+      <div class="info">
+          <div class="title">
+              {{ $user->nama_dosen }}
+          </div>
+          <div class="desc">{{ $user->nik }}</div>
+          <div class="desc">{{ $user->jurusan->nama_jurusan }}</div>
+      </div>
+  </div>
+</div>
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=php,basicstyle=\tiny,caption=\textit{Home} TU]
+	<!DOCTYPE html>
+  <head>
+      <title>Home - TU</title>
+      <link href="{{ asset("/bootstrap-3.3.7-dist/css/bootstrap.css") }}" rel="stylesheet" type="text/css" />
+      <link href="{{ asset("/css/styles_list_surat.css") }}" rel="stylesheet" type="text/css">
+
+  </head>
+
+  <body>
+    <div>
+        <img id=banner src="{{ asset("/images/banner ftis.png") }}" />
+    </div>
+
+    @include('tu.menu')
+
+    <div class="container">
+      <div class="main">
+          <div class="row">
+            <div class="col-md-8 content">
+              <form class="form-inline" action= "{{ url('/home_TU') }}" method="get">
+                <div class="form-group">
+                  <label for="kategori">Cari berdasarkan :</label><br>
+                  <select name="kategori" class="form-control">
+                    <option value="">Cari semua surat</option>
+                    <option value="jenis_surat">Jenis Surat</option>
+                    <option value="perihal">Perihal</option>
+                    <option value="pemohonSurat">Pemohon Surat</option>
+                    <option value="penerimaSurat">Penerima Surat</option>
+                    <option value="tanggalBuat">Tanggal pembuatan</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="searchBox">Kata kunci :</label><br>
+                  <input type="text" name="searchBox" class="form-control" size="69" />
+                  <button type="submit" name="findmail" class="btn btn-primary">Cari surat</button>
+                </div>
+              </form>
+              <br>
+              <table class="table table-striped">
+                @if(count($pesanansurats) == 0)
+                    <tr>
+                        <td colspan="5" align="center">Tidak ada pesanan surat ...</td>
+                    </tr>
+                @else
+                    <tr>
+                      <th>JENIS SURAT</th>
+                      <th>PERIHAL</th>
+                      <th>PEMOHON</th>
+                      <th>PENERIMA</th>
+                      <th>TANGGAL PEMBUATAN</th>
+                      <th>DATA SURAT</th>
+                      <th>KONTROL</th>
+                    </tr>
+                    @foreach($pesanansurats as $pesanansurat)
+                        <tr>
+                          <td class="ctr">{{ $pesanansurat->formatsurat->jenis_surat }}</td>
+                          <td class="ctr">{{ $pesanansurat->perihal }}</td>
+                          <td class="ctr">{{ $pesanansurat->mahasiswa->nama_mahasiswa }}</td>
+                          <td class="ctr">{{ $pesanansurat->penerimaSurat }}</td>
+                          <td class="ctr">{{ $pesanansurat->created_at }}</td>
+                          <td class="ctr"><textarea rows="5" cols="30" style="border: none" readonly>{{ $pesanansurat->dataSurat }}</textarea></td>
+                          <td class="ctr">
+                            <form action="/proses_surat" method="post">
+                              <input type="hidden" value="{{ $pesanansurat->id }}" name="id">
+                              <input type="hidden" value="{{ $pesanansurat->formatsurat_id }}" name="idFormatSurat">
+                              <input type="hidden" value="{{ $pesanansurat->dataSurat }}" name="prosesSurat">
+                              {!! csrf_field() !!}
+                              <button type="submit" class="btn btn-default">Tambah<br>Nomor<br>Surat</button>
+                            </form>
+                          </td>
+                        </tr>
+                    @endforeach
+                  @endif
+              </table>
+              <div style="text-align:center">{!! $pesanansurats->links() !!}</div>
+            </div>
+          @include('tu.profile_bar')
+          </div>
+      </div>
+    </div>
+    <div class="footer">
+        <div style="text-align:center">Copyright Dony Erlangga</div>
+    </div>
+  </body>
+</html>
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=php,basicstyle=\tiny,caption=Tambah nomor surat untuk surat keterangan beasiswa]
+	<!DOCTYPE html>
+  <head>
+      <title>Tambah Nomor Surat & Generate PDF</title>
+      <link href="{{ asset("/bootstrap-3.3.7-dist/css/bootstrap.css") }}" rel="stylesheet" type="text/css" />
+      <link href="{{ asset("/css/styles_list_surat.css") }}" rel="stylesheet" type="text/css">
+
+  </head>
+
+  <body>
+    <div>
+        <img id=banner src="{{ asset("/images/banner ftis.png") }}" />
+    </div>
+
+    @include('tu.menu')
+
+    <div class="container">
+      <div class="main">
+          <div class="row">
+            <div class="col-md-8 content">
+                <h3 style="font-weight:bold;">Preview Akhir dan Isi Nomor Surat</h3>
+                <br>
+                <form class="form-horizontal" action="{{ url('/generatePDF') }}" method="post">
+                  <div class="form-group">
+                    <label class="col-sm-3 prevLabel">Nama</label>
+                    <div class="col-sm-9" name="nama">
+                        {{ $nama }}
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 prevLabel">Program Studi</label>
+                    <div class="col-sm-9" name="prodi">
+                      <span>{{ $user->jurusan->nama_jurusan }}</span>
+                      <input type="hidden" name="prodi" value="{{ $prodi }}"/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 prevLabel">NPM</label>
+                    <div class="col-sm-9" name="npm">
+                        {{ $npm }}
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 prevLabel">Semester</label>
+                    <div class="col-sm-9" name="semester">
+                        {{ $semester }}
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 prevLabel">Tahun Akademik</label>
+                    <div class="col-sm-9" name="thnAkademik">
+                        {{ $thnAkademik }}
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 prevLabel">Jenis Beasiswa</label>
+                    <div class="col-sm-9" name="penyediabeasiswa">
+                        {{ $penyediabeasiswa }}
+                    </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="col-sm-3" for="noSurat">Nomor Surat</label>
+                      <div class="col-sm-6">
+                          <input type="text" class="form-control" name="noSurat" required />
+                      </div>
+                  </div>
+                  <input type="hidden" value="{{ $dataSurat }}" id="format" name="data">
+                  <input type="hidden" value="{{ $formatsurat_id }}" name="idFormatSurat">
+                  <input type="hidden" value="{{ $pemesan }}" name="pemesan">
+                  {!! csrf_field() !!}
+                  <br>
+                  <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-10">
+                      <button class="btn btn-default" onclick="goBack()">Kembali</button>
+                      <button type="submit" class="btn btn-success">Buat Surat (PDF)</button>
+                    </div>
+                  </div>
+                </form>
+            </div>
+            @include('tu.profile_bar')
+          </div>
+      </div>
+    </div>
+    <div class="footer">
+         
+    </div>
+    <script>
+      function goBack() {
+          window.history.back();
+      }
+
+      function compile(){
+        var pdftex = new PDFTeX();
+        var latex_code =
+      }
+    </script>
+  </body>
+</html>
+\end{lstlisting}
+
+\begin{lstlisting}[language=php,basicstyle=\tiny,caption=\textit{History} TU]
+	<!DOCTYPE html>
+  <head>
+      <title>History Surat - TU</title>
+      <link href="{{ asset("/bootstrap-3.3.7-dist/css/bootstrap.css") }}" rel="stylesheet" type="text/css" />
+      <link href="{{ asset("/css/styles_list_surat.css") }}" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <div>
+        <img id=banner src="{{ asset("/images/banner ftis.png") }}" />
+    </div>
+
+    @include('tu.menu')
+
+    <div class="container">
+      <div class="main">
+          <div class="row">
+            <div class="col-md-8 content">
+              <form class="form-inline" action= "{{ url('/format_surat') }}" method="get">
+                <div class="form-group">
+                  <label for="kategori_format_surat">Cari berdasarkan :</label><br>
+                  <select name="kategori_mahasiswa" class="form-control">
+                    <option value="">Cari semua surat</option>
+                    <option value="noSurat">Nomor Surat</option>
+                    <option value="jenis_surat">Jenis Surat</option>
+                    <option value="perihal">Perihal</option>
+                    <option value="pemohon">Pemohon</option>
+                    <option value="penerima">Penerima</option>
+                    <option value="tanggalPembuatan">Tanggal Pembuatan</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="searchBox_format_surat">Kata kunci :</label><br>
+                  <input type="text" name="searchBox" class="form-control" size="68" />
+                  <button type="submit" name="findmail" class="btn btn-primary">Cari surat</button>
+                </div>
+              </form>
+              <br>
+              <table class="table table-striped table-hover">
+                @if($historysurats != null)
+                  @if(count($historysurats) == 0)
+                      <tr>
+                          <td colspan="5" align="center">Tidak ada history surat....</td>
+                      </tr>
+                  @else
+                      <tr>
+                        <th>NOMOR SURAT</th>
+                        <th>JENIS SURAT</th>
+                        <th>PERIHAL</th>
+                        <th>PEMOHON</th>
+                        <th>PENERIMA</th>
+                        <th>TANGGAL PEMBUATAN</th>
+                        <th>PENANDATANGANAN</th>
+                        <th>PENGAMBILAN</th>
+                      </tr>
+                      @foreach($historysurats as $historysurat)
+                        <tr>
+                          <td class="ctr">{{ $historysurat->no_surat }}</td>
+                          <td class="ctr">{{ $historysurat->formatsurat->jenis_surat }}</td>
+                          <td class="ctr">{{ $historysurat->perihal }}</td>
+                          <td class="ctr">{{ $historysurat->mahasiswa->nama_mahasiswa }}</td>
+                          <td class="ctr">{{ $historysurat->penerimaSurat }}</td>
+                          <td class="ctr">{{ $historysurat->created_at }}</td>
+                          <td class="ctr">
+                            @if($historysurat->penandatanganan)
+                              <p>Sudah</p>
+                            @else
+                              <p>Belum</p>
+                            @endif
+                          </td>
+                          <td align="center">
+                            @if($historysurat->pengambilan)
+                              <button type="submit" disabled class="btn btn-success">Sudah</button>
+                            @else
+                              @if($historysurat->penandatanganan == false)
+                                <button type="submit" disabled class="btn btn-default">Belum</button>
+                              @else
+                                <form method="post" action="{{url('/ubahStatusPengambilan')}}">
+                                  <input type="hidden" value="{{ $historysurat->id }}" name="id">
+                                  {!! csrf_field() !!}
+                                  <button type="submit" class="btn btn-default">Belum</button>
+                                </form>
+                              @endif
+                            @endif
+                          </td>
+                        </tr>
+                      @endforeach
+                  @endif
+                @endif
+              </table>
+              <div style="text-align:center">{!! $historysurats->links() !!}</div>
+            </div>
+              @include('tu.profile_bar')
+          </div>
+      </div>
+    </div>
+    <div class="footer">
+         
+    </div>
+  </body>
+</html>
+\end{lstlisting}
+
+\begin{lstlisting}[language=php,basicstyle=\tiny,caption=Data mahasiswa]
+	<!DOCTYPE html>
+  <head>
+      <title>Data Mahasiswa</title>
+      <link href="{{ asset("/bootstrap-3.3.7-dist/css/bootstrap.css") }}" rel="stylesheet" type="text/css" />
+      <link href="{{ asset("/css/styles_list_surat.css") }}" rel="stylesheet" type="text/css">
+
+  </head>
+
+  <body>
+    <div>
+        <img id=banner src="{{ asset("/images/banner ftis.png") }}" />
+    </div>
+
+      @include('tu.menu')
+
+    <div class="container">
+      <div class="main">
+          <div class="row">
+            <div class="col-md-8 content">
+              <!-- <a href="{{ URL::to('/tambah_data_mahasiswa') }}" class="btn btn-default">Tambah Data Mahasiswa</a> -->
+              <form class="form-inline" action= "{{ url('/data_mahasiswa') }}" method="get">
+                <div class="form-group">
+                  <label for="kategori_mahasiswa">Cari berdasarkan :</label><br>
+                  <select name="kategori_mahasiswa" class="form-control">
+                    <option value="tanggalBuat">Cari semua surat</option>
+                    <option value="nirm">NIRM</option>
+                    <option value="npm">NPM</option>
+                    <option value="nama_mahasiswa">Nama Mahasiswa</option>
+                    <option value="prodi">Program Studi</option>
+                    <option value="angkatan">Angkatan</option>
+                    <option value="kota_lahir">Kota Lahir</option>
+                    <option value="tanggal_lahir">Tanggal Lahir</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="searchBox">Kata kunci :</label><br>
+                  <input type="text" name="searchBox" class="form-control" size = "65">
+                  <button type="submit" name="findmail" class="btn btn-primary">Cari mahasiswa</button>
+                </div>
+              </form>
+              <br>
+              <table class="table table-striped table-hover">
+                @if(count($mahasiswas) == 0)
+                    <tr>
+                        <td colspan="5" align="center">Tidak ada data mahasiswa ...</td>
+                    </tr>
+                @else
+                    <tr>
+                      <th>NIRM</th>
+                      <th>NPM</th>
+                      <th>NAMA MAHASISWA</th>
+                      <th>PROGRAM STUDI</th>
+                      <th>ANGKATAN</th>
+                      <th>KOTA LAHIR</th>
+                      <th>TANGGAL LAHIR</th>
+                      <th>DOSEN WALI</th>
+                      <th>FOTO</th>
+                      <th>KONTROL</th>
+                    </tr>
+                    @foreach($mahasiswas as $mahasiswa)
+                      <tr>
+                        <td class="ctr">{{ $mahasiswa->nirm }}</td>
+                        <td class="ctr">{{ $mahasiswa->npm }}</td>
+                        <td class="ctr">{{ $mahasiswa->nama_mahasiswa }}</td>
+                        <td class="ctr">{{ $mahasiswa->jurusan->nama_jurusan }}</td>
+                        <td class="ctr">{{ $mahasiswa->angkatan }}</td>
+                        <td class="ctr">{{ $mahasiswa->kota_lahir }}</td>
+                        <td class="ctr">{{ $mahasiswa->tanggal_lahir }}</td>
+                        <td class="ctr">{{ $mahasiswa->dosen->nama_dosen }}</td>
+                        <td style="text-align:center"><a href = "{{ $mahasiswa->foto }}">klik disini</a></td>
+                        <td>
+                          <form action="/hapusMahasiswa" method="post">
+                            <input type="hidden" value="{{ $mahasiswa->id }}" name="deleteID">
+                            {!! csrf_field() !!}
+                            <button type="submit" class="btn btn-danger" aria-label="Remove" data-toggle="tooltip" title="Remove">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>
+                          </form>
+                        </td>
+                      </tr>
+                    @endforeach
+                @endif
+              </table>
+            </div>
+            @include('tu.profile_bar')
+          </div>
+      </div>
+    </div>
+    <div class="footer">
+    </div>
+  </body>
+</html>
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=php,basicstyle=\tiny,caption=Format surat]
+	
+<!DOCTYPE html>
+  <head>
+      <title>Format Surat</title>
+      <link href="{{ asset("/bootstrap-3.3.7-dist/css/bootstrap.css") }}" rel="stylesheet" type="text/css" />
+      <link href="{{ asset("/css/styles_list_surat.css") }}" rel="stylesheet" type="text/css" />
+      <script src="{{ asset("/js/jquery-3.2.0.min.js") }}" type="text/javascript"></script>
+
+  </head>
+
+  <body>
+    <div>
+        <img id=banner src="{{ asset("/images/banner ftis.png") }}" />
+    </div>
+
+    @include('tu.menu')
+
+    <div id="myModal" class="modal">
+      <div class="modal-content" id="show">
+        <span class="close">&times;</span>
+      </div>
+    </div>
+    <div class="container">
+      <div class="main">
+          <div class="row">
+            <div class="col-md-8 content" id ="test">
+              <a href="{{ URL::to('/tambah_format_surat') }}" class="btn btn-default">Tambah Format Surat</a>
+              <form class="form-inline" action= "{{ url('/format_surat') }}" method="get">
+                <div class="form-group">
+                  <label for="kategori_format_surat">Cari berdasarkan :</label><br>
+                  <select name="kategori_format_surat" class="form-control">
+                    <option value="">Cari semua surat</option>
+                    <option value="idFormatSurat">ID Format Surat</option>
+                    <option value="jenis_surat">Jenis Surat</option>
+                    <option value="keterangan">Keterangan</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="searchBox_format_surat">Kata kunci :</label><br>
+                  <input type="text" name="searchBox_format_surat" class="form-control" size = "65">
+                  <button type="submit" name="findmail" class="btn btn-primary">Cari format surat</button>
+                </div>
+              </form>
+              <br>
+              <table class="table table-striped table-hover">
+                @if($formatsurats != null)
+                  @if(count($formatsurats) == 0)
+                      <tr>
+                          <td colspan="5" align="center">Tidak ada format surat ...</td>
+                      </tr>
+                  @else
+                      <tr>
+                        <th>ID FORMAT SURAT</th>
+                        <th>JENIS SURAT</th>
+                        <th>KETERANGAN</th>
+                        <th>FILE SURAT</th>
+                        <th colspan ="2"> KONTROL</th>
+                      </tr>
+                      @foreach($formatsurats as $formatsurat)
+                        <tr>
+                          <td class="ctr">{{ $formatsurat->idFormatSurat }}</td>
+                          <td class="ctr">{{ $formatsurat->jenis_surat }}</td>
+                          <td class="ctr">{{ $formatsurat->keterangan }}</td>
+                          <td class="ctr">
+                              <button type="submit" onclick="showModal({{ $formatsurat->id }})" class="btn btn-link">Klik disini</button>
+                          </td>
+                          <td class="ctr">
+                            <form action="/hapusFormatsurat" method="post">
+                              <input type="hidden" value="{{ $formatsurat->id }}" name="deleteID">
+                              {!! csrf_field() !!}
+                              <button type="submit" class="btn btn-danger" aria-label="Remove" data-toggle="tooltip" title="Remove">
+                                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                              </button>
+                            </form>
+                          </td>
+                        </tr>
+                      @endforeach
+                  @endif
+                @endif
+              </table>
+              <div style="text-align:center">{!! $formatsurats->links() !!}</div>
+            </div>
+            @include('tu.profile_bar')
+          </div>
+      </div>
+    </div>
+    <div class="footer">
+    </div>
+    <script type="text/javascript" src="{{ asset("js/jquery-3.2.0.min.js") }}"></script>
+    <script>
+        // Get the modal
+        var modal = document.getElementById('myModal');
+        var btn = document.getElementById("showFormatID");
+        var span = document.getElementsByClassName("close")[0];
+
+        function tutup() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        function showModal(id){
+          var jqxhr = $.get( "http://127.0.0.1:8000/Api/showFormatSurat?id=" + id, function() {
+          })
+          .done(function(data) {
+            document.getElementById("show").innerHTML = `<span onclick='tutup()' class='close'>&times;</span>` + data.stringFormat;
+            // $('#myModal').css({'position' : 'fixed'});
+            modal.style.display = "block";
+            modal.style.position = "fixed";
+            // $('#test').css('position' : 'fixed');
+          })
+          .fail(function(error) {
+            alert( "Error : " + error);
+          });
+        }
+    </script>
+  </body>
+</html>
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=php,basicstyle=\tiny,caption=Tambah format surat]
+	
+<!DOCTYPE html>
+  <head>
+      <title>Data Mahasiswa</title>
+      <link href="{{ asset("/bootstrap-3.3.7-dist/css/bootstrap.css") }}" rel="stylesheet" type="text/css" />
+      <link href="{{ asset("/css/styles_list_surat.css") }}" rel="stylesheet" type="text/css">
+
+  </head>
+
+  <body>
+    <div>
+        <img id=banner src="{{ asset("/images/banner ftis.png") }}" />
+    </div>
+
+      @include('tu.menu')
+
+    <div class="container">
+      <div class="main">
+          <div class="row">
+            <div class="col-md-8 content">
+              <h1>Input Format Surat</h1>
+              <br><br>
+              <form class="form-horizontal" action="{{ url('/uploadFormat')}}" method="post"  enctype="multipart/form-data">
+                <div class="form-group">
+                  <label for="idFormatSurat" class="col-sm-3">ID Format Surat</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="idFormatSurat" name="idFormatSurat" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="jenis_surat" class="col-sm-3">Jenis Surat</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="jenis_surat" name="jenis_surat" required />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3" for="keterangan">Keterangan</label>
+                  <div class="col-sm-9">
+                    <textarea class="form-control" row="3" id="keterangan" name="keterangan" required></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="nama" class="col-sm-3">Upload Format Surat</label>
+                  <div class="col-sm-9">
+                    <input type="file" class="form-control" name="uploadFormat" required />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-3"></div>
+                  <div class="col-sm-9 checkbox">
+                    <label><input type="checkbox" required/> Saya sudah yakin</label>
+                  </div>
+                </div>
+                {!! csrf_field() !!}
+                <div class="form-group">
+                  <div class="col-sm-3"></div>
+                  <div class="col-sm-9">
+                    <button type="submit" class="btn btn-primary">Upload format surat (.TeX)</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            @include('tu.profile_bar')
+          </div>
+      </div>
+    </div>
+    <div class="footer">
+    </div>
+  </body>
+</html>
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=php,basicstyle=\tiny,caption=\textit{Setting} semester dan thnAjaran.blade.php]
+	<!DOCTYPE html>
+  <head>
+      <title>Setting</title>
+      <link href="{{ asset("/bootstrap-3.3.7-dist/css/bootstrap.css") }}" rel="stylesheet" type="text/css" />
+      <link href="{{ asset("/css/styles_list_surat.css") }}" rel="stylesheet" type="text/css">
+
+  </head>
+
+  <body>
+    <div>
+        <img id=banner src="{{ asset("/images/banner ftis.png") }}" />
+    </div>
+
+    @include('tu.menu')
+      <div class="container">
+        <div class="main">
+            <div class="row">
+              <div class="col-md-8 content">
+                <h1>Atur Semester dan Tahun Ajaran</h1>
+                <br>
+                <form class="form-horizontal" method="post" action="/updateSemester">
+                  <div class="form-group">
+                    <label for="persetujuan" class="col-sm-3">Semester</label>
+                    <div class="col-sm-9">
+                      <label class="radio-inline">
+                        <input type="radio" name="semester" value="Ganjil" checked required>Ganjil
+                      </label>
+                      <label class="radio-inline">
+                        <input type="radio" name="semester" value="Genap">Genap
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="catatanDekan" class="col-sm-3">Tahun Akademik</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" name="thnAkademik">
+                    </div>
+                  </div>
+                  {!! csrf_field() !!}
+                  <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-10">
+                      <button type="submit" class="btn btn-primary">Lanjutkan</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              @include('tu.profile_bar')
+            </div>
+        </div>
+      </div>
+      <div class="footer">
+      </div>
+    </body>
+  </html>
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=php,basicstyle=\tiny,caption=\textit{Navigation bar} untuk petugas TU]
+	<div class="navigation">
+         <div class="navbar text-center">
+            <ul class="inline">
+               <a href="/home_TU"><li>Home</li></a>
+               <a href="/history_TU"><li>History Surat</li></a>
+               <a href="/data_mahasiswa"><li>Data Mahasiswa</li></a>
+               <a href="/format_surat"><li>Format Surat</li></a>
+               <a href="/setting"><li>Setting</li></a>
+           <a href="{{ url('/logout') }}"
+               onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();"><li>
+               Logout
+           <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+               {{ csrf_field() }}
+           </form>
+           </li></a>
+        </ul>
+     </div>
+</div>
+<br/>
+<!-- <div class="row">
+  <div class="col-md-offset-1 col-sm-offset-1 col-md-4 col-sm-5">
+    <div style="color:white">
+        Selamat Datang, {!! Auth::user()->name !!}
+    </div>
+  </div>
+</div> -->
+<div class="row">
+  <div class="col-md-offset-1 col-sm-offset-1 col-sm-4 col-md-4">
+
+  </div>
+</div>
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=php,basicstyle=\tiny,caption=\textit{Sidebar} untuk petugas TU]
+	<div class="col-md-4 profile">
+  <div class="card hovercard">
+      <div class="cardheader">
+
+      </div>
+      <div class="avatar">
+          <img alt="" src="http://simpleicon.com/wp-content/uploads/user1.png">
+      </div>
+      <div class="info">
+          <div class="title">
+              {{ $user->namaTU }}
+          </div>
+          <div class="desc">{{ $user->NIK }}</div>
+      </div>
+  </div>
+</div>
+
+\end{lstlisting}

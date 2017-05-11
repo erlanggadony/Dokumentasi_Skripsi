@@ -1,0 +1,2585 @@
+%versi 2 (8-10-2016)
+\chapter{Format Surat \LaTeX}
+\label{lamp:E}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat keterangan beasiswa]
+	\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=53mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{noSurat,nama,prodi,npm,semester,thnAkademik,penyediabeasiswa,tanggal}
+
+\mailrepeat{
+
+	\begin{center}
+	\underline{SURAT KETERANGAN}\\
+	{\footnotesize  \field{noSurat}}
+	\end{center}
+	\vspace{0.75cm}
+	Bersama ini kami menerangkan bahwa mahasiswa Fakultas teknologi Informasi dan Sains (FTIS) berikut : \
+	\begin{quote}
+		Nama\hspace{2cm}: \field{nama}\
+
+		Jurusan\hspace{1.6cm}: \field{prodi}\
+
+		NPM\hspace{2.1cm}: \field{npm}\
+	\end{quote}
+	BENAR tidak menerima beasiswa dari Universitas Katolik Parahyangan pada Semester \field{semester} Tahun Akademik \field{thnAkademik}.\
+
+	Surat keterangan ini dibuat sebagai kelengkapan bagi ybs. untuk mengajukan diri sebagai penerima beasiswa perusahaan \field{penyediabeasiswa}.
+		\vspace{0.5cm}
+		\begin{flushright}
+			Bandung, \field{tanggal}
+
+			\vspace{2cm}
+
+
+
+
+		\underline{Flaviana Catherine, S.Si, M.T}\\
+		WD III FTIS - UNPAR
+		\end{flushright}
+
+		\thispagestyle{empty}
+			\newpage
+
+}
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat keterangan mahasiswa aktif]
+	\documentclass[12pt]{letter}
+%\usepackage[legalpaper, top=55mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{noSurat,nama,NPM,prodi,tanggalLahir,alamat,semester,wdI,tanggal}
+
+\mailrepeat{
+
+	\begin{center}
+	\underline{SURAT KETERANGAN}\\
+	{\footnotesize \field{noSurat}}
+	\end{center}
+	\vspace{0.75cm}
+	Fakultas teknologi Informasi dan Sains Universitas Katolik Parahyangan Bandung, menerangkan :
+
+
+		\begin{quote}
+			Nama \hspace{2.4cm}: \field{nama}\\
+			NPM \hspace{2.5cm}: \field{NPM}\\
+			Program Studi \hspace{0.8cm}: \field{prodi}\\
+			Tempat/Tgl. Lahir : \field{tanggalLahir}\\
+			Alamat Bandung \hspace{0.4cm}: \field{alamat}\\
+		\end{quote}
+		
+		terdaftar sebagai mahasiswa Fakultas teknologi Informasi dan Sains pada \textbf{semester \field{semester}} .\\
+	Demikian surat keterangan ini dibuat agar dapat dipergunakan sebagaimana mestinya.\\
+	\\
+
+		
+		\begin{flushright}
+			Bandung, \field{tanggal}\\
+					Wakil Dekan I\\
+			\vspace{2cm}
+			\underline{\field{wdI}}
+		\end{flushright}
+
+	\thispagestyle{empty}
+		\newpage
+
+}
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat pengantar pembuatan visa]
+\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=55mm,bottom=7mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{nama,tanggalLahir,wargaNegara,tahunKe,thnAkademik,negaraTujuan,tanggalKunjungan,organisasiTujuan,tanggal,wdIII}
+
+\mailrepeat{
+\begin{flushright}
+	Bandung, tanggal
+\end{flushright}
+	To:\\
+	organisasiTujuan\\
+	\textbf{VISA SECTION}\\
+	Jakarta - Indonesia\\
+	
+	Re : APPLICATION FOR VISA SCHENGEN\\
+	
+	This is to acknowledge that\
+	
+		Name\hspace{2cm}: \field{nama}\\
+		Date of Birth\hspace{0.6cm}: \field{tanggalLahir}\\
+		Nationality\hspace{1cm}: \field{wargaNegara}\
+	
+	He is a student at Parahyangan Catholic University, Jl. Ciumbuleuit No. 94 Bandung, in Year \field{tahunKe} for the school year \field{thnAkademik}.\
+	
+	This letter is written to support his intention to visit \field{negaraTujuan} on \field{tanggalKunjungan}.
+	
+	\field{nama} will be back to school to continue his study after the holiday.\
+	
+	We hope that visa can be granted for this  purpose.\
+	
+	\vspace{2cm}	
+			Kind regards\\
+			\vspace{1.5cm}			
+			
+			
+			\underline{\field{wdIII}}\\
+			Vice Dean of Student Affairs
+
+	\thispagestyle{empty}
+		\newpage
+
+}
+% \mailfields{nama,NPM,tanggal,semester,thnAkademik,prodi,nextSemester,nextThnAkademik,dekan}
+
+\end{document}
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat pengantar studi lapangan untuk 1 orang]
+	\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=55mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+\mailfields{noSurat,nama,npm,prodi,matkul,judulTopik,instansi,alamat,tujuanKunjungan,kepada,kota}
+
+\mailrepeat{
+Nomor : \field{noSurat}\\
+Hal\hspace{0.75cm}: Permohonan \field{tujuanKunjungan}\\
+Lamp\hspace{0.35cm}: -\\
+
+
+\textbf{Kepada YTH.\\
+KEPALA \field{kepada}\\
+\field{alamat}\\
+\field{kota}}
+
+ Dengan hormat,\\
+
+Bersama ini kami informasikan bahwa salah seorang mahasiswa kami, yaitu:
+
+	\begin{quote}
+	Nama\hspace{2.4cm}: \field{nama}\\
+	NPM\hspace{2.5cm}: \field{npm}\\
+	Program Studi\hspace{0.8cm}: \field{prodi}
+	\end{quote}
+	saat ini sedang mengambil Matakuliah \field{matkul} dengan topik "\field{judulTopik}". Ybs. memerlukan informasi sehubungan dengan hal-hal yang terkait dengan masalah tersebut yang diterapkan di \field{instansi}.\
+
+Untuk itu kami memohonkan ijin bagi mahasiswa kami tersebut agar diperbolehkan untuk melakukan \field{tujuanKunjungan} di \field{instansi}.\
+
+Atas perhatian dan kerjasamanya yang diberikan kami mengucapkan terima kasih.
+\vspace{2cm}
+		\begin{flushright}
+			Bandung, \field{tanggal}\\
+					Wakil Dekan III\\
+			\vspace{2cm}
+			\underline{\field{wdIII}}
+		\end{flushright}
+\thispagestyle{empty}
+	\newpage
+}
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat pengantar studi lapangan untuk 2 orang]
+	\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=55mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+\mailfields{noSurat,namaPemohon,npmPemohon,prodi,matkul,judulTopik,instansi,alamat,tujuanKunjungan,kepada,kota,namaAnggota,npmAnggota}
+
+\mailrepeat{
+Nomor : \field{noSurat}\\
+Hal\hspace{0.75cm}: Permohonan \field{tujuanKunjungan}\\
+Lamp\hspace{0.35cm}: -\\
+
+
+\textbf{Kepada YTH.\\
+KEPALA \field{kepada}\\
+\field{alamat}\\
+\field{kota}}
+
+ Dengan hormat,\\
+
+Bersama ini kami informasikan bahwa 2 orang mahasiswa kami, yaitu:
+
+	\begin{quote}
+		\begin{tabular}{|l|l|l|}
+		\hline
+		\textbf{No.}&\textbf{Nama}&\textbf{NPM}\\ \hline
+		1&\field{namaPemohon}&\field{npmPemohon}\\ \hline
+		2&\field{namaAnggota}&\field{npmAnggota}\\ \hline
+	\end{tabular}
+	\end{quote}
+	saat ini sedang mengambil Matakuliah \field{matkul} dengan topik "\field{judulTopik}". Ybs. memerlukan informasi sehubungan dengan hal-hal yang terkait dengan masalah tersebut yang diterapkan di \field{instansi}.\
+
+Untuk itu kami memohonkan ijin bagi mahasiswa kami tersebut agar diperbolehkan untuk melakukan \field{tujuanKunjungan} di \field{instansi}.\
+
+Atas perhatian dan kerjasamanya yang diberikan kami mengucapkan terima kasih.
+\vspace{2cm}
+		\begin{flushright}
+			Bandung, \field{tanggal}\\
+					Wakil Dekan III\\
+			\vspace{2cm}
+			\underline{\field{wdIII}}
+		\end{flushright}
+\thispagestyle{empty}
+	\newpage
+}
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat pengantar studi lapangan untuk 3 orang]
+	\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=55mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+\mailfields{noSurat,namaPemohon,npmPemohon,prodi,namaAnggota1,npmAnggota1,namaAnggota2,npmAnggota2,tujuanKunjungan,kepada,alamat,matkul,judulTopik,instansi,tanggal,wdIII,kota}
+
+\mailrepeat{
+Nomor : \field{noSurat}\\
+Hal\hspace{0.75cm}: Permohonan \field{tujuanKunjungan}\\
+Lamp\hspace{0.35cm}: -\\
+
+
+\textbf{Kepada YTH.\\
+KEPALA \field{kepada}\\
+\field{alamat}\\
+\field{kota}}
+
+ Dengan hormat,\\
+
+Bersama ini kami informasikan bahwa 3 orang mahasiswa kami, yaitu:
+
+	\begin{quote}
+		\textbf{\underline{KOORDINATOR}}\\
+		Nama\hspace{2.4cm}: \field{namaPemohon}\\
+		NPM\hspace{2.5cm}: \field{npmPemohon}\\
+		Program Studi\hspace{0.8cm}: \field{prodi}\\
+
+		\textbf{\underline{ANGGOTA}}\\
+		\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{No.}&\textbf{Nama}&\textbf{NPM}\\ \hline
+		1&\field{namaAnggota1}&\field{npmAnggota1}\\ \hline
+		2&\field{namaAnggota2}&\field{npmAnggota2}\\ \hline
+	\end{tabular}
+	\end{quote}
+	saat ini sedang mengambil Matakuliah \field{matkul} dengan topik "\field{judulTopik}". Ybs. memerlukan informasi sehubungan dengan hal-hal yang terkait dengan masalah tersebut yang diterapkan di \field{instansi}.\
+
+Untuk itu kami memohonkan ijin bagi mahasiswa kami tersebut agar diperbolehkan untuk melakukan \field{tujuanKunjungan} di \field{instansi}.\
+
+Atas perhatian dan kerjasamanya yang diberikan kami mengucapkan terima kasih.
+\vspace{2cm}
+		\begin{flushright}
+			Bandung, \field{tanggal}\\
+					Wakil Dekan III\\
+			\vspace{2cm}
+			\underline{\field{wdIII}}
+		\end{flushright}
+\thispagestyle{empty}
+	\newpage
+}
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat pengantar studi lapangan untuk 4 orang]
+	\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=55mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{noSurat,namaPemohon,npmPemohon,prodi,namaAnggota1,npmAnggota1,namaAnggota2,npmAnggota2,namaAnggota3,npmAnggota3,tujuanKunjungan,kepada,alamat,matkul,judulTopik,instansi,tanggal,wdIII,kota}
+
+\mailrepeat{
+Nomor : \field{noSurat}\\
+Hal\hspace{0.75cm}: Permohonan \field{tujuanKunjungan}\\
+Lamp\hspace{0.35cm}: -\\
+
+
+\textbf{Kepada YTH.\\
+KEPALA \field{kepada}\\
+\field{alamat}\\
+\field{kota}}
+
+ Dengan hormat,\\
+
+Bersama ini kami informasikan bahwa 4 orang mahasiswa kami, yaitu:
+
+	\begin{quote}
+		\textbf{\underline{KOORDINATOR}}\\
+		Nama\hspace{2.4cm}: \field{namaPemohon}\\
+		NPM\hspace{2.5cm}: \field{npmPemohon}\\
+		Program Studi\hspace{0.8cm}: \field{prodi}\\
+
+		\textbf{\underline{ANGGOTA}}\\
+		\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{No.}&\textbf{Nama}&\textbf{NPM}\\ \hline
+		1&\field{namaAnggota1}&\field{npmAnggota1}\\ \hline
+		2&\field{namaAnggota2}&\field{npmAnggota2}\\ \hline
+		3&\field{namaAnggota3}&\field{npmAnggota3}\\ \hline
+	\end{tabular}
+	\end{quote}
+	saat ini sedang mengambil Matakuliah \field{matkul} dengan topik "\field{judulTopik}". Ybs. memerlukan informasi sehubungan dengan hal-hal yang terkait dengan masalah tersebut yang diterapkan di \field{instansi}.\
+
+Untuk itu kami memohonkan ijin bagi mahasiswa kami tersebut agar diperbolehkan untuk melakukan \field{tujuanKunjungan} di \field{instansi}.\
+
+Atas perhatian dan kerjasamanya yang diberikan kami mengucapkan terima kasih.
+\vspace{2cm}
+		\begin{flushright}
+			Bandung, \field{tanggal}\\
+					Wakil Dekan III\\
+			\vspace{2cm}
+			\underline{\field{wdIII}}
+		\end{flushright}
+\thispagestyle{empty}
+	\newpage
+}
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat pengantar studi lapangan untuk 5 orang]
+\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=55mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{noSurat,namaPemohon,npmPemohon,prodi,namaAnggota1,npmAnggota1,namaAnggota2,npmAnggota2,namaAnggota3,npmAnggota3,namaAnggota4,npmAnggota4,tujuanKunjungan,kepada,alamat,matkul,judulTopik,instansi,tanggal,wdIII,kota}
+
+\mailrepeat{
+Nomor : \field{noSurat}\\
+Hal\hspace{0.75cm}: Permohonan \field{tujuanKunjungan}\\
+Lamp\hspace{0.35cm}: -\\
+
+
+\textbf{Kepada YTH.\\
+KEPALA \field{kepada}\\
+\field{alamat}\\
+\field{kota}}
+
+ Dengan hormat,\\
+
+Bersama ini kami informasikan bahwa 5 orang mahasiswa kami, yaitu:
+
+	\begin{quote}
+		\textbf{\underline{KOORDINATOR}}\\
+		Nama\hspace{2.4cm}: \field{namaPemohon}\\
+		NPM\hspace{2.5cm}: \field{npmPemohon}\\
+		Program Studi\hspace{0.8cm}: \field{prodi}\\
+
+		\textbf{\underline{ANGGOTA}}\\
+		\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{No.}&\textbf{Nama}&\textbf{NPM}\\ \hline
+		1&\field{namaAnggota1}&\field{npmAnggota1}\\ \hline
+		2&\field{namaAnggota2}&\field{npmAnggota2}\\ \hline
+		3&\field{namaAnggota3}&\field{npmAnggota3}\\ \hline
+		4&\field{namaAnggota4}&\field{npmAnggota4}\\ \hline
+	\end{tabular}
+	\end{quote}
+	saat ini sedang mengambil Matakuliah \field{matkul} dengan topik "\field{judulTopik}". Ybs. memerlukan informasi sehubungan dengan hal-hal yang terkait dengan masalah tersebut yang diterapkan di \field{instansi}.\
+
+Untuk itu kami memohonkan ijin bagi mahasiswa kami tersebut agar diperbolehkan untuk melakukan \field{tujuanKunjungan} di \field{instansi}.\
+
+Atas perhatian dan kerjasamanya yang diberikan kami mengucapkan terima kasih.
+\vspace{2cm}
+		\begin{flushright}
+			Bandung, \field{tanggal}\\
+					Wakil Dekan III\\
+			\vspace{2cm}
+			\underline{\field{wdIII}}
+		\end{flushright}
+\thispagestyle{empty}
+	\newpage
+}
+
+\end{document}
+
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat izin cuti studi]
+\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=55mm,bottom=7mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+\usepackage{changepage} %package utk atur margin
+
+\begin{document}
+
+\mailfields{noSurat,nama,NPM,tanggal,semester,thnAkademik,prodi,nextSemester,nextThnAkademik,dekan}
+
+\mailrepeat{
+
+	
+	
+	Nomor : \field{noSurat}\\
+	Hal\hspace{0.75cm}: Surat Ijin Berhenti Studi Sementara\\
+	Lamp\hspace*{0.35cm}: Surat Permohonan\\
+	\vspace{0.5cm}
+	
+	Kepada : Yang terhormat\\
+	\hspace*{1.7cm} \field{nama}\\
+	\hspace*{1.7cm} NPM \field{NPM}\\
+	\hspace*{1.7cm} di tempat\\
+	\vspace{0.5cm}
+	
+	\begin{adjustwidth}{1.8cm}{0pt}Menurut surat permohonan cuti studi Anda tertanggal \field{tanggal}, dengan ini diberitahukan bahwa Anda diijinkan cuti studi untuk:
+\end{adjustwidth}
+		\begin{adjustwidth}{3cm}{0pt}
+			\textbf{Semester \field{semester} tahun akademik \field{thnAkademik}}
+		\end{adjustwidth}
+		
+		\begin{adjustwidth}{1.8cm}{0pt}
+		Selanjutnya, untuk dapat mengikuti kegiatan akademik kembali, Anda wajib melakukan registrasi pada Masa Perwalian dan \textbf{FRS semester \field{nextSemester} tahun akademik \field{nextThnAkademik}} sesuai kalender akademik dan melaksanakan ketentuan yang telah ditetapkan.\\
+		
+		Demikian harap Anda maklum.
+		\end{adjustwidth}
+	\vspace{2cm}	
+		\begin{flushright}
+			Bandung,\field{tanggal}\\ 
+					Dekan\\
+			\vspace{2cm}
+			\underline{\field{dekan}}
+		\end{flushright}
+		\vspace{5cm}
+		\scriptsize {Tembusan :
+		\begin{enumerate}
+			\item WR-I, WR-II
+			\item KBAA, KBTI
+			\item Kajur \field{prodi}, Dosen Wali
+			\item Map Ybs
+			\item Arsip
+		\end{enumerate}}
+
+	\thispagestyle{empty}
+		\newpage
+
+}
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat izin pengunduran diri]
+\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=55mm,bottom=7mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+\usepackage{changepage} %package utk ubah margin
+
+\begin{document}
+
+\mailfields{noSurat,nama,NPM,prodi,tanggal,semester,tanggal,dekan}
+
+\mailrepeat{
+
+	
+	
+	Nomor : \field{noSurat}\\
+	Hal\hspace{0.75cm}: Pengunduran diri\\
+	Lamp\hspace*{0.35cm}: Surat pengunduran diri ybs.\\
+	\vspace{0.5cm}
+	
+	Kepada : Yang terhormat\\
+	\hspace*{1.7cm} Rektor\\
+	\hspace*{1.7cm} Universitas Katolik Parahyangan\\
+	\hspace*{1.7cm} Di tempat\\
+	\vspace{0.5cm}
+	
+	\hspace*{1.8cm}Berdasarkan surat pengunduran diri :
+
+		\begin{adjustwidth}{2.5cm}{0pt}
+			\textbf{\field{nama}\\
+			NPM  \field{NPM}\\
+			Program Studi \field{prodi}}\\
+		\end{adjustwidth}
+		
+		\begin{adjustwidth}{1.8cm}{0pt}
+		tanggal \field{tanggal}, dengan ini kami nyatakan bahwa mahasiswa tersebut telah mengundurkan diri atas permintaan sendiri dari program studi FTIS terhitung mulai \textbf{\textit{semester \field{semester}}}.
+		\end{adjustwidth}
+		\vspace{2cm}
+		\begin{flushright}
+			Bandung, \field{tanggal}\\ 
+					Dekan\\
+			\vspace{2cm}
+			\underline{\field{dekan}}
+		\end{flushright}
+		\vspace{5cm}
+		{\scriptsize {Tembusan :
+		\begin{enumerate}
+			\item WR-I, WR-II
+			\item KBAA, KBTI
+			\item Kajur \field{prodi}, Dosen Wali
+			\item Map Ybs
+			\item Arsip
+		\end{enumerate}}}
+
+	\thispagestyle{empty}
+		\newpage
+
+}
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat perwakilan perwalian (ambil 1 mata kuliah)]
+\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=25mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{semester,thnAKademik,namaPemohon,prodiPemohon,npmPemohon,namaWakil,prodiWakil,npmWakil,alasan,kodeMK,namaMK,sks}
+
+\mailrepeat{
+
+	\begin{center}
+	{\Large \textbf{FORMULIR\\
+	PERWALIAN YANG DIWAKILKAN}}
+	\end{center}
+	\vspace{0.25cm}
+	Semester \hspace{1.5cm}: \field{semester} \\
+	Tahun Akademik : \field{thnAkademik}\\
+
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG PERWALIANNYA DIWAKILKAN}}\\
+	Nama \hspace{2.4cm}: \field{namaPemohon} \\
+	Program Studi \hspace{0.8cm}: \field{prodiPemohon}\\
+	NPM \hspace{2.5cm}: \field{npmPemohon}	\\
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG DIBERI KUASA PERWALIAN}}\\
+	Nama \hspace{2.4cm}: \field{namaWakil} \\
+	Program Studi \hspace{0.8cm}: \field{prodiWakil}\\
+	NPM \hspace{2.5cm}: \field{npmWakil}\\
+
+	Alasan tidak bisa hadir pada saat perwalian :\\
+	\field{alasan}\\
+	Mata kuliah yang diambil saat FRS : \\
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{No.}&\textbf{Kode MK}&\textbf{Nama Mata Kuliah}&\textbf{Sks}\\ \hline
+		1&\field{kodeMK}&\field{namaMK}&\field{sks}\\ \hline
+	\end{tabular}
+
+\textbf{\underline{LAMPIRAN}} :
+\begin{enumerate}
+	\item Fotokopi KTM mahasiswa yag menerima kuasa
+\end{enumerate}
+
+		\begin{flushright}
+			Bandung, \field{tanggal}
+		\end{flushright}
+Tanda Tangan \hspace{7.3cm}Tanda Tangan \\
+Mahasiswa yang memberi kuasa \hspace{4cm} Mahasiswa yang menerima kuasa \\
+\begin{flushright}
+		\end{flushright}
+			\vspace{1cm}
+
+	(...........................................)\hspace{4.6cm} (...........................................)\\
+
+	\textbf{Mengetahui dosen wali, \hspace{4.8cm} Menyetujui Wakil Dekan I}
+	\vspace{2cm}
+
+	(...........................................)\hspace{4.8cm}(\field{wdI})
+	\thispagestyle{empty}
+		\newpage
+
+}
+ 
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat perwakilan perwalian (ambil 2 mata kuliah)]
+\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=25mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{semester,thnAKademik,namaPemohon,prodiPemohon,npmPemohon,namaWakil,prodiWakil,npmWakil,alasan,kodeMK1,namaMK1,sks1,kodeMK2,namaMK2,sks2}
+
+\mailrepeat{
+
+	\begin{center}
+	{\Large \textbf{FORMULIR\\
+	PERWALIAN YANG DIWAKILKAN}}
+	\end{center}
+	\vspace{0.25cm}
+	Semester \hspace{1.5cm}: \field{semester} \\
+	Tahun Akademik : \field{thnAkademik}\\
+
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG PERWALIANNYA DIWAKILKAN}}\\
+	Nama \hspace{2.4cm}: \field{namaPemohon} \\
+	Program Studi \hspace{0.8cm}: \field{prodiPemohon}\\
+	NPM \hspace{2.5cm}: \field{npmPemohon}	\\
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG DIBERI KUASA PERWALIAN}}\\
+	Nama \hspace{2.4cm}: \field{namaWakil} \\
+	Program Studi \hspace{0.8cm}: \field{prodiWakil}\\
+	NPM \hspace{2.5cm}: \field{npmWakil}\\
+
+	Alasan tidak bisa hadir pada saat perwalian :\\
+	\field{alasan}\\
+	Mata kuliah yang diambil saat FRS : \\
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{No.}&\textbf{Kode MK}&\textbf{Nama Mata Kuliah}&\textbf{Sks}\\ \hline
+		1&\field{kodeMK1}&\field{namaMK1}&\field{sks1}\\ \hline
+		2&\field{kodeMK2}&\field{namaMK2}&\field{sks2}\\ \hline
+	\end{tabular}
+
+\textbf{\underline{LAMPIRAN}} :
+\begin{enumerate}
+	\item Fotokopi KTM mahasiswa yag menerima kuasa
+\end{enumerate}
+
+		\begin{flushright}
+			Bandung, \field{tanggal}
+		\end{flushright}
+Tanda Tangan \hspace{7.3cm}Tanda Tangan \\
+Mahasiswa yang memberi kuasa \hspace{4cm} Mahasiswa yang menerima kuasa \\
+\begin{flushright}
+		\end{flushright}
+			\vspace{1cm}
+
+	(...........................................)\hspace{4.6cm} (...........................................)\\
+
+	\textbf{Mengetahui dosen wali, \hspace{4.8cm} Menyetujui Wakil Dekan I}
+	\vspace{2cm}
+
+	(...........................................)\hspace{4.8cm}(\field{wdI})
+	\thispagestyle{empty}
+		\newpage
+
+}
+
+\end{document}
+
+\end{lstlisting}
+
+
+
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat perwakilan perwalian (ambil 3 mata kuliah)]
+\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=25mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{semester,thnAKademik,namaPemohon,prodiPemohon,npmPemohon,namaWakil,prodiWakil,npmWakil,alasan,kodeMK1,namaMK1,sks1,kodeMK2,namaMK2,sks2,kodeMK3,namaMK3,sks3}
+
+\mailrepeat{
+
+	\begin{center}
+	{\Large \textbf{FORMULIR\\
+	PERWALIAN YANG DIWAKILKAN}}
+	\end{center}
+	\vspace{0.25cm}
+	Semester \hspace{1.5cm}: \field{semester} \\
+	Tahun Akademik : \field{thnAkademik}\\
+
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG PERWALIANNYA DIWAKILKAN}}\\
+	Nama \hspace{2.4cm}: \field{namaPemohon} \\
+	Program Studi \hspace{0.8cm}: \field{prodiPemohon}\\
+	NPM \hspace{2.5cm}: \field{npmPemohon}	\\
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG DIBERI KUASA PERWALIAN}}\\
+	Nama \hspace{2.4cm}: \field{namaWakil} \\
+	Program Studi \hspace{0.8cm}: \field{prodiWakil}\\
+	NPM \hspace{2.5cm}: \field{npmWakil}\\
+
+	Alasan tidak bisa hadir pada saat perwalian :\\
+	\field{alasan}\\
+	Mata kuliah yang diambil saat FRS : \\
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{No.}&\textbf{Kode MK}&\textbf{Nama Mata Kuliah}&\textbf{Sks}\\ \hline
+		1&\field{kodeMK1}&\field{namaMK1}&\field{sks1}\\ \hline
+		2&\field{kodeMK2}&\field{namaMK2}&\field{sks2}\\ \hline
+		3&\field{kodeMK3}&\field{namaMK3}&\field{sks3}\\ \hline
+	\end{tabular}
+
+\textbf{\underline{LAMPIRAN}} :
+\begin{enumerate}
+	\item Fotokopi KTM mahasiswa yag menerima kuasa
+\end{enumerate}
+
+		\begin{flushright}
+			Bandung, \field{tanggal}
+		\end{flushright}
+Tanda Tangan \hspace{7.3cm}Tanda Tangan \\
+Mahasiswa yang memberi kuasa \hspace{4cm} Mahasiswa yang menerima kuasa \\
+\begin{flushright}
+		\end{flushright}
+			\vspace{1cm}
+
+	(...........................................)\hspace{4.6cm} (...........................................)\\
+
+	\textbf{Mengetahui dosen wali, \hspace{4.8cm} Menyetujui Wakil Dekan I}
+	\vspace{2cm}
+
+	(...........................................)\hspace{4.8cm}(\field{wdI})
+	\thispagestyle{empty}
+		\newpage
+
+}
+
+
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat perwakilan perwalian (ambil 4 mata kuliah)]
+\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=25mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{semester,thnAKademik,namaPemohon,prodiPemohon,npmPemohon,namaWakil,prodiWakil,npmWakil,alasan,kodeMK1,namaMK1,sks1,kodeMK2,namaMK2,sks2,kodeMK3,namaMK3,sks3,kodeMK4,namaMK4,sks4,kodeMK5,namaMK5,sks5,kodeMK6,namaMK6,sks6}
+
+\mailrepeat{
+
+	\begin{center}
+	{\Large \textbf{FORMULIR\\
+	PERWALIAN YANG DIWAKILKAN}}
+	\end{center}
+	\vspace{0.25cm}
+	Semester \hspace{1.5cm}: \field{semester} \\
+	Tahun Akademik : \field{thnAkademik}\\
+
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG PERWALIANNYA DIWAKILKAN}}\\
+	Nama \hspace{2.4cm}: \field{namaPemohon} \\
+	Program Studi \hspace{0.8cm}: \field{prodiPemohon}\\
+	NPM \hspace{2.5cm}: \field{npmPemohon}	\\
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG DIBERI KUASA PERWALIAN}}\\
+	Nama \hspace{2.4cm}: \field{namaWakil} \\
+	Program Studi \hspace{0.8cm}: \field{prodiWakil}\\
+	NPM \hspace{2.5cm}: \field{npmWakil}\\
+
+	Alasan tidak bisa hadir pada saat perwalian :\\
+	\field{alasan}\\
+	Mata kuliah yang diambil saat FRS : \\
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{No.}&\textbf{Kode MK}&\textbf{Nama Mata Kuliah}&\textbf{Sks}\\ \hline
+		1&\field{kodeMK1}&\field{namaMK1}&\field{sks1}\\ \hline
+		2&\field{kodeMK2}&\field{namaMK2}&\field{sks2}\\ \hline
+		3&\field{kodeMK3}&\field{namaMK3}&\field{sks3}\\ \hline
+		4&\field{kodeMK4}&\field{namaMK4}&\field{sks4}\\ \hline
+		5&\field{kodeMK5}&\field{namaMK5}&\field{sks5}\\ \hline
+	\end{tabular}
+
+\textbf{\underline{LAMPIRAN}} :
+\begin{enumerate}
+	\item Fotokopi KTM mahasiswa yag menerima kuasa
+\end{enumerate}
+
+		\begin{flushright}
+			Bandung, \field{tanggal}
+		\end{flushright}
+Tanda Tangan \hspace{7.3cm}Tanda Tangan \\
+Mahasiswa yang memberi kuasa \hspace{4cm} Mahasiswa yang menerima kuasa \\
+\begin{flushright}
+		\end{flushright}
+			\vspace{1cm}
+
+	(...........................................)\hspace{4.6cm} (...........................................)\\
+
+	\textbf{Mengetahui dosen wali, \hspace{4.8cm} Menyetujui Wakil Dekan I}
+	\vspace{2cm}
+
+	(...........................................)\hspace{4.8cm}(\field{wdI})
+	\thispagestyle{empty}
+		\newpage
+
+}
+
+
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat perwakilan perwalian (ambil 5 mata kuliah)]
+\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=25mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{semester,thnAKademik,namaPemohon,prodiPemohon,npmPemohon,namaWakil,prodiWakil,npmWakil,alasan,kodeMK1,namaMK1,sks1,kodeMK2,namaMK2,sks2,kodeMK3,namaMK3,sks3,kodeMK4,namaMK4,sks4,kodeMK5,namaMK5,sks5}
+
+\mailrepeat{
+
+	\begin{center}
+	{\Large \textbf{FORMULIR\\
+	PERWALIAN YANG DIWAKILKAN}}
+	\end{center}
+	\vspace{0.25cm}
+	Semester \hspace{1.5cm}: \field{semester} \\
+	Tahun Akademik : \field{thnAkademik}\\
+
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG PERWALIANNYA DIWAKILKAN}}\\
+	Nama \hspace{2.4cm}: \field{namaPemohon} \\
+	Program Studi \hspace{0.8cm}: \field{prodiPemohon}\\
+	NPM \hspace{2.5cm}: \field{npmPemohon}	\\
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG DIBERI KUASA PERWALIAN}}\\
+	Nama \hspace{2.4cm}: \field{namaWakil} \\
+	Program Studi \hspace{0.8cm}: \field{prodiWakil}\\
+	NPM \hspace{2.5cm}: \field{npmWakil}\\
+
+	Alasan tidak bisa hadir pada saat perwalian :\\
+	\field{alasan}\\
+	Mata kuliah yang diambil saat FRS : \\
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{No.}&\textbf{Kode MK}&\textbf{Nama Mata Kuliah}&\textbf{Sks}\\ \hline
+		1&\field{kodeMK1}&\field{namaMK1}&\field{sks1}\\ \hline
+		2&\field{kodeMK2}&\field{namaMK2}&\field{sks2}\\ \hline
+		3&\field{kodeMK3}&\field{namaMK3}&\field{sks3}\\ \hline
+		4&\field{kodeMK4}&\field{namaMK4}&\field{sks4}\\ \hline
+		5&\field{kodeMK5}&\field{namaMK5}&\field{sks5}\\ \hline
+	\end{tabular}
+
+\textbf{\underline{LAMPIRAN}} :
+\begin{enumerate}
+	\item Fotokopi KTM mahasiswa yag menerima kuasa
+\end{enumerate}
+
+		\begin{flushright}
+			Bandung, \field{tanggal}
+		\end{flushright}
+Tanda Tangan \hspace{7.3cm}Tanda Tangan \\
+Mahasiswa yang memberi kuasa \hspace{4cm} Mahasiswa yang menerima kuasa \\
+\begin{flushright}
+		\end{flushright}
+			\vspace{1cm}
+
+	(...........................................)\hspace{4.6cm} (...........................................)\\
+
+	\textbf{Mengetahui dosen wali, \hspace{4.8cm} Menyetujui Wakil Dekan I}
+	\vspace{2cm}
+
+	(...........................................)\hspace{4.8cm}(\field{wdI})
+	\thispagestyle{empty}
+		\newpage
+
+}
+
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat perwakilan perwalian (ambil 6 mata kuliah)]
+\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=25mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{semester,thnAKademik,namaPemohon,prodiPemohon,npmPemohon,namaWakil,prodiWakil,npmWakil,alasan,kodeMK1,namaMK1,sks1,kodeMK2,namaMK2,sks2,kodeMK3,namaMK3,sks3,kodeMK4,namaMK4,sks4,kodeMK5,namaMK5,sks5,kodeMK6,namaMK6,sks6}
+
+\mailrepeat{
+
+	\begin{center}
+	{\Large \textbf{FORMULIR\\
+	PERWALIAN YANG DIWAKILKAN}}
+	\end{center}
+	\vspace{0.25cm}
+	Semester \hspace{1.5cm}: \field{semester} \\
+	Tahun Akademik : \field{thnAkademik}\\
+
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG PERWALIANNYA DIWAKILKAN}}\\
+	Nama \hspace{2.4cm}: \field{namaPemohon} \\
+	Program Studi \hspace{0.8cm}: \field{prodiPemohon}\\
+	NPM \hspace{2.5cm}: \field{npmPemohon}	\\
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG DIBERI KUASA PERWALIAN}}\\
+	Nama \hspace{2.4cm}: \field{namaWakil} \\
+	Program Studi \hspace{0.8cm}: \field{prodiWakil}\\
+	NPM \hspace{2.5cm}: \field{npmWakil}\\
+
+	Alasan tidak bisa hadir pada saat perwalian :\\
+	\field{alasan}\\
+	Mata kuliah yang diambil saat FRS : \\
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{No.}&\textbf{Kode MK}&\textbf{Nama Mata Kuliah}&\textbf{Sks}\\ \hline
+		1&\field{kodeMK1}&\field{namaMK1}&\field{sks1}\\ \hline
+		2&\field{kodeMK2}&\field{namaMK2}&\field{sks2}\\ \hline
+		3&\field{kodeMK3}&\field{namaMK3}&\field{sks3}\\ \hline
+		4&\field{kodeMK4}&\field{namaMK4}&\field{sks4}\\ \hline
+		5&\field{kodeMK5}&\field{namaMK5}&\field{sks5}\\ \hline
+		6&\field{kodeMK6}&\field{namaMK6}&\field{sks6}\\ \hline
+	\end{tabular}
+
+\textbf{\underline{LAMPIRAN}} :
+\begin{enumerate}
+	\item Fotokopi KTM mahasiswa yag menerima kuasa
+\end{enumerate}
+
+		\begin{flushright}
+			Bandung, \field{tanggal}
+		\end{flushright}
+Tanda Tangan \hspace{7.3cm}Tanda Tangan \\
+Mahasiswa yang memberi kuasa \hspace{4cm} Mahasiswa yang menerima kuasa \\
+\begin{flushright}
+		\end{flushright}
+			\vspace{1cm}
+
+	(...........................................)\hspace{4.6cm} (...........................................)\\
+
+	\textbf{Mengetahui dosen wali, \hspace{4.8cm} Menyetujui Wakil Dekan I}
+	\vspace{2cm}
+
+	(...........................................)\hspace{4.8cm}(\field{wdI})
+	\thispagestyle{empty}
+		\newpage
+
+}
+
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat perwakilan perwalian (ambil 7 mata kuliah)]
+\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=25mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{semester,thnAKademik,namaPemohon,prodiPemohon,npmPemohon,namaWakil,prodiWakil,npmWakil,alasan,kodeMK1,namaMK1,sks1,kodeMK2,namaMK2,sks2,kodeMK3,namaMK3,sks3,kodeMK4,namaMK4,sks4,kodeMK5,namaMK5,sks5,kodeMK6,namaMK6,sks6,kodeMK7,namaMK7,sks7}
+
+\mailrepeat{
+
+	\begin{center}
+	{\Large \textbf{FORMULIR\\
+	PERWALIAN YANG DIWAKILKAN}}
+	\end{center}
+	\vspace{0.25cm}
+	Semester \hspace{1.5cm}: \field{semester} \\
+	Tahun Akademik : \field{thnAkademik}\\
+
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG PERWALIANNYA DIWAKILKAN}}\\
+	Nama \hspace{2.4cm}: \field{namaPemohon} \\
+	Program Studi \hspace{0.8cm}: \field{prodiPemohon}\\
+	NPM \hspace{2.5cm}: \field{npmPemohon}	\\
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG DIBERI KUASA PERWALIAN}}\\
+	Nama \hspace{2.4cm}: \field{namaWakil} \\
+	Program Studi \hspace{0.8cm}: \field{prodiWakil}\\
+	NPM \hspace{2.5cm}: \field{npmWakil}\\
+
+	Alasan tidak bisa hadir pada saat perwalian :\\
+	\field{alasan}\\
+	Mata kuliah yang diambil saat FRS : \\
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{No.}&\textbf{Kode MK}&\textbf{Nama Mata Kuliah}&\textbf{Sks}\\ \hline
+		1&\field{kodeMK1}&\field{namaMK1}&\field{sks1}\\ \hline
+		2&\field{kodeMK2}&\field{namaMK2}&\field{sks2}\\ \hline
+		3&\field{kodeMK3}&\field{namaMK3}&\field{sks3}\\ \hline
+		4&\field{kodeMK4}&\field{namaMK4}&\field{sks4}\\ \hline
+		5&\field{kodeMK5}&\field{namaMK5}&\field{sks5}\\ \hline
+		6&\field{kodeMK6}&\field{namaMK6}&\field{sks6}\\ \hline
+		7&\field{kodeMK7}&\field{namaMK7}&\field{sks7}\\ \hline
+	\end{tabular}
+
+\textbf{\underline{LAMPIRAN}} :
+\begin{enumerate}
+	\item Fotokopi KTM mahasiswa yag menerima kuasa
+\end{enumerate}
+
+		\begin{flushright}
+			Bandung, \field{tanggal}
+		\end{flushright}
+Tanda Tangan \hspace{7.3cm}Tanda Tangan \\
+Mahasiswa yang memberi kuasa \hspace{4cm} Mahasiswa yang menerima kuasa \\
+\begin{flushright}
+		\end{flushright}
+			\vspace{1cm}
+
+	(...........................................)\hspace{4.6cm} (...........................................)\\
+
+	\textbf{Mengetahui dosen wali, \hspace{4.8cm} Menyetujui Wakil Dekan I}
+	\vspace{2cm}
+
+	(...........................................)\hspace{4.8cm}(\field{wdI})
+	\thispagestyle{empty}
+		\newpage
+
+}
+
+
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat perwakilan perwalian (ambil 8 mata kuliah)]
+\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=25mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{semester,thnAKademik,namaPemohon,prodiPemohon,npmPemohon,namaWakil,prodiWakil,npmWakil,alasan,kodeMK1,namaMK1,sks1,kodeMK2,namaMK2,sks2,kodeMK3,namaMK3,sks3,kodeMK4,namaMK4,sks4,kodeMK5,namaMK5,sks5,kodeMK6,namaMK6,sks6,kodeMK7,namaMK7,sks7,kodeMK8,namaMK8,sks8}
+
+\mailrepeat{
+
+	\begin{center}
+	{\Large \textbf{FORMULIR\\
+	PERWALIAN YANG DIWAKILKAN}}
+	\end{center}
+	\vspace{0.25cm}
+	Semester \hspace{1.5cm}: \field{semester} \\
+	Tahun Akademik : \field{thnAkademik}\\
+
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG PERWALIANNYA DIWAKILKAN}}\\
+	Nama \hspace{2.4cm}: \field{namaPemohon} \\
+	Program Studi \hspace{0.8cm}: \field{prodiPemohon}\\
+	NPM \hspace{2.5cm}: \field{npmPemohon}	\\
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG DIBERI KUASA PERWALIAN}}\\
+	Nama \hspace{2.4cm}: \field{namaWakil} \\
+	Program Studi \hspace{0.8cm}: \field{prodiWakil}\\
+	NPM \hspace{2.5cm}: \field{npmWakil}\\
+
+	Alasan tidak bisa hadir pada saat perwalian :\\
+	\field{alasan}\\
+	Mata kuliah yang diambil saat FRS : \\
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{No.}&\textbf{Kode MK}&\textbf{Nama Mata Kuliah}&\textbf{Sks}\\ \hline
+		1&\field{kodeMK1}&\field{namaMK1}&\field{sks1}\\ \hline
+		2&\field{kodeMK2}&\field{namaMK2}&\field{sks2}\\ \hline
+		3&\field{kodeMK3}&\field{namaMK3}&\field{sks3}\\ \hline
+		4&\field{kodeMK4}&\field{namaMK4}&\field{sks4}\\ \hline
+		5&\field{kodeMK5}&\field{namaMK5}&\field{sks5}\\ \hline
+		6&\field{kodeMK6}&\field{namaMK6}&\field{sks6}\\ \hline
+		7&\field{kodeMK7}&\field{namaMK7}&\field{sks7}\\ \hline
+		8&\field{kodeMK8}&\field{namaMK8}&\field{sks8}\\ \hline
+	\end{tabular}
+
+\textbf{\underline{LAMPIRAN}} :
+\begin{enumerate}
+	\item Fotokopi KTM mahasiswa yag menerima kuasa
+\end{enumerate}
+
+		\begin{flushright}
+			Bandung, \field{tanggal}
+		\end{flushright}
+Tanda Tangan \hspace{7.3cm}Tanda Tangan \\
+Mahasiswa yang memberi kuasa \hspace{4cm} Mahasiswa yang menerima kuasa \\
+\begin{flushright}
+		\end{flushright}
+			\vspace{1cm}
+
+	(...........................................)\hspace{4.6cm} (...........................................)\\
+
+	\textbf{Mengetahui dosen wali, \hspace{4.8cm} Menyetujui Wakil Dekan I}
+	\vspace{2cm}
+
+	(...........................................)\hspace{4.8cm}(\field{wdI})
+	\thispagestyle{empty}
+		\newpage
+
+}
+
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat perwakilan perwalian (ambil 9 mata kuliah)]
+\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=25mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{semester,thnAKademik,namaPemohon,prodiPemohon,npmPemohon,namaWakil,prodiWakil,npmWakil,alasan,kodeMK1,namaMK1,sks1,kodeMK2,namaMK2,sks2,kodeMK3,namaMK3,sks3,kodeMK4,namaMK4,sks4,kodeMK5,namaMK5,sks5,kodeMK6,namaMK6,sks6,kodeMK7,namaMK7,sks7,kodeMK8,namaMK8,sks8,kodeMK9,namaMK9,sks9}
+
+\mailrepeat{
+
+	\begin{center}
+	{\Large \textbf{FORMULIR\\
+	PERWALIAN YANG DIWAKILKAN}}
+	\end{center}
+	\vspace{0.25cm}
+	Semester \hspace{1.5cm}: \field{semester} \\
+	Tahun Akademik : \field{thnAkademik}\\
+
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG PERWALIANNYA DIWAKILKAN}}\\
+	Nama \hspace{2.4cm}: \field{namaPemohon} \\
+	Program Studi \hspace{0.8cm}: \field{prodiPemohon}\\
+	NPM \hspace{2.5cm}: \field{npmPemohon}	\\
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG DIBERI KUASA PERWALIAN}}\\
+	Nama \hspace{2.4cm}: \field{namaWakil} \\
+	Program Studi \hspace{0.8cm}: \field{prodiWakil}\\
+	NPM \hspace{2.5cm}: \field{npmWakil}\\
+
+	Alasan tidak bisa hadir pada saat perwalian :\\
+	\field{alasan}\\
+	Mata kuliah yang diambil saat FRS : \\
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{No.}&\textbf{Kode MK}&\textbf{Nama Mata Kuliah}&\textbf{Sks}\\ \hline
+		1&\field{kodeMK1}&\field{namaMK1}&\field{sks1}\\ \hline
+		2&\field{kodeMK2}&\field{namaMK2}&\field{sks2}\\ \hline
+		3&\field{kodeMK3}&\field{namaMK3}&\field{sks3}\\ \hline
+		4&\field{kodeMK4}&\field{namaMK4}&\field{sks4}\\ \hline
+		5&\field{kodeMK5}&\field{namaMK5}&\field{sks5}\\ \hline
+		6&\field{kodeMK6}&\field{namaMK6}&\field{sks6}\\ \hline
+		7&\field{kodeMK7}&\field{namaMK7}&\field{sks7}\\ \hline
+		8&\field{kodeMK8}&\field{namaMK8}&\field{sks8}\\ \hline
+		9&\field{kodeMK9}&\field{namaMK9}&\field{sks9}\\ \hline
+	\end{tabular}
+
+\textbf{\underline{LAMPIRAN}} :
+\begin{enumerate}
+	\item Fotokopi KTM mahasiswa yag menerima kuasa
+\end{enumerate}
+
+		\begin{flushright}
+			Bandung, \field{tanggal}
+		\end{flushright}
+Tanda Tangan \hspace{7.3cm}Tanda Tangan \\
+Mahasiswa yang memberi kuasa \hspace{4cm} Mahasiswa yang menerima kuasa \\
+\begin{flushright}
+		\end{flushright}
+			\vspace{1cm}
+
+	(...........................................)\hspace{4.6cm} (...........................................)\\
+
+	\textbf{Mengetahui dosen wali, \hspace{4.8cm} Menyetujui Wakil Dekan I}
+	\vspace{2cm}
+
+	(...........................................)\hspace{4.8cm}(\field{wdI})
+	\thispagestyle{empty}
+		\newpage
+
+}
+
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat perwakilan perwalian (ambil 10 mata kuliah)]
+\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=25mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{semester,thnAKademik,namaPemohon,prodiPemohon,npmPemohon,namaWakil,prodiWakil,npmWakil,alasan,kodeMK1,namaMK1,sks1,kodeMK2,namaMK2,sks2,kodeMK3,namaMK3,sks3,kodeMK4,namaMK4,sks4,kodeMK5,namaMK5,sks5,kodeMK6,namaMK6,sks6,kodeMK7,namaMK7,sks7,kodeMK8,namaMK8,sks8,kodeMK9,namaMK9,sks9,kodeMK10,namaMK10,sks10}
+
+\mailrepeat{
+
+	\begin{center}
+	{\Large \textbf{FORMULIR\\
+	PERWALIAN YANG DIWAKILKAN}}
+	\end{center}
+	\vspace{0.25cm}
+	Semester \hspace{1.5cm}: \field{semester} \\
+	Tahun Akademik : \field{thnAkademik}\\
+
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG PERWALIANNYA DIWAKILKAN}}\\
+	Nama \hspace{2.4cm}: \field{namaPemohon} \\
+	Program Studi \hspace{0.8cm}: \field{prodiPemohon}\\
+	NPM \hspace{2.5cm}: \field{npmPemohon}	\\
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG DIBERI KUASA PERWALIAN}}\\
+	Nama \hspace{2.4cm}: \field{namaWakil} \\
+	Program Studi \hspace{0.8cm}: \field{prodiWakil}\\
+	NPM \hspace{2.5cm}: \field{npmWakil}\\
+
+	Alasan tidak bisa hadir pada saat perwalian :\\
+	\field{alasan}\\
+	Mata kuliah yang diambil saat FRS : \\
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{No.}&\textbf{Kode MK}&\textbf{Nama Mata Kuliah}&\textbf{Sks}\\ \hline
+		1&\field{kodeMK1}&\field{namaMK1}&\field{sks1}\\ \hline
+		2&\field{kodeMK2}&\field{namaMK2}&\field{sks2}\\ \hline
+		3&\field{kodeMK3}&\field{namaMK3}&\field{sks3}\\ \hline
+		4&\field{kodeMK4}&\field{namaMK4}&\field{sks4}\\ \hline
+		5&\field{kodeMK5}&\field{namaMK5}&\field{sks5}\\ \hline
+		6&\field{kodeMK6}&\field{namaMK6}&\field{sks6}\\ \hline
+		7&\field{kodeMK7}&\field{namaMK7}&\field{sks7}\\ \hline
+		8&\field{kodeMK8}&\field{namaMK8}&\field{sks8}\\ \hline
+		9&\field{kodeMK9}&\field{namaMK9}&\field{sks9}\\ \hline
+		10&\field{kodeMK10}&\field{namaMK10}&\field{sks10}\\ \hline
+	\end{tabular}
+
+\textbf{\underline{LAMPIRAN}} :
+\begin{enumerate}
+	\item Fotokopi KTM mahasiswa yag menerima kuasa
+\end{enumerate}
+
+		\begin{flushright}
+			Bandung, \field{tanggal}
+		\end{flushright}
+Tanda Tangan \hspace{7.3cm}Tanda Tangan \\
+Mahasiswa yang memberi kuasa \hspace{4cm} Mahasiswa yang menerima kuasa \\
+\begin{flushright}
+		\end{flushright}
+			\vspace{1cm}
+
+	(...........................................)\hspace{4.6cm} (...........................................)\\
+
+	\textbf{Mengetahui dosen wali, \hspace{4.8cm} Menyetujui Wakil Dekan I}
+	\vspace{2cm}
+
+	(...........................................)\hspace{4.8cm}(\field{wdI})
+	\thispagestyle{empty}
+		\newpage
+
+}
+
+
+\end{document}
+
+
+\end{lstlisting}%versi 2 (8-10-2016)
+\chapter{Format Surat \LaTeX}
+\label{lamp:B}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat keterangan beasiswa]
+	\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=53mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{noSurat,nama,prodi,npm,semester,thnAkademik,penyediabeasiswa,tanggal}
+
+\mailrepeat{
+
+	\begin{center}
+	\underline{SURAT KETERANGAN}\\
+	{\footnotesize  \field{noSurat}}
+	\end{center}
+	\vspace{0.75cm}
+	Bersama ini kami menerangkan bahwa mahasiswa Fakultas teknologi Informasi dan Sains (FTIS) berikut : \
+	\begin{quote}
+		Nama\hspace{2cm}: \field{nama}\
+
+		Jurusan\hspace{1.6cm}: \field{prodi}\
+
+		NPM\hspace{2.1cm}: \field{npm}\
+	\end{quote}
+	BENAR tidak menerima beasiswa dari Universitas Katolik Parahyangan pada Semester \field{semester} Tahun Akademik \field{thnAkademik}.\
+
+	Surat keterangan ini dibuat sebagai kelengkapan bagi ybs. untuk mengajukan diri sebagai penerima beasiswa perusahaan \field{penyediabeasiswa}.
+		\vspace{0.5cm}
+		\begin{flushright}
+			Bandung, \field{tanggal}
+
+			\vspace{2cm}
+
+
+
+
+		\underline{Flaviana Catherine, S.Si, M.T}\\
+		WD III FTIS - UNPAR
+		\end{flushright}
+
+		\thispagestyle{empty}
+			\newpage
+
+}
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat keterangan mahasiswa aktif]
+	\documentclass[12pt]{letter}
+%\usepackage[legalpaper, top=55mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{noSurat,nama,NPM,prodi,tanggalLahir,alamat,semester,wdI,tanggal}
+
+\mailrepeat{
+
+	\begin{center}
+	\underline{SURAT KETERANGAN}\\
+	{\footnotesize \field{noSurat}}
+	\end{center}
+	\vspace{0.75cm}
+	Fakultas teknologi Informasi dan Sains Universitas Katolik Parahyangan Bandung, menerangkan :
+
+
+		\begin{quote}
+			Nama \hspace{2.4cm}: \field{nama}\\
+			NPM \hspace{2.5cm}: \field{NPM}\\
+			Program Studi \hspace{0.8cm}: \field{prodi}\\
+			Tempat/Tgl. Lahir : \field{tanggalLahir}\\
+			Alamat Bandung \hspace{0.4cm}: \field{alamat}\\
+		\end{quote}
+		
+		terdaftar sebagai mahasiswa Fakultas teknologi Informasi dan Sains pada \textbf{semester \field{semester}} .\\
+	Demikian surat keterangan ini dibuat agar dapat dipergunakan sebagaimana mestinya.\\
+	\\
+
+		
+		\begin{flushright}
+			Bandung, \field{tanggal}\\
+					Wakil Dekan I\\
+			\vspace{2cm}
+			\underline{\field{wdI}}
+		\end{flushright}
+
+	\thispagestyle{empty}
+		\newpage
+
+}
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat pengantar pembuatan visa]
+\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=55mm,bottom=7mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{nama,tanggalLahir,wargaNegara,tahunKe,thnAkademik,negaraTujuan,tanggalKunjungan,organisasiTujuan,tanggal,wdIII}
+
+\mailrepeat{
+\begin{flushright}
+	Bandung, tanggal
+\end{flushright}
+	To:\\
+	organisasiTujuan\\
+	\textbf{VISA SECTION}\\
+	Jakarta - Indonesia\\
+	
+	Re : APPLICATION FOR VISA SCHENGEN\\
+	
+	This is to acknowledge that\
+	
+		Name\hspace{2cm}: \field{nama}\\
+		Date of Birth\hspace{0.6cm}: \field{tanggalLahir}\\
+		Nationality\hspace{1cm}: \field{wargaNegara}\
+	
+	He is a student at Parahyangan Catholic University, Jl. Ciumbuleuit No. 94 Bandung, in Year \field{tahunKe} for the school year \field{thnAkademik}.\
+	
+	This letter is written to support his intention to visit \field{negaraTujuan} on \field{tanggalKunjungan}.
+	
+	\field{nama} will be back to school to continue his study after the holiday.\
+	
+	We hope that visa can be granted for this  purpose.\
+	
+	\vspace{2cm}	
+			Kind regards\\
+			\vspace{1.5cm}			
+			
+			
+			\underline{\field{wdIII}}\\
+			Vice Dean of Student Affairs
+
+	\thispagestyle{empty}
+		\newpage
+
+}
+% \mailfields{nama,NPM,tanggal,semester,thnAkademik,prodi,nextSemester,nextThnAkademik,dekan}
+
+\end{document}
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat pengantar studi lapangan untuk 1 orang]
+	\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=55mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+\mailfields{noSurat,nama,npm,prodi,matkul,judulTopik,instansi,alamat,tujuanKunjungan,kepada,kota}
+
+\mailrepeat{
+Nomor : \field{noSurat}\\
+Hal\hspace{0.75cm}: Permohonan \field{tujuanKunjungan}\\
+Lamp\hspace{0.35cm}: -\\
+
+
+\textbf{Kepada YTH.\\
+KEPALA \field{kepada}\\
+\field{alamat}\\
+\field{kota}}
+
+ Dengan hormat,\\
+
+Bersama ini kami informasikan bahwa salah seorang mahasiswa kami, yaitu:
+
+	\begin{quote}
+	Nama\hspace{2.4cm}: \field{nama}\\
+	NPM\hspace{2.5cm}: \field{npm}\\
+	Program Studi\hspace{0.8cm}: \field{prodi}
+	\end{quote}
+	saat ini sedang mengambil Matakuliah \field{matkul} dengan topik "\field{judulTopik}". Ybs. memerlukan informasi sehubungan dengan hal-hal yang terkait dengan masalah tersebut yang diterapkan di \field{instansi}.\
+
+Untuk itu kami memohonkan ijin bagi mahasiswa kami tersebut agar diperbolehkan untuk melakukan \field{tujuanKunjungan} di \field{instansi}.\
+
+Atas perhatian dan kerjasamanya yang diberikan kami mengucapkan terima kasih.
+\vspace{2cm}
+		\begin{flushright}
+			Bandung, \field{tanggal}\\
+					Wakil Dekan III\\
+			\vspace{2cm}
+			\underline{\field{wdIII}}
+		\end{flushright}
+\thispagestyle{empty}
+	\newpage
+}
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat pengantar studi lapangan untuk 2 orang]
+	\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=55mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+\mailfields{noSurat,namaPemohon,npmPemohon,prodi,matkul,judulTopik,instansi,alamat,tujuanKunjungan,kepada,kota,namaAnggota,npmAnggota}
+
+\mailrepeat{
+Nomor : \field{noSurat}\\
+Hal\hspace{0.75cm}: Permohonan \field{tujuanKunjungan}\\
+Lamp\hspace{0.35cm}: -\\
+
+
+\textbf{Kepada YTH.\\
+KEPALA \field{kepada}\\
+\field{alamat}\\
+\field{kota}}
+
+ Dengan hormat,\\
+
+Bersama ini kami informasikan bahwa 2 orang mahasiswa kami, yaitu:
+
+	\begin{quote}
+		\begin{tabular}{|l|l|l|}
+		\hline
+		\textbf{No.}&\textbf{Nama}&\textbf{NPM}\\ \hline
+		1&\field{namaPemohon}&\field{npmPemohon}\\ \hline
+		2&\field{namaAnggota}&\field{npmAnggota}\\ \hline
+	\end{tabular}
+	\end{quote}
+	saat ini sedang mengambil Matakuliah \field{matkul} dengan topik "\field{judulTopik}". Ybs. memerlukan informasi sehubungan dengan hal-hal yang terkait dengan masalah tersebut yang diterapkan di \field{instansi}.\
+
+Untuk itu kami memohonkan ijin bagi mahasiswa kami tersebut agar diperbolehkan untuk melakukan \field{tujuanKunjungan} di \field{instansi}.\
+
+Atas perhatian dan kerjasamanya yang diberikan kami mengucapkan terima kasih.
+\vspace{2cm}
+		\begin{flushright}
+			Bandung, \field{tanggal}\\
+					Wakil Dekan III\\
+			\vspace{2cm}
+			\underline{\field{wdIII}}
+		\end{flushright}
+\thispagestyle{empty}
+	\newpage
+}
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat pengantar studi lapangan untuk 3 orang]
+	\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=55mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+\mailfields{noSurat,namaPemohon,npmPemohon,prodi,namaAnggota1,npmAnggota1,namaAnggota2,npmAnggota2,tujuanKunjungan,kepada,alamat,matkul,judulTopik,instansi,tanggal,wdIII,kota}
+
+\mailrepeat{
+Nomor : \field{noSurat}\\
+Hal\hspace{0.75cm}: Permohonan \field{tujuanKunjungan}\\
+Lamp\hspace{0.35cm}: -\\
+
+
+\textbf{Kepada YTH.\\
+KEPALA \field{kepada}\\
+\field{alamat}\\
+\field{kota}}
+
+ Dengan hormat,\\
+
+Bersama ini kami informasikan bahwa 3 orang mahasiswa kami, yaitu:
+
+	\begin{quote}
+		\textbf{\underline{KOORDINATOR}}\\
+		Nama\hspace{2.4cm}: \field{namaPemohon}\\
+		NPM\hspace{2.5cm}: \field{npmPemohon}\\
+		Program Studi\hspace{0.8cm}: \field{prodi}\\
+
+		\textbf{\underline{ANGGOTA}}\\
+		\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{No.}&\textbf{Nama}&\textbf{NPM}\\ \hline
+		1&\field{namaAnggota1}&\field{npmAnggota1}\\ \hline
+		2&\field{namaAnggota2}&\field{npmAnggota2}\\ \hline
+	\end{tabular}
+	\end{quote}
+	saat ini sedang mengambil Matakuliah \field{matkul} dengan topik "\field{judulTopik}". Ybs. memerlukan informasi sehubungan dengan hal-hal yang terkait dengan masalah tersebut yang diterapkan di \field{instansi}.\
+
+Untuk itu kami memohonkan ijin bagi mahasiswa kami tersebut agar diperbolehkan untuk melakukan \field{tujuanKunjungan} di \field{instansi}.\
+
+Atas perhatian dan kerjasamanya yang diberikan kami mengucapkan terima kasih.
+\vspace{2cm}
+		\begin{flushright}
+			Bandung, \field{tanggal}\\
+					Wakil Dekan III\\
+			\vspace{2cm}
+			\underline{\field{wdIII}}
+		\end{flushright}
+\thispagestyle{empty}
+	\newpage
+}
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat pengantar studi lapangan untuk 4 orang]
+	\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=55mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{noSurat,namaPemohon,npmPemohon,prodi,namaAnggota1,npmAnggota1,namaAnggota2,npmAnggota2,namaAnggota3,npmAnggota3,tujuanKunjungan,kepada,alamat,matkul,judulTopik,instansi,tanggal,wdIII,kota}
+
+\mailrepeat{
+Nomor : \field{noSurat}\\
+Hal\hspace{0.75cm}: Permohonan \field{tujuanKunjungan}\\
+Lamp\hspace{0.35cm}: -\\
+
+
+\textbf{Kepada YTH.\\
+KEPALA \field{kepada}\\
+\field{alamat}\\
+\field{kota}}
+
+ Dengan hormat,\\
+
+Bersama ini kami informasikan bahwa 4 orang mahasiswa kami, yaitu:
+
+	\begin{quote}
+		\textbf{\underline{KOORDINATOR}}\\
+		Nama\hspace{2.4cm}: \field{namaPemohon}\\
+		NPM\hspace{2.5cm}: \field{npmPemohon}\\
+		Program Studi\hspace{0.8cm}: \field{prodi}\\
+
+		\textbf{\underline{ANGGOTA}}\\
+		\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{No.}&\textbf{Nama}&\textbf{NPM}\\ \hline
+		1&\field{namaAnggota1}&\field{npmAnggota1}\\ \hline
+		2&\field{namaAnggota2}&\field{npmAnggota2}\\ \hline
+		3&\field{namaAnggota3}&\field{npmAnggota3}\\ \hline
+	\end{tabular}
+	\end{quote}
+	saat ini sedang mengambil Matakuliah \field{matkul} dengan topik "\field{judulTopik}". Ybs. memerlukan informasi sehubungan dengan hal-hal yang terkait dengan masalah tersebut yang diterapkan di \field{instansi}.\
+
+Untuk itu kami memohonkan ijin bagi mahasiswa kami tersebut agar diperbolehkan untuk melakukan \field{tujuanKunjungan} di \field{instansi}.\
+
+Atas perhatian dan kerjasamanya yang diberikan kami mengucapkan terima kasih.
+\vspace{2cm}
+		\begin{flushright}
+			Bandung, \field{tanggal}\\
+					Wakil Dekan III\\
+			\vspace{2cm}
+			\underline{\field{wdIII}}
+		\end{flushright}
+\thispagestyle{empty}
+	\newpage
+}
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat pengantar studi lapangan untuk 5 orang]
+\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=55mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{noSurat,namaPemohon,npmPemohon,prodi,namaAnggota1,npmAnggota1,namaAnggota2,npmAnggota2,namaAnggota3,npmAnggota3,namaAnggota4,npmAnggota4,tujuanKunjungan,kepada,alamat,matkul,judulTopik,instansi,tanggal,wdIII,kota}
+
+\mailrepeat{
+Nomor : \field{noSurat}\\
+Hal\hspace{0.75cm}: Permohonan \field{tujuanKunjungan}\\
+Lamp\hspace{0.35cm}: -\\
+
+
+\textbf{Kepada YTH.\\
+KEPALA \field{kepada}\\
+\field{alamat}\\
+\field{kota}}
+
+ Dengan hormat,\\
+
+Bersama ini kami informasikan bahwa 5 orang mahasiswa kami, yaitu:
+
+	\begin{quote}
+		\textbf{\underline{KOORDINATOR}}\\
+		Nama\hspace{2.4cm}: \field{namaPemohon}\\
+		NPM\hspace{2.5cm}: \field{npmPemohon}\\
+		Program Studi\hspace{0.8cm}: \field{prodi}\\
+
+		\textbf{\underline{ANGGOTA}}\\
+		\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{No.}&\textbf{Nama}&\textbf{NPM}\\ \hline
+		1&\field{namaAnggota1}&\field{npmAnggota1}\\ \hline
+		2&\field{namaAnggota2}&\field{npmAnggota2}\\ \hline
+		3&\field{namaAnggota3}&\field{npmAnggota3}\\ \hline
+		4&\field{namaAnggota4}&\field{npmAnggota4}\\ \hline
+	\end{tabular}
+	\end{quote}
+	saat ini sedang mengambil Matakuliah \field{matkul} dengan topik "\field{judulTopik}". Ybs. memerlukan informasi sehubungan dengan hal-hal yang terkait dengan masalah tersebut yang diterapkan di \field{instansi}.\
+
+Untuk itu kami memohonkan ijin bagi mahasiswa kami tersebut agar diperbolehkan untuk melakukan \field{tujuanKunjungan} di \field{instansi}.\
+
+Atas perhatian dan kerjasamanya yang diberikan kami mengucapkan terima kasih.
+\vspace{2cm}
+		\begin{flushright}
+			Bandung, \field{tanggal}\\
+					Wakil Dekan III\\
+			\vspace{2cm}
+			\underline{\field{wdIII}}
+		\end{flushright}
+\thispagestyle{empty}
+	\newpage
+}
+
+\end{document}
+
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat izin cuti studi]
+\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=55mm,bottom=7mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+\usepackage{changepage} %package utk atur margin
+
+\begin{document}
+
+\mailfields{noSurat,nama,NPM,tanggal,semester,thnAkademik,prodi,nextSemester,nextThnAkademik,dekan}
+
+\mailrepeat{
+
+	
+	
+	Nomor : \field{noSurat}\\
+	Hal\hspace{0.75cm}: Surat Ijin Berhenti Studi Sementara\\
+	Lamp\hspace*{0.35cm}: Surat Permohonan\\
+	\vspace{0.5cm}
+	
+	Kepada : Yang terhormat\\
+	\hspace*{1.7cm} \field{nama}\\
+	\hspace*{1.7cm} NPM \field{NPM}\\
+	\hspace*{1.7cm} di tempat\\
+	\vspace{0.5cm}
+	
+	\begin{adjustwidth}{1.8cm}{0pt}Menurut surat permohonan cuti studi Anda tertanggal \field{tanggal}, dengan ini diberitahukan bahwa Anda diijinkan cuti studi untuk:
+\end{adjustwidth}
+		\begin{adjustwidth}{3cm}{0pt}
+			\textbf{Semester \field{semester} tahun akademik \field{thnAkademik}}
+		\end{adjustwidth}
+		
+		\begin{adjustwidth}{1.8cm}{0pt}
+		Selanjutnya, untuk dapat mengikuti kegiatan akademik kembali, Anda wajib melakukan registrasi pada Masa Perwalian dan \textbf{FRS semester \field{nextSemester} tahun akademik \field{nextThnAkademik}} sesuai kalender akademik dan melaksanakan ketentuan yang telah ditetapkan.\\
+		
+		Demikian harap Anda maklum.
+		\end{adjustwidth}
+	\vspace{2cm}	
+		\begin{flushright}
+			Bandung,\field{tanggal}\\ 
+					Dekan\\
+			\vspace{2cm}
+			\underline{\field{dekan}}
+		\end{flushright}
+		\vspace{5cm}
+		\scriptsize {Tembusan :
+		\begin{enumerate}
+			\item WR-I, WR-II
+			\item KBAA, KBTI
+			\item Kajur \field{prodi}, Dosen Wali
+			\item Map Ybs
+			\item Arsip
+		\end{enumerate}}
+
+	\thispagestyle{empty}
+		\newpage
+
+}
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat izin pengunduran diri]
+\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=55mm,bottom=7mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+\usepackage{changepage} %package utk ubah margin
+
+\begin{document}
+
+\mailfields{noSurat,nama,NPM,prodi,tanggal,semester,tanggal,dekan}
+
+\mailrepeat{
+
+	
+	
+	Nomor : \field{noSurat}\\
+	Hal\hspace{0.75cm}: Pengunduran diri\\
+	Lamp\hspace*{0.35cm}: Surat pengunduran diri ybs.\\
+	\vspace{0.5cm}
+	
+	Kepada : Yang terhormat\\
+	\hspace*{1.7cm} Rektor\\
+	\hspace*{1.7cm} Universitas Katolik Parahyangan\\
+	\hspace*{1.7cm} Di tempat\\
+	\vspace{0.5cm}
+	
+	\hspace*{1.8cm}Berdasarkan surat pengunduran diri :
+
+		\begin{adjustwidth}{2.5cm}{0pt}
+			\textbf{\field{nama}\\
+			NPM  \field{NPM}\\
+			Program Studi \field{prodi}}\\
+		\end{adjustwidth}
+		
+		\begin{adjustwidth}{1.8cm}{0pt}
+		tanggal \field{tanggal}, dengan ini kami nyatakan bahwa mahasiswa tersebut telah mengundurkan diri atas permintaan sendiri dari program studi FTIS terhitung mulai \textbf{\textit{semester \field{semester}}}.
+		\end{adjustwidth}
+		\vspace{2cm}
+		\begin{flushright}
+			Bandung, \field{tanggal}\\ 
+					Dekan\\
+			\vspace{2cm}
+			\underline{\field{dekan}}
+		\end{flushright}
+		\vspace{5cm}
+		{\scriptsize {Tembusan :
+		\begin{enumerate}
+			\item WR-I, WR-II
+			\item KBAA, KBTI
+			\item Kajur \field{prodi}, Dosen Wali
+			\item Map Ybs
+			\item Arsip
+		\end{enumerate}}}
+
+	\thispagestyle{empty}
+		\newpage
+
+}
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat perwakilan perwalian (ambil 1 mata kuliah)]
+\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=25mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{semester,thnAKademik,namaPemohon,prodiPemohon,npmPemohon,namaWakil,prodiWakil,npmWakil,alasan,kodeMK,namaMK,sks}
+
+\mailrepeat{
+
+	\begin{center}
+	{\Large \textbf{FORMULIR\\
+	PERWALIAN YANG DIWAKILKAN}}
+	\end{center}
+	\vspace{0.25cm}
+	Semester \hspace{1.5cm}: \field{semester} \\
+	Tahun Akademik : \field{thnAkademik}\\
+
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG PERWALIANNYA DIWAKILKAN}}\\
+	Nama \hspace{2.4cm}: \field{namaPemohon} \\
+	Program Studi \hspace{0.8cm}: \field{prodiPemohon}\\
+	NPM \hspace{2.5cm}: \field{npmPemohon}	\\
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG DIBERI KUASA PERWALIAN}}\\
+	Nama \hspace{2.4cm}: \field{namaWakil} \\
+	Program Studi \hspace{0.8cm}: \field{prodiWakil}\\
+	NPM \hspace{2.5cm}: \field{npmWakil}\\
+
+	Alasan tidak bisa hadir pada saat perwalian :\\
+	\field{alasan}\\
+	Mata kuliah yang diambil saat FRS : \\
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{No.}&\textbf{Kode MK}&\textbf{Nama Mata Kuliah}&\textbf{Sks}\\ \hline
+		1&\field{kodeMK}&\field{namaMK}&\field{sks}\\ \hline
+	\end{tabular}
+
+\textbf{\underline{LAMPIRAN}} :
+\begin{enumerate}
+	\item Fotokopi KTM mahasiswa yag menerima kuasa
+\end{enumerate}
+
+		\begin{flushright}
+			Bandung, \field{tanggal}
+		\end{flushright}
+Tanda Tangan \hspace{7.3cm}Tanda Tangan \\
+Mahasiswa yang memberi kuasa \hspace{4cm} Mahasiswa yang menerima kuasa \\
+\begin{flushright}
+		\end{flushright}
+			\vspace{1cm}
+
+	(...........................................)\hspace{4.6cm} (...........................................)\\
+
+	\textbf{Mengetahui dosen wali, \hspace{4.8cm} Menyetujui Wakil Dekan I}
+	\vspace{2cm}
+
+	(...........................................)\hspace{4.8cm}(\field{wdI})
+	\thispagestyle{empty}
+		\newpage
+
+}
+ 
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat perwakilan perwalian (ambil 2 mata kuliah)]
+\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=25mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{semester,thnAKademik,namaPemohon,prodiPemohon,npmPemohon,namaWakil,prodiWakil,npmWakil,alasan,kodeMK1,namaMK1,sks1,kodeMK2,namaMK2,sks2}
+
+\mailrepeat{
+
+	\begin{center}
+	{\Large \textbf{FORMULIR\\
+	PERWALIAN YANG DIWAKILKAN}}
+	\end{center}
+	\vspace{0.25cm}
+	Semester \hspace{1.5cm}: \field{semester} \\
+	Tahun Akademik : \field{thnAkademik}\\
+
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG PERWALIANNYA DIWAKILKAN}}\\
+	Nama \hspace{2.4cm}: \field{namaPemohon} \\
+	Program Studi \hspace{0.8cm}: \field{prodiPemohon}\\
+	NPM \hspace{2.5cm}: \field{npmPemohon}	\\
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG DIBERI KUASA PERWALIAN}}\\
+	Nama \hspace{2.4cm}: \field{namaWakil} \\
+	Program Studi \hspace{0.8cm}: \field{prodiWakil}\\
+	NPM \hspace{2.5cm}: \field{npmWakil}\\
+
+	Alasan tidak bisa hadir pada saat perwalian :\\
+	\field{alasan}\\
+	Mata kuliah yang diambil saat FRS : \\
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{No.}&\textbf{Kode MK}&\textbf{Nama Mata Kuliah}&\textbf{Sks}\\ \hline
+		1&\field{kodeMK1}&\field{namaMK1}&\field{sks1}\\ \hline
+		2&\field{kodeMK2}&\field{namaMK2}&\field{sks2}\\ \hline
+	\end{tabular}
+
+\textbf{\underline{LAMPIRAN}} :
+\begin{enumerate}
+	\item Fotokopi KTM mahasiswa yag menerima kuasa
+\end{enumerate}
+
+		\begin{flushright}
+			Bandung, \field{tanggal}
+		\end{flushright}
+Tanda Tangan \hspace{7.3cm}Tanda Tangan \\
+Mahasiswa yang memberi kuasa \hspace{4cm} Mahasiswa yang menerima kuasa \\
+\begin{flushright}
+		\end{flushright}
+			\vspace{1cm}
+
+	(...........................................)\hspace{4.6cm} (...........................................)\\
+
+	\textbf{Mengetahui dosen wali, \hspace{4.8cm} Menyetujui Wakil Dekan I}
+	\vspace{2cm}
+
+	(...........................................)\hspace{4.8cm}(\field{wdI})
+	\thispagestyle{empty}
+		\newpage
+
+}
+
+\end{document}
+
+\end{lstlisting}
+
+
+
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat perwakilan perwalian (ambil 3 mata kuliah)]
+\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=25mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{semester,thnAKademik,namaPemohon,prodiPemohon,npmPemohon,namaWakil,prodiWakil,npmWakil,alasan,kodeMK1,namaMK1,sks1,kodeMK2,namaMK2,sks2,kodeMK3,namaMK3,sks3}
+
+\mailrepeat{
+
+	\begin{center}
+	{\Large \textbf{FORMULIR\\
+	PERWALIAN YANG DIWAKILKAN}}
+	\end{center}
+	\vspace{0.25cm}
+	Semester \hspace{1.5cm}: \field{semester} \\
+	Tahun Akademik : \field{thnAkademik}\\
+
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG PERWALIANNYA DIWAKILKAN}}\\
+	Nama \hspace{2.4cm}: \field{namaPemohon} \\
+	Program Studi \hspace{0.8cm}: \field{prodiPemohon}\\
+	NPM \hspace{2.5cm}: \field{npmPemohon}	\\
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG DIBERI KUASA PERWALIAN}}\\
+	Nama \hspace{2.4cm}: \field{namaWakil} \\
+	Program Studi \hspace{0.8cm}: \field{prodiWakil}\\
+	NPM \hspace{2.5cm}: \field{npmWakil}\\
+
+	Alasan tidak bisa hadir pada saat perwalian :\\
+	\field{alasan}\\
+	Mata kuliah yang diambil saat FRS : \\
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{No.}&\textbf{Kode MK}&\textbf{Nama Mata Kuliah}&\textbf{Sks}\\ \hline
+		1&\field{kodeMK1}&\field{namaMK1}&\field{sks1}\\ \hline
+		2&\field{kodeMK2}&\field{namaMK2}&\field{sks2}\\ \hline
+		3&\field{kodeMK3}&\field{namaMK3}&\field{sks3}\\ \hline
+	\end{tabular}
+
+\textbf{\underline{LAMPIRAN}} :
+\begin{enumerate}
+	\item Fotokopi KTM mahasiswa yag menerima kuasa
+\end{enumerate}
+
+		\begin{flushright}
+			Bandung, \field{tanggal}
+		\end{flushright}
+Tanda Tangan \hspace{7.3cm}Tanda Tangan \\
+Mahasiswa yang memberi kuasa \hspace{4cm} Mahasiswa yang menerima kuasa \\
+\begin{flushright}
+		\end{flushright}
+			\vspace{1cm}
+
+	(...........................................)\hspace{4.6cm} (...........................................)\\
+
+	\textbf{Mengetahui dosen wali, \hspace{4.8cm} Menyetujui Wakil Dekan I}
+	\vspace{2cm}
+
+	(...........................................)\hspace{4.8cm}(\field{wdI})
+	\thispagestyle{empty}
+		\newpage
+
+}
+
+
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat perwakilan perwalian (ambil 4 mata kuliah)]
+\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=25mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{semester,thnAKademik,namaPemohon,prodiPemohon,npmPemohon,namaWakil,prodiWakil,npmWakil,alasan,kodeMK1,namaMK1,sks1,kodeMK2,namaMK2,sks2,kodeMK3,namaMK3,sks3,kodeMK4,namaMK4,sks4,kodeMK5,namaMK5,sks5,kodeMK6,namaMK6,sks6}
+
+\mailrepeat{
+
+	\begin{center}
+	{\Large \textbf{FORMULIR\\
+	PERWALIAN YANG DIWAKILKAN}}
+	\end{center}
+	\vspace{0.25cm}
+	Semester \hspace{1.5cm}: \field{semester} \\
+	Tahun Akademik : \field{thnAkademik}\\
+
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG PERWALIANNYA DIWAKILKAN}}\\
+	Nama \hspace{2.4cm}: \field{namaPemohon} \\
+	Program Studi \hspace{0.8cm}: \field{prodiPemohon}\\
+	NPM \hspace{2.5cm}: \field{npmPemohon}	\\
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG DIBERI KUASA PERWALIAN}}\\
+	Nama \hspace{2.4cm}: \field{namaWakil} \\
+	Program Studi \hspace{0.8cm}: \field{prodiWakil}\\
+	NPM \hspace{2.5cm}: \field{npmWakil}\\
+
+	Alasan tidak bisa hadir pada saat perwalian :\\
+	\field{alasan}\\
+	Mata kuliah yang diambil saat FRS : \\
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{No.}&\textbf{Kode MK}&\textbf{Nama Mata Kuliah}&\textbf{Sks}\\ \hline
+		1&\field{kodeMK1}&\field{namaMK1}&\field{sks1}\\ \hline
+		2&\field{kodeMK2}&\field{namaMK2}&\field{sks2}\\ \hline
+		3&\field{kodeMK3}&\field{namaMK3}&\field{sks3}\\ \hline
+		4&\field{kodeMK4}&\field{namaMK4}&\field{sks4}\\ \hline
+		5&\field{kodeMK5}&\field{namaMK5}&\field{sks5}\\ \hline
+	\end{tabular}
+
+\textbf{\underline{LAMPIRAN}} :
+\begin{enumerate}
+	\item Fotokopi KTM mahasiswa yag menerima kuasa
+\end{enumerate}
+
+		\begin{flushright}
+			Bandung, \field{tanggal}
+		\end{flushright}
+Tanda Tangan \hspace{7.3cm}Tanda Tangan \\
+Mahasiswa yang memberi kuasa \hspace{4cm} Mahasiswa yang menerima kuasa \\
+\begin{flushright}
+		\end{flushright}
+			\vspace{1cm}
+
+	(...........................................)\hspace{4.6cm} (...........................................)\\
+
+	\textbf{Mengetahui dosen wali, \hspace{4.8cm} Menyetujui Wakil Dekan I}
+	\vspace{2cm}
+
+	(...........................................)\hspace{4.8cm}(\field{wdI})
+	\thispagestyle{empty}
+		\newpage
+
+}
+
+
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat perwakilan perwalian (ambil 5 mata kuliah)]
+\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=25mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{semester,thnAKademik,namaPemohon,prodiPemohon,npmPemohon,namaWakil,prodiWakil,npmWakil,alasan,kodeMK1,namaMK1,sks1,kodeMK2,namaMK2,sks2,kodeMK3,namaMK3,sks3,kodeMK4,namaMK4,sks4,kodeMK5,namaMK5,sks5}
+
+\mailrepeat{
+
+	\begin{center}
+	{\Large \textbf{FORMULIR\\
+	PERWALIAN YANG DIWAKILKAN}}
+	\end{center}
+	\vspace{0.25cm}
+	Semester \hspace{1.5cm}: \field{semester} \\
+	Tahun Akademik : \field{thnAkademik}\\
+
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG PERWALIANNYA DIWAKILKAN}}\\
+	Nama \hspace{2.4cm}: \field{namaPemohon} \\
+	Program Studi \hspace{0.8cm}: \field{prodiPemohon}\\
+	NPM \hspace{2.5cm}: \field{npmPemohon}	\\
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG DIBERI KUASA PERWALIAN}}\\
+	Nama \hspace{2.4cm}: \field{namaWakil} \\
+	Program Studi \hspace{0.8cm}: \field{prodiWakil}\\
+	NPM \hspace{2.5cm}: \field{npmWakil}\\
+
+	Alasan tidak bisa hadir pada saat perwalian :\\
+	\field{alasan}\\
+	Mata kuliah yang diambil saat FRS : \\
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{No.}&\textbf{Kode MK}&\textbf{Nama Mata Kuliah}&\textbf{Sks}\\ \hline
+		1&\field{kodeMK1}&\field{namaMK1}&\field{sks1}\\ \hline
+		2&\field{kodeMK2}&\field{namaMK2}&\field{sks2}\\ \hline
+		3&\field{kodeMK3}&\field{namaMK3}&\field{sks3}\\ \hline
+		4&\field{kodeMK4}&\field{namaMK4}&\field{sks4}\\ \hline
+		5&\field{kodeMK5}&\field{namaMK5}&\field{sks5}\\ \hline
+	\end{tabular}
+
+\textbf{\underline{LAMPIRAN}} :
+\begin{enumerate}
+	\item Fotokopi KTM mahasiswa yag menerima kuasa
+\end{enumerate}
+
+		\begin{flushright}
+			Bandung, \field{tanggal}
+		\end{flushright}
+Tanda Tangan \hspace{7.3cm}Tanda Tangan \\
+Mahasiswa yang memberi kuasa \hspace{4cm} Mahasiswa yang menerima kuasa \\
+\begin{flushright}
+		\end{flushright}
+			\vspace{1cm}
+
+	(...........................................)\hspace{4.6cm} (...........................................)\\
+
+	\textbf{Mengetahui dosen wali, \hspace{4.8cm} Menyetujui Wakil Dekan I}
+	\vspace{2cm}
+
+	(...........................................)\hspace{4.8cm}(\field{wdI})
+	\thispagestyle{empty}
+		\newpage
+
+}
+
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat perwakilan perwalian (ambil 6 mata kuliah)]
+\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=25mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{semester,thnAKademik,namaPemohon,prodiPemohon,npmPemohon,namaWakil,prodiWakil,npmWakil,alasan,kodeMK1,namaMK1,sks1,kodeMK2,namaMK2,sks2,kodeMK3,namaMK3,sks3,kodeMK4,namaMK4,sks4,kodeMK5,namaMK5,sks5,kodeMK6,namaMK6,sks6}
+
+\mailrepeat{
+
+	\begin{center}
+	{\Large \textbf{FORMULIR\\
+	PERWALIAN YANG DIWAKILKAN}}
+	\end{center}
+	\vspace{0.25cm}
+	Semester \hspace{1.5cm}: \field{semester} \\
+	Tahun Akademik : \field{thnAkademik}\\
+
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG PERWALIANNYA DIWAKILKAN}}\\
+	Nama \hspace{2.4cm}: \field{namaPemohon} \\
+	Program Studi \hspace{0.8cm}: \field{prodiPemohon}\\
+	NPM \hspace{2.5cm}: \field{npmPemohon}	\\
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG DIBERI KUASA PERWALIAN}}\\
+	Nama \hspace{2.4cm}: \field{namaWakil} \\
+	Program Studi \hspace{0.8cm}: \field{prodiWakil}\\
+	NPM \hspace{2.5cm}: \field{npmWakil}\\
+
+	Alasan tidak bisa hadir pada saat perwalian :\\
+	\field{alasan}\\
+	Mata kuliah yang diambil saat FRS : \\
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{No.}&\textbf{Kode MK}&\textbf{Nama Mata Kuliah}&\textbf{Sks}\\ \hline
+		1&\field{kodeMK1}&\field{namaMK1}&\field{sks1}\\ \hline
+		2&\field{kodeMK2}&\field{namaMK2}&\field{sks2}\\ \hline
+		3&\field{kodeMK3}&\field{namaMK3}&\field{sks3}\\ \hline
+		4&\field{kodeMK4}&\field{namaMK4}&\field{sks4}\\ \hline
+		5&\field{kodeMK5}&\field{namaMK5}&\field{sks5}\\ \hline
+		6&\field{kodeMK6}&\field{namaMK6}&\field{sks6}\\ \hline
+	\end{tabular}
+
+\textbf{\underline{LAMPIRAN}} :
+\begin{enumerate}
+	\item Fotokopi KTM mahasiswa yag menerima kuasa
+\end{enumerate}
+
+		\begin{flushright}
+			Bandung, \field{tanggal}
+		\end{flushright}
+Tanda Tangan \hspace{7.3cm}Tanda Tangan \\
+Mahasiswa yang memberi kuasa \hspace{4cm} Mahasiswa yang menerima kuasa \\
+\begin{flushright}
+		\end{flushright}
+			\vspace{1cm}
+
+	(...........................................)\hspace{4.6cm} (...........................................)\\
+
+	\textbf{Mengetahui dosen wali, \hspace{4.8cm} Menyetujui Wakil Dekan I}
+	\vspace{2cm}
+
+	(...........................................)\hspace{4.8cm}(\field{wdI})
+	\thispagestyle{empty}
+		\newpage
+
+}
+
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat perwakilan perwalian (ambil 7 mata kuliah)]
+\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=25mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{semester,thnAKademik,namaPemohon,prodiPemohon,npmPemohon,namaWakil,prodiWakil,npmWakil,alasan,kodeMK1,namaMK1,sks1,kodeMK2,namaMK2,sks2,kodeMK3,namaMK3,sks3,kodeMK4,namaMK4,sks4,kodeMK5,namaMK5,sks5,kodeMK6,namaMK6,sks6,kodeMK7,namaMK7,sks7}
+
+\mailrepeat{
+
+	\begin{center}
+	{\Large \textbf{FORMULIR\\
+	PERWALIAN YANG DIWAKILKAN}}
+	\end{center}
+	\vspace{0.25cm}
+	Semester \hspace{1.5cm}: \field{semester} \\
+	Tahun Akademik : \field{thnAkademik}\\
+
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG PERWALIANNYA DIWAKILKAN}}\\
+	Nama \hspace{2.4cm}: \field{namaPemohon} \\
+	Program Studi \hspace{0.8cm}: \field{prodiPemohon}\\
+	NPM \hspace{2.5cm}: \field{npmPemohon}	\\
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG DIBERI KUASA PERWALIAN}}\\
+	Nama \hspace{2.4cm}: \field{namaWakil} \\
+	Program Studi \hspace{0.8cm}: \field{prodiWakil}\\
+	NPM \hspace{2.5cm}: \field{npmWakil}\\
+
+	Alasan tidak bisa hadir pada saat perwalian :\\
+	\field{alasan}\\
+	Mata kuliah yang diambil saat FRS : \\
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{No.}&\textbf{Kode MK}&\textbf{Nama Mata Kuliah}&\textbf{Sks}\\ \hline
+		1&\field{kodeMK1}&\field{namaMK1}&\field{sks1}\\ \hline
+		2&\field{kodeMK2}&\field{namaMK2}&\field{sks2}\\ \hline
+		3&\field{kodeMK3}&\field{namaMK3}&\field{sks3}\\ \hline
+		4&\field{kodeMK4}&\field{namaMK4}&\field{sks4}\\ \hline
+		5&\field{kodeMK5}&\field{namaMK5}&\field{sks5}\\ \hline
+		6&\field{kodeMK6}&\field{namaMK6}&\field{sks6}\\ \hline
+		7&\field{kodeMK7}&\field{namaMK7}&\field{sks7}\\ \hline
+	\end{tabular}
+
+\textbf{\underline{LAMPIRAN}} :
+\begin{enumerate}
+	\item Fotokopi KTM mahasiswa yag menerima kuasa
+\end{enumerate}
+
+		\begin{flushright}
+			Bandung, \field{tanggal}
+		\end{flushright}
+Tanda Tangan \hspace{7.3cm}Tanda Tangan \\
+Mahasiswa yang memberi kuasa \hspace{4cm} Mahasiswa yang menerima kuasa \\
+\begin{flushright}
+		\end{flushright}
+			\vspace{1cm}
+
+	(...........................................)\hspace{4.6cm} (...........................................)\\
+
+	\textbf{Mengetahui dosen wali, \hspace{4.8cm} Menyetujui Wakil Dekan I}
+	\vspace{2cm}
+
+	(...........................................)\hspace{4.8cm}(\field{wdI})
+	\thispagestyle{empty}
+		\newpage
+
+}
+
+
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat perwakilan perwalian (ambil 8 mata kuliah)]
+\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=25mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{semester,thnAKademik,namaPemohon,prodiPemohon,npmPemohon,namaWakil,prodiWakil,npmWakil,alasan,kodeMK1,namaMK1,sks1,kodeMK2,namaMK2,sks2,kodeMK3,namaMK3,sks3,kodeMK4,namaMK4,sks4,kodeMK5,namaMK5,sks5,kodeMK6,namaMK6,sks6,kodeMK7,namaMK7,sks7,kodeMK8,namaMK8,sks8}
+
+\mailrepeat{
+
+	\begin{center}
+	{\Large \textbf{FORMULIR\\
+	PERWALIAN YANG DIWAKILKAN}}
+	\end{center}
+	\vspace{0.25cm}
+	Semester \hspace{1.5cm}: \field{semester} \\
+	Tahun Akademik : \field{thnAkademik}\\
+
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG PERWALIANNYA DIWAKILKAN}}\\
+	Nama \hspace{2.4cm}: \field{namaPemohon} \\
+	Program Studi \hspace{0.8cm}: \field{prodiPemohon}\\
+	NPM \hspace{2.5cm}: \field{npmPemohon}	\\
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG DIBERI KUASA PERWALIAN}}\\
+	Nama \hspace{2.4cm}: \field{namaWakil} \\
+	Program Studi \hspace{0.8cm}: \field{prodiWakil}\\
+	NPM \hspace{2.5cm}: \field{npmWakil}\\
+
+	Alasan tidak bisa hadir pada saat perwalian :\\
+	\field{alasan}\\
+	Mata kuliah yang diambil saat FRS : \\
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{No.}&\textbf{Kode MK}&\textbf{Nama Mata Kuliah}&\textbf{Sks}\\ \hline
+		1&\field{kodeMK1}&\field{namaMK1}&\field{sks1}\\ \hline
+		2&\field{kodeMK2}&\field{namaMK2}&\field{sks2}\\ \hline
+		3&\field{kodeMK3}&\field{namaMK3}&\field{sks3}\\ \hline
+		4&\field{kodeMK4}&\field{namaMK4}&\field{sks4}\\ \hline
+		5&\field{kodeMK5}&\field{namaMK5}&\field{sks5}\\ \hline
+		6&\field{kodeMK6}&\field{namaMK6}&\field{sks6}\\ \hline
+		7&\field{kodeMK7}&\field{namaMK7}&\field{sks7}\\ \hline
+		8&\field{kodeMK8}&\field{namaMK8}&\field{sks8}\\ \hline
+	\end{tabular}
+
+\textbf{\underline{LAMPIRAN}} :
+\begin{enumerate}
+	\item Fotokopi KTM mahasiswa yag menerima kuasa
+\end{enumerate}
+
+		\begin{flushright}
+			Bandung, \field{tanggal}
+		\end{flushright}
+Tanda Tangan \hspace{7.3cm}Tanda Tangan \\
+Mahasiswa yang memberi kuasa \hspace{4cm} Mahasiswa yang menerima kuasa \\
+\begin{flushright}
+		\end{flushright}
+			\vspace{1cm}
+
+	(...........................................)\hspace{4.6cm} (...........................................)\\
+
+	\textbf{Mengetahui dosen wali, \hspace{4.8cm} Menyetujui Wakil Dekan I}
+	\vspace{2cm}
+
+	(...........................................)\hspace{4.8cm}(\field{wdI})
+	\thispagestyle{empty}
+		\newpage
+
+}
+
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat perwakilan perwalian (ambil 9 mata kuliah)]
+\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=25mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{semester,thnAKademik,namaPemohon,prodiPemohon,npmPemohon,namaWakil,prodiWakil,npmWakil,alasan,kodeMK1,namaMK1,sks1,kodeMK2,namaMK2,sks2,kodeMK3,namaMK3,sks3,kodeMK4,namaMK4,sks4,kodeMK5,namaMK5,sks5,kodeMK6,namaMK6,sks6,kodeMK7,namaMK7,sks7,kodeMK8,namaMK8,sks8,kodeMK9,namaMK9,sks9}
+
+\mailrepeat{
+
+	\begin{center}
+	{\Large \textbf{FORMULIR\\
+	PERWALIAN YANG DIWAKILKAN}}
+	\end{center}
+	\vspace{0.25cm}
+	Semester \hspace{1.5cm}: \field{semester} \\
+	Tahun Akademik : \field{thnAkademik}\\
+
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG PERWALIANNYA DIWAKILKAN}}\\
+	Nama \hspace{2.4cm}: \field{namaPemohon} \\
+	Program Studi \hspace{0.8cm}: \field{prodiPemohon}\\
+	NPM \hspace{2.5cm}: \field{npmPemohon}	\\
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG DIBERI KUASA PERWALIAN}}\\
+	Nama \hspace{2.4cm}: \field{namaWakil} \\
+	Program Studi \hspace{0.8cm}: \field{prodiWakil}\\
+	NPM \hspace{2.5cm}: \field{npmWakil}\\
+
+	Alasan tidak bisa hadir pada saat perwalian :\\
+	\field{alasan}\\
+	Mata kuliah yang diambil saat FRS : \\
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{No.}&\textbf{Kode MK}&\textbf{Nama Mata Kuliah}&\textbf{Sks}\\ \hline
+		1&\field{kodeMK1}&\field{namaMK1}&\field{sks1}\\ \hline
+		2&\field{kodeMK2}&\field{namaMK2}&\field{sks2}\\ \hline
+		3&\field{kodeMK3}&\field{namaMK3}&\field{sks3}\\ \hline
+		4&\field{kodeMK4}&\field{namaMK4}&\field{sks4}\\ \hline
+		5&\field{kodeMK5}&\field{namaMK5}&\field{sks5}\\ \hline
+		6&\field{kodeMK6}&\field{namaMK6}&\field{sks6}\\ \hline
+		7&\field{kodeMK7}&\field{namaMK7}&\field{sks7}\\ \hline
+		8&\field{kodeMK8}&\field{namaMK8}&\field{sks8}\\ \hline
+		9&\field{kodeMK9}&\field{namaMK9}&\field{sks9}\\ \hline
+	\end{tabular}
+
+\textbf{\underline{LAMPIRAN}} :
+\begin{enumerate}
+	\item Fotokopi KTM mahasiswa yag menerima kuasa
+\end{enumerate}
+
+		\begin{flushright}
+			Bandung, \field{tanggal}
+		\end{flushright}
+Tanda Tangan \hspace{7.3cm}Tanda Tangan \\
+Mahasiswa yang memberi kuasa \hspace{4cm} Mahasiswa yang menerima kuasa \\
+\begin{flushright}
+		\end{flushright}
+			\vspace{1cm}
+
+	(...........................................)\hspace{4.6cm} (...........................................)\\
+
+	\textbf{Mengetahui dosen wali, \hspace{4.8cm} Menyetujui Wakil Dekan I}
+	\vspace{2cm}
+
+	(...........................................)\hspace{4.8cm}(\field{wdI})
+	\thispagestyle{empty}
+		\newpage
+
+}
+
+
+\end{document}
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=tex,basicstyle=
+\tiny,caption=Format untuk surat perwakilan perwalian (ambil 10 mata kuliah)]
+\documentclass[12pt]{letter}
+\usepackage[legalpaper, top=25mm,bottom=15mm,left=35mm,right=18mm]{geometry}
+\usepackage{mailmerge}
+
+\begin{document}
+
+\mailfields{semester,thnAKademik,namaPemohon,prodiPemohon,npmPemohon,namaWakil,prodiWakil,npmWakil,alasan,kodeMK1,namaMK1,sks1,kodeMK2,namaMK2,sks2,kodeMK3,namaMK3,sks3,kodeMK4,namaMK4,sks4,kodeMK5,namaMK5,sks5,kodeMK6,namaMK6,sks6,kodeMK7,namaMK7,sks7,kodeMK8,namaMK8,sks8,kodeMK9,namaMK9,sks9,kodeMK10,namaMK10,sks10}
+
+\mailrepeat{
+
+	\begin{center}
+	{\Large \textbf{FORMULIR\\
+	PERWALIAN YANG DIWAKILKAN}}
+	\end{center}
+	\vspace{0.25cm}
+	Semester \hspace{1.5cm}: \field{semester} \\
+	Tahun Akademik : \field{thnAkademik}\\
+
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG PERWALIANNYA DIWAKILKAN}}\\
+	Nama \hspace{2.4cm}: \field{namaPemohon} \\
+	Program Studi \hspace{0.8cm}: \field{prodiPemohon}\\
+	NPM \hspace{2.5cm}: \field{npmPemohon}	\\
+	{\footnotesize \textbf{IDENTITAS MAHASISWA YANG DIBERI KUASA PERWALIAN}}\\
+	Nama \hspace{2.4cm}: \field{namaWakil} \\
+	Program Studi \hspace{0.8cm}: \field{prodiWakil}\\
+	NPM \hspace{2.5cm}: \field{npmWakil}\\
+
+	Alasan tidak bisa hadir pada saat perwalian :\\
+	\field{alasan}\\
+	Mata kuliah yang diambil saat FRS : \\
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{No.}&\textbf{Kode MK}&\textbf{Nama Mata Kuliah}&\textbf{Sks}\\ \hline
+		1&\field{kodeMK1}&\field{namaMK1}&\field{sks1}\\ \hline
+		2&\field{kodeMK2}&\field{namaMK2}&\field{sks2}\\ \hline
+		3&\field{kodeMK3}&\field{namaMK3}&\field{sks3}\\ \hline
+		4&\field{kodeMK4}&\field{namaMK4}&\field{sks4}\\ \hline
+		5&\field{kodeMK5}&\field{namaMK5}&\field{sks5}\\ \hline
+		6&\field{kodeMK6}&\field{namaMK6}&\field{sks6}\\ \hline
+		7&\field{kodeMK7}&\field{namaMK7}&\field{sks7}\\ \hline
+		8&\field{kodeMK8}&\field{namaMK8}&\field{sks8}\\ \hline
+		9&\field{kodeMK9}&\field{namaMK9}&\field{sks9}\\ \hline
+		10&\field{kodeMK10}&\field{namaMK10}&\field{sks10}\\ \hline
+	\end{tabular}
+
+\textbf{\underline{LAMPIRAN}} :
+\begin{enumerate}
+	\item Fotokopi KTM mahasiswa yag menerima kuasa
+\end{enumerate}
+
+		\begin{flushright}
+			Bandung, \field{tanggal}
+		\end{flushright}
+Tanda Tangan \hspace{7.3cm}Tanda Tangan \\
+Mahasiswa yang memberi kuasa \hspace{4cm} Mahasiswa yang menerima kuasa \\
+\begin{flushright}
+		\end{flushright}
+			\vspace{1cm}
+
+	(...........................................)\hspace{4.6cm} (...........................................)\\
+
+	\textbf{Mengetahui dosen wali, \hspace{4.8cm} Menyetujui Wakil Dekan I}
+	\vspace{2cm}
+
+	(...........................................)\hspace{4.8cm}(\field{wdI})
+	\thispagestyle{empty}
+		\newpage
+
+}
+
+
+\end{document}
+
+
+\end{lstlisting}

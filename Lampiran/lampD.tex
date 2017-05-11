@@ -1,0 +1,402 @@
+\chapter{Kode Program \textit{Model}}
+\label{lamp:D}
+
+
+\begin{lstlisting}[language=php, caption=DosenRepository.php]
+	<?php
+  namespace App\Repositories;
+
+  use App\Dosen;
+
+  class DosenRepository{
+    public function findDosenById($id){
+      $dosen = Dosen::where('id', $id)->first();
+      return $dosen;
+    }
+
+    public function findDosenByUsername($username){
+      $dosen = Dosen::where('username', $username)->first();
+      return $dosen;
+    }
+  }
+?>
+\end{lstlisting}
+
+\begin{lstlisting}[language=php, caption=FormatsuratRepository.php]
+	<?php
+  namespace App\Repositories;
+
+  use App\Formatsurat;
+
+  class FormatsuratRepository{
+
+    public function tampilkanFormat(){
+      $formatsurats = Formatsurat::all();
+      return $formatsurats;
+    }
+    public function findAllFormatsurat(){
+      $formatsurats = Formatsurat::orderBy('id', 'ASC')->paginate(16);
+      return $formatsurats;
+    }
+    public function findFormatsuratByIdFormatSurat($idFormatSurat){
+      $formatsurats = Formatsurat::where('idFormatSurat', $idFormatSurat)
+                                  ->orderBy('id', 'ASC')
+                                  ->paginate(16);
+      return $formatsurats;
+    }
+    public function findFormatsuratByJenisSurat($jenis_surat){
+      $formatsurats = Formatsurat::where('jenis_surat', $jenis_surat)
+                                  ->orderBy('id', 'ASC')
+                                  ->paginate(16);
+      return $formatsurats;
+    }
+    public function findFormatsuratByKeteranganSurat($keterangan){
+      $formatsurats = Formatsurat::where('keterangan', $keterangan)
+                                  ->orderBy('id', 'ASC')
+                                  ->paginate(16);
+      return $formatsurats;
+    }
+    public function findFormatsuratByLinkSurat($link_format_surat){
+      $formatsurats = Formatsurat::where('link_format_surat', $link_format_surat)
+                                  ->orderBy('id', 'ASC')
+                                  ->paginate(16);
+      return $formatsurats;
+    }
+    public function findById($id){
+      $formatsurat = Formatsurat::where('id', $id)->first();
+      return $formatsurat;
+    }
+  }
+
+ ?>
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=php, caption=HistorysuratRepository.php]
+	<?php
+  namespace App\Repositories;
+
+  use App\Historysurat;
+
+  class historysuratRepository{
+    function findAllHistorySurat(){
+      $historysurats = Historysurat::orderBy('created_at', 'DESC')->paginate(15);
+      return $historysurats;
+    }
+    public function findHistorySuratByNomorSurat($noSurat){
+      $historysurats = Historysurat::where('noSurat', $noSurat)
+                                  ->orderBy('created_at', 'DESC')
+                                  ->paginate(16);
+      return $historysurats;
+    }
+    public function findHistoryByJenisSurat($jenis_surat){
+      $historysurats = Historysurat::where('jenis_surat', $jenis_surat)
+                                  ->orderBy('created_at', 'DESC')
+                                  ->paginate(16);
+      return $historysurats;
+    }
+    public function findHistoryByPerihal($perihal){
+      $historysurats = Historysurat::where('perihal', $perihal)
+                                  ->orderBy('created_at', 'DESC')
+                                  ->paginate(16);
+      return $historysurats;
+    }
+    public function findHistorySuratByPemohonSurat($mahasiswa_id){
+      $historysurats = Historysurat::where('mahasiswa_id', $mahasiswa_id)
+                                  ->orderBy('created_at', 'DESC')
+                                  ->paginate(16);
+      return $historysurats;
+    }
+    public function findHistorySuratByPenerimaSurat($penerimaSurat){
+      $historysurats = Historysurat::where('penerimaSurat', $penerimaSurat)
+                                  ->orderBy('created_at', 'DESC')
+                                  ->paginate(16);
+      return $historysurats;
+    }
+    public function findHistoryByTanggalPembuatan($tanggalPembuatan){
+      $historysurats = Historysurat::where('timestamps', $tanggalPembuatan)
+                                  ->orderBy('created_at', 'DESC')
+                                  ->paginate(16);
+      return $historysurats;
+    }
+
+    public function findHistoryById($id){
+      $historysurat = Historysurat::find($id)->first();
+      return $historysurat;
+    }
+
+    public function historyDosenWali($dosen_id){
+      $historysurats = Historysurat::where()
+                                    ->orderBy('timestamps', 'DESC')
+                                    ->paginate(15);
+
+      return $historysurats;
+    }
+
+    public function historyKaprodi($dosen_id){
+      $historysurats = Historysurat::where()
+                                    ->orderBy('timestamps', 'DESC')
+                                    ->paginate(15);
+
+      return $historysurats;
+    }
+
+    public function historyMhs($id){
+      $historysurats = Historysurat::where('id', $id)
+                                    ->orderBy('timestamps', 'DESC')
+                                    ->paginate(15);
+    }
+  }
+
+ ?>
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=php, caption=JurusanRepository.php]
+	<?php
+  namespace App\Repositories;
+
+  use App\User;
+
+  class JurusanRepository{
+
+    public function findJurusanById($id){
+      $jurusan = Jurusan::where('id', $id)->first();
+      return $jurusan;
+    }
+  }
+
+ ?>
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=php, caption=MahasiswaRepository.php]
+	<?php
+  namespace App\Repositories;
+
+  use App\Mahasiswa;
+
+  class MahasiswaRepository{
+
+    public function findAllMahasiswa(){
+      $mahasiswas = Mahasiswa::orderBy('id', 'ASC')->paginate(15);
+      return $mahasiswas;
+    }
+    public function findAllMhs(){
+      $mahasiswas = Mahasiswa::all();
+      return $mahasiswas;
+    }
+    public function findMahasiswaByNIRM($nirm){
+      $mahasiswas = Mahasiswa::where('nirm', 'like',  $nirm)
+                                  ->orderBy('id', 'ASC')
+                                  ->paginate(16);
+      return $mahasiswas;
+    }
+    public function findMahasiswaByNPM($npm){
+      $mahasiswas = Mahasiswa::where('npm', $npm)
+                                  ->orderBy('id', 'ASC')
+                                  ->paginate(16);
+      return $mahasiswas;
+    }
+    public function findMahasiswaByNama($nama_mahasiswa){
+      $mahasiswas = Mahasiswa::where('nama_mahasiswa', 'like', $nama_mahasiswa)
+                                  ->orderBy('id', 'ASC')
+                                  ->paginate(16);
+      return $mahasiswas;
+    }
+    public function findMahasiswaByProdi($prodi){
+      $mahasiswas = Mahasiswa::where('jurusan_id','like' , $prodi)
+                                  ->orderBy('id', 'ASC')
+                                  ->paginate(16);
+      return $mahasiswas;
+    }
+    public function findMahasiswaByAngkatan($angkatan){
+      $mahasiswas = Mahasiswa::where('angkatan', $angkatan)
+                                  ->orderBy('id', 'ASC')
+                                  ->paginate(16);
+      return $mahasiswas;
+    }
+    public function findMahasiswaByKotaLahir($kota_lahir){
+      $mahasiswas = Mahasiswa::where('kota_lahir','like', $kota_lahir)
+                                  ->orderBy('id', 'ASC')
+                                  ->paginate(16);
+      return $mahasiswas;
+    }
+    public function findMahasiswaByTanggalLahir($tanggal_lahir){
+      $mahasiswas = Mahasiswa::where('tanggal_lahir', $tanggal_lahir)
+                                  ->orderBy('id', 'ASC')
+                                  ->paginate(16);
+      return $mahasiswas;
+    }
+    public function findMahasiswaByFakultas($fakultas){
+      $mahasiswas = Mahasiswa::where('fakultas_id', $fakultas)
+                                  ->orderBy('id', 'ASC')
+                                  ->paginate(16);
+      return $mahasiswas;
+    }
+    public function findMahasiswaByDosenWali($dosenWali){
+      $mahasiswas = Mahasiswa::where('dosen_id', $dosenWali)
+                                  ->orderBy('id', 'ASC')
+                                  ->paginate(16);
+      return $mahasiswas;
+    }
+    public function findMahasiswaById($id){
+      $mahasiswa = Mahasiswa::where('id', $id)->first();
+      return $mahasiswa;
+    }
+    public function findMahasiswaByUsername($username){
+      $mahasiswa = Mahasiswa::where('username', $username)->first();
+      return $mahasiswa;
+    }
+    public function findPasword($password){
+      $mahasiswas = Mahasiswa::where('password', $password)->get();
+      return $mahasiswas;
+    }
+    public function dosenWaliMhs(){
+
+    }
+  }
+
+ ?>
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=php, caption=PesanansuratRepository.php]
+	<?php
+  namespace App\Repositories;
+
+  use App\PesananSurat;
+
+  class PesanansuratRepository{
+
+    public function findAllPesananSurat(){
+      $pesanansurats = PesananSurat::where([
+                                    ['persetujuanDekan','=',true],
+                                    ['persetujuanWDI','=',true],
+                                    ['persetujuanWDII','=',true],
+                                    ['persetujuanKaprodi','=',true],
+                                    ['persetujuanDosenWali','=',true],
+                                  ])
+                                    ->orderBy('created_at', 'DESC')
+                                    ->paginate(9);
+      return $pesanansurats;
+    }
+    public function findPesananSuratByIdPesanan($idPesanan){
+      $pesanansurats = PesananSurat::where('idPesanan', $idPesanan)
+                                    ->orderBy('timestamps', 'DESC')
+                                    ->paginate(15);
+      return $pesanansurats;
+    }
+    public function findMahasiswaByJenisSurat($jenis_surat){
+      $pesanansurats = PesananSurat::where('jenis_surat', $jenis_surat)
+                                    ->orderBy('timestamps', 'DESC')
+                                    ->paginate(15);
+      return $pesanansurats;
+    }
+    public function findMahasiswaByPerihal($perihal){
+      $pesanansurats = PesananSurat::where('perihal', $perihal)
+                                    ->orderBy('timestamps', 'DESC')
+                                    ->paginate(15);
+      return $pesanansurats;
+    }
+    public function findPesananSuratByPenerimaSurat($penerimaSurat){
+      $pesanansurats = PesananSurat::where('penerimaSurat', $penerimaSurat)
+                                    ->orderBy('timestamps', 'DESC')
+                                    ->paginate(15);
+      return $pesanansurats;
+    }
+    public function findMahasiswaByPengirimSurat($pengirimSurat){
+      $pesanansurats = PesananSurat::where('mahasiswa_id', $pengirimSurat)
+                                    ->orderBy('timestamps', 'DESC')
+                                    ->paginate(15);
+      return $pesanansurats;
+    }
+    public function findMahasiswaByTanggalPembuatan($tanggalPembuatan){
+      $pesanansurats = PesananSurat::where('timestamps', $tanggalPembuatan)
+                                    ->orderBy('timestamps', 'DESC')
+                                    ->paginate(15);
+      return $pesanansurats;
+    }
+    public function findPesananSuratById($id){
+      $pesanansurat = Pesanansurat::where('id', $id)->first();
+      return $pesanansurat;
+    }
+
+    public function pesananDosenWali($dosen_id){
+      $pesanansurats = PesananSurat::where('id', $dosen_id)
+                                    ->orderBy('timestamps', 'DESC')
+                                    ->paginate(15);
+
+      return $pesanansurats;
+    }
+    public function pesananKaprodi($dosen_id){
+      $pesanansurats = PesananSurat::where()
+                                    ->orderBy('timestamps', 'DESC')
+                                    ->paginate(15);
+
+      return $pesanansurats;
+    }
+    public function pesananWDII($dosen_id){
+      $pesanansurats = PesananSurat::where()
+                                    ->orderBy('timestamps', 'DESC')
+                                    ->paginate(15);
+
+      return $pesanansurats;
+    }
+    public function pesananWDI($dosen_id){
+      $pesanansurats = PesananSurat::where()
+                                    ->orderBy('timestamps', 'DESC')
+                                    ->paginate(15);
+
+      return $pesanansurats;
+    }
+    public function pesananDekan(){
+      $pesanansurats = PesananSurat::where()
+                                    ->orderBy('timestamps', 'DESC')
+                                    ->paginate(15);
+
+      return $pesanansurats;
+    }
+  }
+?>
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=php, caption=TURepository.php]
+	<?php
+  namespace App\Repositories;
+
+  use App\TU;
+
+  class TURepository{
+    public function findTUById($id){
+      $tu = TU::where('id', $id)->first();
+      return $tu;
+    }
+
+    public function findTUyUsername($username){
+      $tu = TU::where('username', $username)->first();
+      return $tu;
+    }
+  }
+?>
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=php, caption=UserRepository.php]
+	<?php
+  namespace App\Repositories;
+
+  use App\User;
+
+  class UserRepository{
+
+    public function findUserByUsername($username){
+      $users = User::where('username', $username)->first();
+      return $users;
+    }
+  }
+
+ ?>
+
+\end{lstlisting}

@@ -27,7 +27,7 @@
 % Jika "DAFTAR ISI" tidak bisa berada di bagian tengah halaman, isi dengan XXX
 % jika sudah benar posisinya, biarkan kosong (i.e. \daftarIsiError{ })
 %=============================================================================
-\daftarIsiError{ }
+\daftarIsiError{}
 %=============================================================================
 
 %_____________________________________________________________________________
@@ -60,10 +60,10 @@
 % Jika tidak ingin mencetak daftar tabel/gambar (misalkan karena tidak ada 
 % isinya), edit manual di baris 439 dan 440 pada file main.tex
 %=============================================================================
- \mode{kosong}
+ %\mode{kosong}
 % \mode{cover}
 % \mode{sidang}
-% \mode{sidang_akhir}
+ \mode{sidang_akhir}
 %\mode{final} 
 %=============================================================================
 
@@ -165,7 +165,7 @@
 % !!Lihat singkatan pembimbing dan penguji anda di file dosen.tex
 %=============================================================================
 \namanpm{Dony Erlangga}{2012730071}	%hilangkan tanda << & >>
-\tanggal{<<tanggal>>}{<<bulan>>}{<<tahun>>}			%hilangkan tanda << & >>
+\tanggal{<<tanggal>>}{<<bulan>>}{2017}			%hilangkan tanda << & >>
 \pembimbing{\TAB}{<<pembimbing pendamping/2>>} %hilangkan tanda << & >>    
 \penguji{<<penguji 1>>}{<<penguji 2>>} 				%hilangkan tanda << & >>
 %=============================================================================
@@ -183,8 +183,9 @@
 %			 - Judul TIDAK ditulis dengan menggunakan huruf besar seluruhnya !!
 %			 - Gunakan perintah \texorpdfstring{\\}{} untuk baris baru
 %=============================================================================
-\judulINA{SIKSA (Sistem Informasi Kebutuhan Surat Akademik)}
-\judulENG{<<Judul Bahasa Inggris>>}
+\judulINA{Pembangunan Sistem Informasi Kebutuhan Surat Akademik untuk Lingkup Fakultas Teknologi Informasi dan Sains}
+\judulENG{Developing Information System for Academic Letters on Faculty of Information Technology and
+Sciences}
 %_____________________________________________________________________________
 %=============================================================================
 % 								BAGIAN X
@@ -195,8 +196,12 @@
 % PERHATIAN: langsung mulai setelah '{' awal, jangan mulai menulis di baris 
 %			 bawahnya
 %=============================================================================
-\abstrakINA{<<Tuliskan abstrak anda di sini, dalam bahasa Indonesia>> \\\kant[1]}
-\abstrakENG{<<Tuliskan abstrak anda di sini, dalam bahasa Inggris>> \\\kant[2]} 
+\abstrakINA{Surat akademik merupakan surat resmi untuk kebutuhan akademik yang dikeluarkan oleh suatu institusi pendidikan. Saat ini pembuatan surat akademik baik di lingkungan UNPAR maupun FTIS masih dilakukan secara manual sehingga tidak efektif dan efisien. Oleh karena itu dibutuhkan suatu sistem otomasi yang dapat memproduksi surat secara masal.\\
+\textit{Mailmerge} merupakan suatu konsep yang banyak diterapkan oleh sejumlah pengolah kata untuk memproduksi dokumen secara masal. \textit{Mailmerge} membutuhkan sebuah dokumen utama yang akan digunakan sebagai teks tetap dan dapat menampung variabel-variabel yang nantinya akan diisi dengan nilai dari \textit{file} data.\\
+\textit{Website} penyedia surat akademik yang dibangun mengadaptasi konsep \textit{mailmerge} untuk memproduksi setiap pesanan surat akademik yang masuk. Sebagai dokumen utama digunakan \textit{file} berekstensi .tex yang berfungsi sebagai format surat yang menampung variabel-variabel nilai yang berupa data kebutuhan surat. Nilai-nilai yang digunakan untuk mengisi variabel-variabel pada \textit{file} format surat diambil dari \textit{database} yang sebelumnya diinput oleh pemohon surat.}
+\abstrakENG{Academic letter is an official letter issued by an academic institutional for academic purposes. Nowadays, the issuing of the academic letter in both UNPAR and FTIS is still done manually which is inefficient. An automatic system that could produce a letter in a large-scale manner is required regarding this problem.\\
+Mailmerge is a concept that is implemented by many word-processing software to produce documents massively. Mailmerge requires a main document which is used as the fixed text template containing variables, where the variables are then filled with value from the data file.\\
+Website which provides academic letters is developed by adapting mailmerge's concept to produce the required academic letters based on the request. The main document uses .tex file extension  which serves as a letter's format containing the variables' values which are the requirements of a letter. These values, that are to fill the variables on the letter's format file, are taken from the database which has already been inputted by the applicant before.} 
 %=============================================================================
 
 %_____________________________________________________________________________
@@ -207,8 +212,8 @@
 % - kunciINA: kata-kata kunci dalam bahasa indonesia
 % - kunciENG: keywords in english
 %=============================================================================
-\kunciINA{<<Tuliskan di sini kata-kata kunci yang anda gunakan, dalam bahasa Indonesia>>}
-\kunciENG{<<Tuliskan di sini kata-kata kunci yang anda gunakan, dalam bahasa Inggris>>}
+\kunciINA{surat akademik, \textit{mailmerge}, \LaTeX}
+\kunciENG{academic letters, mailmerge, \LaTeX}
 %=============================================================================
 
 %_____________________________________________________________________________
@@ -240,6 +245,18 @@
 \hyphenation{fi-si-ka}
 \hyphenation{tek-nik}
 \hyphenation{in-for-ma-ti-ka}
+\hyphenation{di-ten-tu-kan}
+\hyphenation{be-ri-kut}
+\hyphenation{pe-rang-kat}
+\hyphenation{me-ren-ca-na-kan}
+\hyphenation{lay-out-ing}
+\hyphenation{re-pea-ted}
+\hyphenation{di-sim-pan}
+\hyphenation{di-pro-ses}
+\hyphenation{mem-be-ri-kan}
+\hyphenation{di-ki-rim-kan}
+\hyphenation{pro-se-dur}
+\hyphenation{di-gu-na-kan}
 %=============================================================================
 
 %_____________________________________________________________________________

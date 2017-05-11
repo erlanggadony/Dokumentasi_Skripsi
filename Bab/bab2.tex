@@ -1,11 +1,11 @@
 %versi 2 (8-10-2016)
 \chapter{Dasar Teori}
 \label{chap:dasar_teori}
-Dasar teori membahas mengenai surat, sistem informasi dan \LaTeX.
+Pada bab ini membahas teori-teori yang menjadi dasar dari penelitian ini. Teori yang dibahas yaitu mengenai surat, sistem informasi dan \LaTeX.
 
 \section{Surat}
 \label{sec:surat}
-Surat adalah komunikasi tertulis yang berasal dari satu pihak dan ditujukan kepada pihak lain untuk menyampaikan warta atau pesan. Bahasa yang digunakan dalam surat harus menggunakan kata-kata yang bersifat umum dan jelas, sehingga dapat dimengerti maksud dan tujuannya serta tepat sasaran\cite{Saiman:2002}.
+Surat adalah komunikasi tertulis yang berasal dari satu pihak dan ditujukan kepada pihak lain untuk menyampaikan warta atau pesan. Bahasa yang digunakan dalam surat harus menggunakan kata-kata yang bersifat umum dan jelas, sehingga dapat dimengerti maksud dan tujuannya serta tepat sasaran \cite{Saiman:2002}.
 
 \subsection{Fungsi Surat}
 \label{sec:fungsi_surat}
@@ -254,3 +254,21 @@ Untuk menggunakan \textit{package mailmerge}, ada beberapa \textit{command} yang
     \mailentry{Sara,{Jean, Phillip and Maria},no}
     \mailentry{Edward,,yes}
  \end{verbatim}
+ 
+\section{Laravel}
+\label{sec:laravel}
+Laravel adalah \textit{framework web} berbasis php yang bersifat \textit{open-source} yang dikembangkan oleh Taylor Otwell pada Juni 2011\cite{surguy:2013}. Laravel menerapkan pola arsitektur \textit{Model-View-Controller} (MVC) dimana \textit{layer} memiliki fungsi yang berbeda-beda.
+
+\subsection{Komponen Utama Laravel}
+\label{sec:komponen_utama_laravel}
+Laravel memiliki beberapa \textit{file} yang menjadi komponen utama yang perlu diperhatikan. \textit{File-file} tersebut yaitu\cite{laravel:2016} :
+\begin{itemize}
+	\item \textit{Model}\\
+	\textit{Model} merupakan bagian yang menghubungkan antara aplikasi dengan \textit{database}.
+	\item \textit{View}\\
+	\textit{View} merupakan bagian yang bertugas menampilkan \textit{file} tampilan ke pengguna.  
+	\item \textit{Controller}\\
+	\textit{Controller} bertugas menjalankan proses lojik dan juga menerima \textit{input request} dari \textit{view}.
+	\item \textit{Route}\\
+	\textit{Route} bertugas mengatur pemetaan jalur \textit{request} dari \textit{view} ke \textit{controller}.  
+\end{itemize}

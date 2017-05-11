@@ -1,6 +1,6 @@
 \chapter{Analisis}
 \label{chap:analisis}
-Analisis membahas mengenai deskripsi sistem terkini, hasil survey aplikasi sejenis dan analisis sistem usulan.
+Pada analisis membahas mengenai deskripsi sistem terkini, hasil survey aplikasi sejenis dan analisis sistem usulan.
 
 \section{Deskripsi Sistem Terkini}
 \label{sec:deskripsi_sistem_terkini}
@@ -13,7 +13,7 @@ Fakultas Teknologi Informasi dan Sains (FTIS) adalah salah satu fakultas yang te
 Gambar \hyperlink{organigram_fakultas}{3.1} menjelaskan struktur organisasi dari FTIS. Di bawah ini akan dijelaskan  setiap bagian dari struktur organisasi tersebut. Setiap fungsi pada struktur organisasi tersebut memiliki tugas, wewenang, dan tanggung jawab yang berbeda.
 \begin{figure}[H]
 	\centering
-		\includegraphics[scale=0.65]{F:/Skripsi/Template/Gambar/Diagram/sistem_terkini/organigram/organigram_fakultas.JPG}
+		\includegraphics[scale=0.5]{F:/Skripsi/Template/Gambar/Diagram/sistem_terkini/organigram/organigram_fakultas.JPG}
 	\caption{Struktur Organisasi Fakultas Teknologi Informasi dan Sains}
 	\label{fig:organigram_fakultas}
 \end{figure}
@@ -46,7 +46,7 @@ Gambar \hyperlink{organigram_fakultas}{3.1} menjelaskan struktur organisasi dari
 Gambar \hyperlink{organigram_TU}{3.2} merupakan struktur organisasi dari TU FTIS. Bagian tata usaha dipimpin oleh seorang Kepala Bagian (Kabag). Di bawah Kabag terdapat 4 sub bagian (Subag) yang dikepalai oleh seorang Kepala Sub Bagian (Kasubag). Berikut ini akan dijelaskan struktur organisasi yang ada di tata usaha FTIS.
 \begin{figure}[H]
 	\centering
-		\includegraphics[scale=0.35]{F:/Skripsi/Template/Gambar/Diagram/sistem_terkini/organigram/organigram_TU.JPG}
+		\includegraphics[scale=0.5]{F:/Skripsi/Template/Gambar/Diagram/sistem_terkini/organigram/organigram_TU.JPG}
 	\caption{Struktur Organisasi Tata Usaha Fakultas Teknologi Informasi dan Sains}
 	\label{fig:organigram_TU}
 \end{figure}
@@ -113,7 +113,7 @@ Gambar \hyperlink{pemesanan_terkini}{3.3} merupakan prosedur pemesanan surat yan
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[scale=0.30]{F:/Skripsi/Template/Gambar/Diagram/sistem_terkini/work_flow/pemesanan_terkini.jpg}
+		\includegraphics[scale=0.35]{F:/Skripsi/Template/Gambar/Diagram/sistem_terkini/work_flow/pemesanan_terkini.jpg}
 	{\caption{Prosedur pemesanan surat terkini}}
 	\label{fig:pemesanan_terkini}
 \end{figure}
@@ -170,12 +170,12 @@ Berdasarkan survey yang telah dilakukan terhadap beberapa universitas di Bandung
 \label{sec:analisis_sistem_usulan}
 Analisis sistem usulan membahas mengenai prosedur pembuatan surat usulan, diagram \textit{usecase}, \textit{task scenario}, analisis kebutuhan data dari surat, dan diagram ER. \\
 
-\subsection{Surat-surat Yang Dapat Ditangani}
+\subsection{Surat-surat Yang Ditangani}
 \label{sec:surat_yang_ditangani}
-Dari 10 surat yang telah disebutkan di atas, diambil 7 surat saja yang akan dibahas lebih lanjut pada penelitian ini. Hal ini dikarenakan 6 surat tersebut dapat menghasilkan surat yang kemudian akan dikembalikan kepada mahasiswa yang bersangkutan untuk kemudian disampaikan kepada lembaga yang membutuhkan surat tersebut. Keenam surat tersebut yaitu :
+Dari 10 surat yang telah disebutkan di atas, diambil 6 surat yang akan dibahas lebih lanjut pada penelitian ini. Hal ini dikarenakan 6 surat tersebut dapat menghasilkan surat yang kemudian akan dikembalikan kepada mahasiswa yang bersangkutan untuk kemudian disampaikan kepada lembaga yang membutuhkan surat tersebut. Dari keenam surat tersebut ada satu surat yang memiliki fungsi ganda yaitu surat keterangan sehingga dibuat menjadi 2 jenis surat yang berbeda sehingga total terdapat 7 surat yang akan dibahas. Ketujuh surat tersebut yaitu :
 \begin{enumerate}
 	\item Surat keterangan beasiswa. \\
-	Surat pernyataan bahwa mahasiswa ybs. tidak menerima beasiswa dari pihak universitas maupun fakultas dan hanya menerimah beasiswa dari satu organisasi.
+	Surat pernyataan bahwa mahasiswa ybs. tidak menerima beasiswa dari pihak universitas maupun fakultas dan hanya menerima beasiswa dari satu organisasi/perusahaan saja.
 	\item Surat keterangan mahasiswa aktif. \\
 	Surat pernyataan bahwa mahasiswa ybs. merupakan mahasiswa aktif Fakultas Teknologi Informasi dan Sains Uiversitas Katolik Parahyangan.
 	\item Surat pengantar pembuatan visa. \\
@@ -187,7 +187,7 @@ Dari 10 surat yang telah disebutkan di atas, diambil 7 surat saja yang akan diba
 	\item Surat izin cuti studi. \\
 	Surat yang diajukan oleh mahasiswa apabila mahasiswa ybs. hendak mengambil cuti studi pada semester tertentu. Surat ini memerlukan lampiran dari orang tua/wali untuk
 	\item Surat izin pengunduran diri mahasiswa. \\
-	Surat yang diajukan oleh mahasiswa apabila mahasiswa ybs. hendak mengundurkan diri dari Fakultas Teknologi Informasi dan Sains Uiversitas Katolik Parahyangan.
+	Surat yang diajukan oleh mahasiswa apabila mahasiswa ybs. hendak mengundurkan diri dari Fakultas Teknologi Informasi dan Sains Universitas Katolik Parahyangan.
 \end{enumerate}
 
 \subsection{Prosedur Pembuatan Surat Usulan}
@@ -195,19 +195,21 @@ Dari 10 surat yang telah disebutkan di atas, diambil 7 surat saja yang akan diba
 Gambar \hyperlink{pembuatan_usulan}{3.6} merupakan prosedur pembuatan surat yang dilakukan oleh mahasiswa. Pada prosedur usulan ini, untuk membuat surat akademik tidak perlu melalui 3 tahapan seperti yang dijelaskan pada subbagian sistem terkini. Prosedur pembuatan surat dimulai dengan:
 \begin{enumerate}
 	\item Mahasiswa melakukan login
+	\item Mahasiswa memilih kategori surat yang akan dibuat
 	\item Mahasiswa memilih jenis surat yang akan dibuat
 	\item Mahasiswa memasukkan data yang dibutuhkan dengan benar
-	\item Mahasiswa mengklik tombol \textit{preview} untuk melihat surat secara keseluruhan
-	\item Apabila terdapat kesalahan pada pengisian data, mahasiswa dapat mengklik tombol \textit{edit} untuk memperbaiki kesalahan pada pengisian data.
-	\item Apabila tidak ada kesalahan, mahasiswa dapat mengklik tombol \textit{process} untuk meng-\textit{generate} \textit{file} .pdf dan men-\textit{download} \textit{file} tersebut.
-	\item Setelah mendapatkan \textit{file} .pdf surat, mahasiswa dapat mencetak surat.
-	\item Setelah surat dicetak, mahasiswa memberikan surat tersebut kepada Petugas TU untuk ditanda tangani oleh pejabat yang berkaitan dengan surat.
-	\item Setelah surat ditanda tangani, Petugas TU mengembalikan surat yang sudah ditanda tangani tersebut kepada mahasiswa.
+	\item Mahasiswa menekan tombol \textit{preview} untuk melihat surat secara keseluruhan
+	\item Apabila terdapat kesalahan pada pengisian data, mahasiswa dapat mengklik tombol "Kembali" untuk memperbaiki kesalahan pada pengisian data.
+	\item Apabila tidak ada kesalahan, mahasiswa dapat menekan tombol "Suat Surat" untuk memesan surat tersebut dan surat akan masuk ke \textit{database} pesanan surat.
+	\item Apabila \textit{id} surat adalah 9 atau 10, surat perlu melalui tahap persetujuan dari Pejabat. Sedangkan surat dengan \textit{id} 1-9 atau 11-20 maka surat dapat langsung diberi nomor surat.
+	\item Setelah surat diberi nomor surat, surat dapat di-\textit{generate} menjadi \textit{file} PDF dan surat siap untuk dicetak.	
+	\item Setelah surat dicetak, surat akan ditandatangani oleh Pejabat yang berwenang menandatangani surat tersebut. Apabila surat sudah ditandatangani, Pejabat akan mengubah status penandatanganan surat dari "Belum" menjadi "Sudah".
+	\item Setelah surat ditandatangani, Petugas TU mengembalikan surat yang sudah ditanda tangani tersebut kepada mahasiswa. Apabila surat sudah diambil oleh mahasiswa pemohon, Petugas TU akan mengubah status pengambilan surat dari "Belum" menjadi "Sudah".
 	\
 \end{enumerate}
 \begin{figure}[H]
 	\centering
-		\includegraphics[scale = 0.27]{F:/Skripsi/Template/Gambar/Diagram/sistem_usulan/flowchart/Flowchart0.jpg}
+		\includegraphics[scale = 0.35]{F:/Skripsi/Dokumentasi_Skripsi/Gambar/Diagram/sistem_usulan/flowchart/Flowchart0.png}
 	{\caption{Prosedur pembuatan surat usulan}}
 	\label{fig:pembuatan_usulan}
 \end{figure}
@@ -301,8 +303,8 @@ Gambar \hyperlink{level_3-1.8}{3.16} merupakan DFD \textit{level} 3-1.8 yang men
 Gambar \hyperlink{level_3-1.9}{3.17} merupakan DFD \textit{level} 3-1.9 yang menjelaskan aliran data apabila aktor mahasiswa hendak membuat surat izin pengunduran diri.
 \begin{figure}[H]
 	\centering
-		\includegraphics[scale = 0.35]{F:/Skripsi/Dokumentasi_Skripsi/Gambar/Diagram/sistem_usulan/dfd/Lv3-1_9_input_izin_pengunduran_diri-kanan.png}
-	\caption{DFD \textit{level} 3-1.9 untuk pembuatan surat izin penguunduran diri}
+		\includegraphics[scale = 0.35]{F:/Skripsi/Dokumentasi_Skripsi/Gambar/Diagram/sistem_usulan/dfd/Lv3-1_9_input_izin_pengunduran_diri-kiri.png}
+	\caption{DFD \textit{level} 3-1.9 untuk pembuatan surat izin pengunduran diri}
 	\label{fig:level_3-1.9}
 \end{figure}
 
@@ -333,6 +335,14 @@ Gambar \hyperlink{level_2-4}{3.20} merupakan DFD \textit{level} 2-4 yang menjela
 	\label{fig:level_2-4}
 \end{figure}
 
+\textbf{Data Dictionary}\\
+\begin{itemize}
+ \item list data mahaiswa : nirm, npm, nama mahasiswa, prodi, fakultas, angkatan, tglLahir, kota lahir, foto, dosenWali, username, password
+ \item data per mahasiswa : nirm, npm, nama mahasiswa, prodi, fakultas, angkatan, tglLahir, kota lahir, foto, dosenWali
+ \item kebutuhan format surat : idFormat, jenis surat, format, keterangan
+ \item kebutuhan pesanan surat : tglPembuatan, perihal, npm, idFormatSurat, dataSurat, penerimaSurat
+ \item kebutuhan history surat : status penandatanganan surat, Status pengambilan surat
+\end{itemize}
 
 \subsection{Analisis Kebutuhan Data}
 \label{sec:analisis_kebutuhan_data}
@@ -447,3 +457,16 @@ Nama wakil dekan I								        \\ \hline
 {Tanggal surat}                             \\ \hline
 \end{tabular}
 \end{table}
+
+\subsection{ER Diagram}
+\label{sec:er_diagram}
+Setelah mengamati \textit{work flowmap}, didapat beberapa objek yang dapat digambarkan menjadi sebuah entitas pada diagram ER. Objek-objek yang dimaksud yaitu format surat, mahasiswa, petugas TU dan pejabat. Untuk objek surat dan mahasiswa dapat langsung dibuat entitas. Untuk objek pejabat diubah menjadi entitas dosen karena pejabat merupakan dosen yang memiliki pangkat tertentu di jurusan maupun fakultas.\
+
+Selain objek yang didapat dari \textit{work flowmap}, didapat juga objek-objek lain yang berhubungan dengan objek-objek yang telah disebutkan diatas. Objek-objek yang dimaksud yaitu jurusan, fakultas, pesanan surat dan \textit{history} surat. Gambar \hyperlink{erd}{3.21} adalah diagram ER yang menggambarkan hubungan antar entitas yang telah disebutkan di atas.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale = 0.25]{F:/Skripsi/Dokumentasi_Skripsi/Gambar/Diagram/sistem_usulan/erd/erd.png}
+	\caption{Diagram ER}
+	\label{fig:level_2-2}
+\end{figure}
