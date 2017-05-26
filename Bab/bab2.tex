@@ -1,7 +1,7 @@
 %versi 2 (8-10-2016)
 \chapter{Dasar Teori}
 \label{chap:dasar_teori}
-Pada bab ini membahas teori-teori yang menjadi dasar dari penelitian ini. Teori yang dibahas yaitu mengenai surat, sistem informasi dan \LaTeX.
+Pada bab ini membahas teori-teori yang menjadi dasar dari penelitian ini. Teori yang dibahas yaitu mengenai surat, sistem informasi, \LaTeX dan Laravel.
 
 \section{Surat}
 \label{sec:surat}
@@ -155,8 +155,9 @@ Gambar \hyperlink{tps}{2.1} menggambarkan alur dari informasi pada proses transa
 	\item Apabila \textit{record} pada \textit{database} sudah berhasil ditambahkan/diperbaharui, program dapat menghasilkan laporan maupun dokumen yang dapat digunakan oleh pihak organisasi maupun dapat diakses oleh pihak luar.
 \end{enumerate}
 
-\textbf{Karakteristik TPS}\
+\textbf{Karakteristik TPS}\\
 \label{sec:karakteristik_tps}
+
 Berikut ini akan dijelaskan karakteristik dari TPS, antara lain \cite{Turban:2001} : 
 \begin{enumerate}
 	\item Volume data yang diproses sangat besar.
@@ -173,7 +174,7 @@ Berikut ini akan dijelaskan karakteristik dari TPS, antara lain \cite{Turban:200
 	\item Pengaturan terhadap permintaan merupakan suatu hal wajib. TPS memungkinkan pengguna untuk melakukan \textit{query} terhadap basis data.
 \end{enumerate}
 
-\textbf{Contoh Aplikasi TPS}\
+\textbf{Contoh Aplikasi TPS}\\
 \label{sec:contoh_aplikasi _tps}
 Berikut ini akan dijelaskan aplikasi-aplikasi apa saja yang memanfaatkan sistem informasi berbentuk TPS berdasarkan fungsinya, yaitu \cite{Laudon:1996} :
 \begin{enumerate}
@@ -188,7 +189,7 @@ Berikut ini akan dijelaskan aplikasi-aplikasi apa saja yang memanfaatkan sistem 
 \label{sec:oas}
 \textit{Office Automation System} (OAS) adalah aplikasi yang didesain untuk meningkatkan produktivitas pegawai di kantor dengan mendukung koordinasi dan komunikasi antar pegawai \cite{Laudon:1996}. OAS digunakan untuk meningkatkan aliran pekerjaan dan komunikasi antar sesama pegawai, tidak peduli apakah pekerja tadi berada di satu lokasi yang sama ataupun tidak sehingga tingkat produktivitas pegawai dapat meningkat.
 
-\textbf{Dampak dari Otomatisasi}\
+\textbf{Dampak dari Otomatisasi}\\
 Otomatisasi proses dapat membawa dampak positif pada organisasi yang menerapkannya. Dampak dari otomatisasi terbagi menjadi 3 tingkatan yaitu \cite{Susan:1982}: 
 \begin{enumerate}
 	\item \textit{Innovative}\\
@@ -201,7 +202,7 @@ Otomatisasi proses dapat membawa dampak positif pada organisasi yang menerapkann
  
 \section{\LaTeX}
 \label{sec:latex}
-\LaTeX adalah sebuah bahasa markup untuk sistem penulisan dokumen yang dikembangkan oleh Leslie B. Lamport dan dirilis pada tahun 1985 \cite{Lamport:1994} . \LaTeX memiliki filosofi WYMIWYG (What You Mean Is What You Get) yang berarti sesuatu yang akan kita tulis akan ditulis berdasarkan arti dari hal tersebut. Oleh karena itu, untuk menambahkan suatu perintah pada dokumen yang sedang kita tulis perlu menambahkan suatu \textit{command}. \textit{Command} adalah kata spesial yang menentukan suatu sifat pada \LaTeX. Hampir semua \textit{command} pada \LaTeX selalu diawali dengan tanda \textbackslash dan beberapa \textit{command} memiliki parameter. Parameter diawali dengan tanda kurung kurawal buka dan diakhiri denga kurung kurawal tutup(\{\}). File \LaTeX memiliki ekstensi .tex.  
+\LaTeX adalah sebuah bahasa markup untuk sistem penulisan dokumen yang dikembangkan oleh Leslie B. Lamport dan dirilis pada tahun 1985 \cite{Lamport:1994}. \LaTeX memiliki filosofi WYMIWYG (\textit{What You Mean Is What You Get}) yang berarti sesuatu yang akan kita tulis akan ditulis berdasarkan arti dari hal tersebut. Oleh karena itu, untuk menambahkan suatu perintah pada dokumen yang sedang kita tulis perlu menambahkan suatu \textit{command}. \textit{Command} adalah kata spesial yang menentukan suatu sifat pada \LaTeX. Hampir semua \textit{command} pada \LaTeX selalu diawali dengan tanda '\textbackslash' dan beberapa \textit{command} memiliki \textit{parameter}. \textit{Parameter} diawali dengan tanda kurung kurawal buka dan diakhiri denga kurung kurawal tutup(\{\}). \textit{File} \LaTeX memiliki ekstensi .tex.  
 
 Untuk menulis dokumen pada \LaTeX dibutuhkan beberapa \textit{command} yang wajib ada dalam sebuah dokumen, yaitu \cite{Lamport:1994} : 
 \begin{enumerate}
@@ -222,14 +223,15 @@ Untuk menulis dokumen pada \LaTeX dibutuhkan beberapa \textit{command} yang waji
 Untuk menggunakan \textit{package mailmerge}, ada beberapa \textit{command} yang perlu ditambahkan seperti \cite{Frasson:2009} :
 \begin{enumerate}
 	\item \texttt{\string\mailfields}\\
-	Digunakan untuk menyatakan nama \textit{field} yang akan digunakan. Nama \textit{field} disimpan di dalam parameter \texttt{\string\mailfields}. Urutan nama \textit{field} yang dideklarasikan akan berpengaruh pada \texttt{\string\mailentry}. Nama field akan menjadi parameter bagi \textit{command} \texttt{\string\field}.
+	Digunakan untuk menyatakan nama \textit{field} yang akan digunakan. Nama \textit{field} disimpan di dalam \textit{parameter} \texttt{\string\mailfields}. Urutan nama \textit{field} yang dideklarasikan akan berpengaruh pada \texttt{\string\mailentry}. Nama \textit{field} akan menjadi \textit{parameter} bagi \textit{command} \texttt{\string\field}.
 	\item \texttt{\string\mailrepeat}\\
 	Digunakan untuk menentukan teks mana saja yag diulang setiap kali pengulangan. Teks yang akan diulang maupun \textit{command} \texttt{\string\field} akan menjadi parameter bagi \texttt{\string\mailrepeat}, namun isi dari \textit{command} \texttt{\string\field} akan berubah pada setiap kali pengulangan sesuai dengan data pada \textit{entry}.
 	\item \texttt{\string\mailentry}\\
-	Digunakan untuk penampungan nilai sebelum dimasukkan sebagai parameter \textit{command} \texttt{\string\field}.
+	Digunakan untuk penampungan nilai sebelum dimasukkan sebagai \textit{parameter} \textit{command} \texttt{\string\field}.
 \end{enumerate}
-	Berikut ini adalah urutan tata letak setiap command untuk pembuatan mailmerge :
-	\begin{verbatim}
+	Berikut ini adalah urutan tata letak setiap \textit{command} untuk pembuatan \textit{mailmerge} :
+	\begin{lstlisting}[language=tex,basicstyle=\tiny,caption=Contoh pembuatan \textit{mailmerge}]
+	\documentclass[12pt]{letter}
     \usepackage{ifthen,mailmerge}
 
     % \ifequal{A}{B}{what if A=B}{what if A<>B}
@@ -253,7 +255,7 @@ Untuk menggunakan \textit{package mailmerge}, ada beberapa \textit{command} yang
     \mailentry{John,{Bart and Robert},yes}
     \mailentry{Sara,{Jean, Phillip and Maria},no}
     \mailentry{Edward,,yes}
- \end{verbatim}
+ \end{lstlisting}
  
 \section{Laravel}
 \label{sec:laravel}
